@@ -28,14 +28,14 @@ module.exports = function (config) {
 			os: 'android',
 			os_version: '9.0',
 			browser: 'android',
-			device: 'Pixel 3',
+			device: 'Google Pixel 3',
 		},
 		bs_android_11: {
 			base: 'BrowserStack',
 			os: 'android',
 			os_version: '11.0',
 			browser: 'android',
-			device: 'Pixel 5',
+			device: 'Google Pixel 5',
 		},
 	};
 
