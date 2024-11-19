@@ -1,7 +1,7 @@
 import { expect } from 'chai';
-import { Text, Url, Email, Nl } from 'linkifyjs/src/multi';
-import * as scanner from 'linkifyjs/src/scanner';
-import * as parser from 'linkifyjs/src/parser';
+import { Text, Url, Email, Nl } from 'linkifyjs/src/multi.js';
+import * as scanner from 'linkifyjs/src/scanner.js';
+import * as parser from 'linkifyjs/src/parser.js';
 
 /**
 	[0] - Original text to parse (should tokenize first)

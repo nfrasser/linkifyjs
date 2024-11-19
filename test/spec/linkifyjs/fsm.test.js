@@ -1,10 +1,7 @@
-// import { makeAcceptingState } from 'linkifyjs/src/fsm';
-
-import * as tk from 'linkifyjs/src/text';
-import * as fsm from 'linkifyjs/src/fsm';
-// import { takeT, makeT, makeRegexT } from 'linkifyjs/src/fsm';
+import * as tk from 'linkifyjs/src/text.js';
+import * as fsm from 'linkifyjs/src/fsm.js';
+import { State } from 'linkifyjs/src/linkify.js';
 import { expect } from 'chai';
-import { State } from 'linkifyjs';
 
 describe('linkifyjs/fsm/State', () => {
 	let Start, Num, Word;

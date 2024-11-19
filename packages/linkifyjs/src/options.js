@@ -1,4 +1,4 @@
-import assign from './assign';
+import assign from './assign.js';
 
 /**
  * An object where each key is a valid DOM Event Name such as `click` or `focus`

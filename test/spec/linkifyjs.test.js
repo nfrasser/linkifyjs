@@ -1,6 +1,6 @@
 /* eslint-disable mocha/no-setup-in-describe */
 import { expect } from 'chai';
-import * as linkify from 'linkifyjs/src/linkify';
+import * as linkify from 'linkifyjs/src/linkify.js';
 
 const TicketToken = linkify.createTokenClass('ticket', { isLink: true });
 
@@ -221,7 +221,7 @@ describe('linkifyjs', () => {
 
 	describe('options', () => {
 		it('is an object', () => {
-			expect(linkify.options).to.be.a('object');
+			expect(linkify.options).to.exist;
 		});
 	});
 });

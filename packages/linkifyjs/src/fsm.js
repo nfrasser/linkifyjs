@@ -1,7 +1,7 @@
 /**
  * Finite State Machine generation utilities
  */
-import assign from './assign';
+import assign from './assign.js';
 
 /**
  * @template T
@@ -69,7 +69,9 @@ export function addToGroups(t, flags, groups) {
 
 	for (const k in flags) {
 		const group = registerGroup(k, groups);
-		if (group.indexOf(t) < 0) { group.push(t); }
+		if (group.indexOf(t) < 0) {
+			group.push(t);
+		}
 	}
 }
 
@@ -139,13 +141,17 @@ State.prototype = {
 	 */
 	go(input) {
 		const state = this;
-		const nextState  = state.j[input];
-		if (nextState) { return nextState; }
+		const nextState = state.j[input];
+		if (nextState) {
+			return nextState;
+		}
 
 		for (let i = 0; i < state.jr.length; i++) {
 			const regex = state.jr[i][0];
-			const nextState = state.jr[i][1];  // note: might be empty to prevent default jump
-			if (nextState && regex.test(input)) { return nextState; }
+			const nextState = state.jr[i][1]; // note: might be empty to prevent default jump
+			if (nextState && regex.test(input)) {
+				return nextState;
+			}
 		}
 		// Nowhere left to jump! Return default, if any
 		return state.jd;
@@ -214,7 +220,9 @@ State.prototype = {
 	ts(input, next, flags, groups) {
 		let state = this;
 		const len = input.length;
-		if (!len) { return state; }
+		if (!len) {
+			return state;
+		}
 		for (let i = 0; i < len - 1; i++) {
 			state = state.tt(input[i]);
 		}
@@ -261,7 +269,8 @@ State.prototype = {
 
 		// Take the transition with the usual default mechanisms and use that as
 		// a template for creating the next state
-		let nextState, templateState = state.go(input);
+		let nextState,
+			templateState = state.go(input);
 		if (templateState) {
 			nextState = new State();
 			assign(nextState.j, templateState.j);
@@ -287,7 +296,7 @@ State.prototype = {
 
 		state.j[input] = nextState;
 		return nextState;
-	}
+	},
 };
 
 // Helper functions to improve minification (not exported outside linkifyjs module)
@@ -299,7 +308,7 @@ State.prototype = {
  * @param {Flags} [flags]
  * @param {Collections<T>} [groups]
  */
- export const ta = (state, input, next, flags, groups) => state.ta(input, next, flags, groups);
+export const ta = (state, input, next, flags, groups) => state.ta(input, next, flags, groups);
 
 /**
  * @template T

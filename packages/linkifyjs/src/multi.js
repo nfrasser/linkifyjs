@@ -1,12 +1,11 @@
-import { COLON, LOCALHOST } from './text';
-import { defaults } from './options';
-import assign from './assign';
+import { COLON, LOCALHOST } from './text.js';
+import { defaults } from './options.js';
+import assign from './assign.js';
 
 /******************************************************************************
 	Multi-Tokens
 	Tokens composed of arrays of TextTokens
 ******************************************************************************/
-
 
 /**
  * @param {string} value
@@ -47,7 +46,7 @@ MultiToken.prototype = {
 	 * Returns the `.toString` value by default.
 	 * @param {string} [scheme]
 	 * @return {string}
-	*/
+	 */
 	toHref(scheme) {
 		!!scheme;
 		return this.toString();
@@ -61,9 +60,7 @@ MultiToken.prototype = {
 		const val = this.toString();
 		const truncate = options.get('truncate', val, this);
 		const formatted = options.get('format', val, this);
-		return (truncate && formatted.length > truncate)
-			? formatted.substring(0, truncate) + '…'
-			: formatted;
+		return truncate && formatted.length > truncate ? formatted.substring(0, truncate) + '…' : formatted;
 	},
 
 	/**
@@ -109,7 +106,7 @@ MultiToken.prototype = {
 			isLink: this.isLink,
 			href: this.toHref(protocol),
 			start: this.startIndex(),
-			end: this.endIndex()
+			end: this.endIndex(),
 		};
 	},
 
@@ -124,7 +121,7 @@ MultiToken.prototype = {
 			isLink: this.isLink,
 			href: this.toFormattedHref(options),
 			start: this.startIndex(),
-			end: this.endIndex()
+			end: this.endIndex(),
 		};
 	},
 
@@ -156,13 +153,21 @@ MultiToken.prototype = {
 		const eventListeners = options.getObj('events', href, token);
 
 		attributes.href = formattedHref;
-		if (className) { attributes.class = className; }
-		if (target) { attributes.target = target; }
-		if (rel) { attributes.rel = rel; }
-		if (attrs) { assign(attributes, attrs); }
+		if (className) {
+			attributes.class = className;
+		}
+		if (target) {
+			attributes.target = target;
+		}
+		if (rel) {
+			attributes.rel = rel;
+		}
+		if (attrs) {
+			assign(attributes, attrs);
+		}
 
 		return { tagName, attributes, content, eventListeners };
-	}
+	},
 };
 
 // Base token
@@ -195,7 +200,7 @@ export const Email = createTokenClass('email', {
 	isLink: true,
 	toHref() {
 		return 'mailto:' + this.toString();
-	}
+	},
 });
 
 /**
@@ -236,5 +241,5 @@ export const Url = createTokenClass('url', {
 	hasProtocol() {
 		const tokens = this.tk;
 		return tokens.length >= 2 && tokens[0].t !== LOCALHOST && tokens[1].t === COLON;
-	}
+	},
 });

@@ -1,14 +1,16 @@
 import { expect } from 'chai';
 import { fake } from 'sinon';
-import * as options from 'linkifyjs/src/options';
-import * as scanner from 'linkifyjs/src/scanner';
-import * as mtk from 'linkifyjs/src/multi';
+import * as options from 'linkifyjs/src/options.js';
+import * as scanner from 'linkifyjs/src/scanner.js';
+import * as mtk from 'linkifyjs/src/multi.js';
 
 const Options = options.Options;
 
 describe('linkifyjs/options', () => {
 	describe('defaults', () => {
-		after(() => { options.defaults.defaultProtocol = 'http'; });
+		after(() => {
+			options.defaults.defaultProtocol = 'http';
+		});
 
 		it('is an object', () => {
 			expect(options.defaults).to.be.an('object');
@@ -25,7 +27,6 @@ describe('linkifyjs/options', () => {
 			expect(opts.get('defaultProtocol')).to.equal('http');
 			expect(newOpts.get('defaultProtocol')).to.equal('https');
 		});
-
 	});
 
 	describe('Options', () => {
@@ -53,33 +54,37 @@ describe('linkifyjs/options', () => {
 				format: (text) => `<${text}>`,
 				formatHref: {
 					url: (url) => `${url}/?from=linkify`,
-					email: (mailto) => `${mailto}?subject=Hello+from+Linkify`
+					email: (mailto) => `${mailto}?subject=Hello+from+Linkify`,
 				},
 				nl2br: true,
 				validate: {
-					url: (url) => /^http(s)?:\/\//.test(url) // only urls with protocols
+					url: (url) => /^http(s)?:\/\//.test(url), // only urls with protocols
 				},
 				ignoreTags: ['script', 'style'],
 				rel: 'nofollow',
 				attributes,
 				className: 'custom-class-name',
-				truncate: 40
+				truncate: 40,
 			});
 
-			renderOpts = new Options({
-				tagName: 'b',
-				className: 'linkified',
-				render: {
-					email: ({ attributes, content }) => (
-						// Ignore tagname and most attributes
-						`<e to="${attributes.href}?subject=Hello+From+Linkify">${content}</e>`
-					)
-				}
-			}, ({ tagName, attributes, content }) => {
-				const attrStrs = Object.keys(attributes)
-					.reduce((a, attr) => a.concat(`${attr}="${attributes[attr]}"`), []);
-				return `<${tagName} ${attrStrs.join(' ')}>${content}</${tagName}>`;
-			});
+			renderOpts = new Options(
+				{
+					tagName: 'b',
+					className: 'linkified',
+					render: {
+						email: ({ attributes, content }) =>
+							// Ignore tagname and most attributes
+							`<e to="${attributes.href}?subject=Hello+From+Linkify">${content}</e>`,
+					},
+				},
+				({ tagName, attributes, content }) => {
+					const attrStrs = Object.keys(attributes).reduce(
+						(a, attr) => a.concat(`${attr}="${attributes[attr]}"`),
+						[],
+					);
+					return `<${tagName} ${attrStrs.join(' ')}>${content}</${tagName}>`;
+				},
+			);
 		});
 
 		describe('#check()', () => {
@@ -100,10 +105,10 @@ describe('linkifyjs/options', () => {
 						href: 'https://github.com/?from=linkify',
 						class: 'custom-class-name',
 						rel: 'nofollow',
-						type: 'text/html'
+						type: 'text/html',
 					},
 					content: '<github.com>',
-					eventListeners: events
+					eventListeners: events,
 				});
 			});
 
@@ -113,11 +118,15 @@ describe('linkifyjs/options', () => {
 			});
 
 			it('renders a URL', () => {
-				expect(renderOpts.render(urlToken)).to.eql('<b href="http://github.com" class="linkified">github.com</b>');
+				expect(renderOpts.render(urlToken)).to.eql(
+					'<b href="http://github.com" class="linkified">github.com</b>',
+				);
 			});
 
 			it('renders an email address', () => {
-				expect(renderOpts.render(emailToken)).to.eql('<e to="mailto:test@example.com?subject=Hello+From+Linkify">test@example.com</e>');
+				expect(renderOpts.render(emailToken)).to.eql(
+					'<e to="mailto:test@example.com?subject=Hello+From+Linkify">test@example.com</e>',
+				);
 			});
 		});
 	});

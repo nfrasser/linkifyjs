@@ -1,7 +1,7 @@
-import { init as initScanner, run as runScanner } from './scanner';
-import { init as initParser, run as runParser } from './parser';
-import { Options } from './options';
-import { State } from './fsm';
+import { init as initScanner, run as runScanner } from './scanner.js';
+import { init as initParser, run as runParser } from './parser.js';
+import { Options } from './options.js';
+import { State } from './fsm.js';
 
 const warn = (typeof console !== 'undefined' && console && console.warn) || (() => {});
 const warnAdvice =
@@ -52,6 +52,7 @@ export function reset() {
 	INIT.pluginQueue = [];
 	INIT.customSchemes = [];
 	INIT.initialized = false;
+	return INIT;
 }
 
 /**
@@ -144,6 +145,7 @@ export function init() {
 		});
 	}
 	INIT.initialized = true;
+	return INIT;
 }
 
 /**
@@ -157,6 +159,7 @@ export function tokenize(str) {
 	}
 	return runParser(INIT.parser.start, str, runScanner(INIT.scanner.start, str));
 }
+tokenize.scan = runScanner; // for testing
 
 /**
  * Find a list of linkable items in the given string.
@@ -209,10 +212,11 @@ export function test(str, type = null) {
 	return tokens.length === 1 && tokens[0].isLink && (!type || tokens[0].t === type);
 }
 
-export * as options from './options';
-export * as regexp from './regexp';
-export * as multi from './multi';
-export { MultiToken, createTokenClass } from './multi';
-export { stringToArray } from './scanner';
-export { State } from './fsm';
+export * as options from './options.js';
+export * as regexp from './regexp.js';
+export * as multi from './multi.js';
+export * as text from './multi.js';
+export { MultiToken, createTokenClass } from './multi.js';
+export { stringToArray } from './scanner.js';
+export { State } from './fsm.js';
 export { Options };

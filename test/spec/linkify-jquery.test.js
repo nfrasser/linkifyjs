@@ -1,5 +1,6 @@
-import applyLinkify from 'linkify-jquery/src/linkify-jquery';
-import htmlOptions from './html/options';
+import applyLinkify from 'linkify-jquery/src/linkify-jquery.js';
+import htmlOptions from './html/options.js';
+import { expect } from 'chai';
 let $, doc, testContainer, JSDOM;
 
 try {
@@ -11,7 +12,8 @@ try {
 }
 
 if (!doc) {
-	JSDOM = require('jsdom').JSDOM;
+	const jsdom = await import('jsdom');
+	JSDOM = jsdom.JSDOM;
 }
 
 describe('linkify-jquery', function () {

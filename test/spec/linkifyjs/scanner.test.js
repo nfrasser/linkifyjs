@@ -1,6 +1,6 @@
 import { expect } from 'chai';
-import * as scanner from 'linkifyjs/src/scanner';
-import * as t from 'linkifyjs/src/text';
+import * as scanner from 'linkifyjs/src/scanner.js';
+import * as t from 'linkifyjs/src/text.js';
 
 // The elements are
 // 1. input string
@@ -29,8 +29,12 @@ const tests = [
 	['-', [t.HYPHEN], ['-']],
 	['・', [t.FULLWIDTHMIDDLEDOT], ['・']],
 	['&?<>(', [t.AMPERSAND, t.QUERY, t.OPENANGLEBRACKET, t.CLOSEANGLEBRACKET, t.OPENPAREN], ['&', '?', '<', '>', '(']],
-	['([{}])', [t.OPENPAREN, t.OPENBRACKET, t.OPENBRACE, t.CLOSEBRACE, t.CLOSEBRACKET, t.CLOSEPAREN], ['(', '[', '{', '}', ']', ')']],
-	['!,;\'', [t.EXCLAMATION, t.COMMA, t.SEMI, t.APOSTROPHE], ['!', ',', ';', '\'']],
+	[
+		'([{}])',
+		[t.OPENPAREN, t.OPENBRACKET, t.OPENBRACE, t.CLOSEBRACE, t.CLOSEBRACKET, t.CLOSEPAREN],
+		['(', '[', '{', '}', ']', ')'],
+	],
+	["!,;'", [t.EXCLAMATION, t.COMMA, t.SEMI, t.APOSTROPHE], ['!', ',', ';', "'"]],
 	['hello', [t.WORD], ['hello']],
 	['Hello123', [t.WORD, t.NUM], ['Hello', '123']],
 	['hello123world', [t.WORD, t.NUM, t.TLD], ['hello', '123', 'world']],
@@ -48,9 +52,17 @@ const tests = [
 	['co', [t.TLD], ['co']],
 	['com', [t.TLD], ['com']],
 	['comm', [t.WORD], ['comm']],
-	['vermögensberater السعودية москва', [t.TLD, t.WS, t.UTLD, t.WS, t.UTLD], ['vermögensberater', ' ', 'السعودية', ' ', 'москва']],
-	['abc 123  DoReMi', [t.TLD, t.WS, t.NUM, t.WS, t.WORD], ['abc', ' ',  '123', '  ', 'DoReMi']],
-	['abc 123 \n  DoReMi', [t.TLD, t.WS, t.NUM, t.WS, t.NL, t.WS, t.WORD], ['abc', ' ',  '123', ' ', '\n', '  ', 'DoReMi']],
+	[
+		'vermögensberater السعودية москва',
+		[t.TLD, t.WS, t.UTLD, t.WS, t.UTLD],
+		['vermögensberater', ' ', 'السعودية', ' ', 'москва'],
+	],
+	['abc 123  DoReMi', [t.TLD, t.WS, t.NUM, t.WS, t.WORD], ['abc', ' ', '123', '  ', 'DoReMi']],
+	[
+		'abc 123 \n  DoReMi',
+		[t.TLD, t.WS, t.NUM, t.WS, t.NL, t.WS, t.WORD],
+		['abc', ' ', '123', ' ', '\n', '  ', 'DoReMi'],
+	],
 	['local', [t.WORD], ['local']],
 	['localhost', [t.LOCALHOST], ['localhost']],
 	['localhosts', [t.WORD], ['localhosts']],
@@ -67,38 +79,30 @@ const tests = [
 	[
 		'za̡͊͠͝lgό.gay', // May support diacritics in the future if someone complains
 		[t.TLD, t.SYM, t.SYM, t.SYM, t.SYM, t.WORD, t.UWORD, t.DOT, t.TLD],
-		['za', '͠', '̡', '͊', '͝', 'lg', 'ό','.','gay']
+		['za', '͠', '̡', '͊', '͝', 'lg', 'ό', '.', 'gay'],
 	],
 	[
-		'Direniş İzleme Grubu\'nun',
+		"Direniş İzleme Grubu'nun",
 		[t.WORD, t.UWORD, t.WS, t.UWORD, t.WORD, t.WS, t.WORD, t.APOSTROPHE, t.WORD],
-		['Direni', 'ş', ' ', 'İ', 'zleme', ' ', 'Grubu', '\'', 'nun']
+		['Direni', 'ş', ' ', 'İ', 'zleme', ' ', 'Grubu', "'", 'nun'],
 	],
 	[
 		'example.com　　　テスト', // spaces are ideographic space
 		[t.WORD, t.DOT, t.TLD, t.WS, t.UWORD],
-		['example', '.', 'com', '　　　', 'テスト']
+		['example', '.', 'com', '　　　', 'テスト'],
 	],
 	[
 		'#АБВ_бв #한글 #سلام',
 		[t.POUND, t.UWORD, t.UNDERSCORE, t.UWORD, t.WS, t.POUND, t.UWORD, t.WS, t.POUND, t.UWORD],
-		['#', 'АБВ', '_', 'бв', ' ', '#', '한글', ' ', '#', 'سلام']
+		['#', 'АБВ', '_', 'бв', ' ', '#', '한글', ' ', '#', 'سلام'],
 	],
-	[
-		'#おは・よう',
-		[t.POUND, t.UWORD, t.FULLWIDTHMIDDLEDOT, t.UWORD],
-		['#', 'おは', '・', 'よう']
-	],
-	[
-		'テストexample.comテスト',
-		[t.UWORD, t.WORD, t.DOT, t.TLD, t.UWORD],
-		['テスト', 'example', '.', 'com', 'テスト']
-	],
+	['#おは・よう', [t.POUND, t.UWORD, t.FULLWIDTHMIDDLEDOT, t.UWORD], ['#', 'おは', '・', 'よう']],
+	['テストexample.comテスト', [t.UWORD, t.WORD, t.DOT, t.TLD, t.UWORD], ['テスト', 'example', '.', 'com', 'テスト']],
 	[
 		'テストhttp://example.comテスト',
 		[t.UWORD, t.SLASH_SCHEME, t.COLON, t.SLASH, t.SLASH, t.WORD, t.DOT, t.TLD, t.UWORD],
-		['テスト', 'http', ':', '/', '/', 'example', '.', 'com', 'テスト']
-	]
+		['テスト', 'http', ':', '/', '/', 'example', '.', 'com', 'テスト'],
+	],
 ];
 
 const customSchemeTests = [
@@ -116,7 +120,6 @@ const customSchemeTests = [
 	['geo', ['geo'], ['geo']],
 	['42', ['42'], ['42']],
 ];
-
 
 describe('linkifyjs/scanner', () => {
 	let start, tokens;
@@ -153,7 +156,6 @@ describe('linkifyjs/scanner', () => {
 	});
 
 	describe('Custom protocols', () => {
-
 		before(() => {
 			const result = scanner.init([
 				['twitter', false],
@@ -162,7 +164,7 @@ describe('linkifyjs/scanner', () => {
 				['geo', false],
 				['42', true],
 				['view-source', false],
-				['ms-settings', true]
+				['ms-settings', true],
 			]);
 			start = result.start;
 			tokens = result.tokens;
@@ -183,7 +185,7 @@ describe('linkifyjs/scanner', () => {
 				{ t: t.COLON, v: ':', s: 5, e: 6 },
 				{ t: t.SLASH, v: '/', s: 6, e: 7 },
 				{ t: t.SLASH, v: '/', s: 7, e: 8 },
-				{ t: t.WORD, v: 'hello', s: 8, e: 13 }
+				{ t: t.WORD, v: 'hello', s: 8, e: 13 },
 			]);
 		});
 
@@ -193,7 +195,7 @@ describe('linkifyjs/scanner', () => {
 				{ t: t.WS, v: ' ', s: 7, e: 8 },
 				{ t: t.TLD, v: 'dot', s: 8, e: 11 },
 				{ t: t.WS, v: ' ', s: 11, e: 12 },
-				{ t: t.TLD, v: 'com', s: 12, e: 15 }
+				{ t: t.TLD, v: 'com', s: 12, e: 15 },
 			]);
 		});
 	});

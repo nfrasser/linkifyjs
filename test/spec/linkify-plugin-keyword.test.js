@@ -1,11 +1,11 @@
-import * as linkify from 'linkifyjs/src/linkify';
-import { keyword, tokens, registerKeywords } from 'linkify-plugin-keyword/src/keyword';
+import * as linkify from 'linkifyjs/src/linkify.js';
+import { keyword, tokens, registerKeywords } from 'linkify-plugin-keyword/src/keyword.js';
 import { expect } from 'chai';
 
 describe('linkify-plugin-keyword', () => {
-	before(() => { linkify.reset(); });
-
-	after(() => { linkify.reset(); });
+	beforeEach(() => {
+		linkify.reset();
+	});
 
 	it('cannot parse keywords before applying the plugin', () => {
 		expect(linkify.find('Hello, World!')).to.be.eql([]);
@@ -23,7 +23,7 @@ describe('linkify-plugin-keyword', () => {
 
 	describe('after plugin is applied with no keywords', () => {
 		beforeEach(() => {
-			registerKeywords([]);  // just to test the branch
+			registerKeywords([]); // just to test the branch
 			linkify.registerTokenPlugin('keyword', tokens);
 			linkify.registerPlugin('keyword', keyword);
 		});
@@ -48,7 +48,7 @@ describe('linkify-plugin-keyword', () => {
 			'🍕💩',
 			'Hello, World!',
 			'world', // repeat
-			'~ ^_^ ~'
+			'~ ^_^ ~',
 		];
 
 		const potentiallyConflictingStrings = [
@@ -62,7 +62,7 @@ describe('linkify-plugin-keyword', () => {
 			['テスト@example.com', 'email'],
 			['example@テスト.to', 'email'],
 			['www.view-source.com', 'url'],
-			['🍕💩.kz', 'url']
+			['🍕💩.kz', 'url'],
 		];
 
 		beforeEach(() => {
@@ -72,14 +72,16 @@ describe('linkify-plugin-keyword', () => {
 		});
 
 		it('finds numeric keywords', () => {
-			expect(linkify.find('The magic number is 42!')).to.be.eql([{
-				type: 'keyword',
-				value: '42',
-				href: '42',
-				isLink: true,
-				start: 20,
-				end: 22
-			}]);
+			expect(linkify.find('The magic number is 42!')).to.be.eql([
+				{
+					type: 'keyword',
+					value: '42',
+					href: '42',
+					isLink: true,
+					start: 20,
+					end: 22,
+				},
+			]);
 		});
 
 		for (const keyword of keywords) {
