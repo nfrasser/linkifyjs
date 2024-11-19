@@ -1,5 +1,5 @@
 import { expect } from 'chai';
-import linkifyStr from 'linkify-string/src/linkify-string.js';
+import linkifyStr from 'linkify-string/src/linkify-string.mjs';
 
 describe('linkify-string', () => {
 	// For each element in this array

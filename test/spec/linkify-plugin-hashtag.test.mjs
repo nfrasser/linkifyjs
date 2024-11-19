@@ -1,5 +1,5 @@
-import * as linkify from 'linkifyjs/src/linkify.js';
-import hashtag from 'linkify-plugin-hashtag/src/hashtag.js';
+import * as linkify from 'linkifyjs/src/linkify.mjs';
+import hashtag from 'linkify-plugin-hashtag/src/hashtag.mjs';
 import { expect } from 'chai';
 
 describe('linkify-plugin-hashtag', () => {

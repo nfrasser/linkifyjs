@@ -1,6 +1,6 @@
-import * as tk from 'linkifyjs/src/text.js';
-import * as fsm from 'linkifyjs/src/fsm.js';
-import { State } from 'linkifyjs/src/linkify.js';
+import * as tk from 'linkifyjs/src/text.mjs';
+import * as fsm from 'linkifyjs/src/fsm.mjs';
+import { State } from 'linkifyjs/src/linkify.mjs';
 import { expect } from 'chai';
 
 describe('linkifyjs/fsm/State', () => {

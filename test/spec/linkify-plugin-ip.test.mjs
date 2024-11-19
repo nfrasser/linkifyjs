@@ -1,6 +1,6 @@
-import * as linkify from 'linkifyjs/src/linkify.js';
-import { init as initScanner, run as runScanner } from 'linkifyjs/src/scanner.js';
-import { ipv4Tokens, ipv6Tokens, ip } from 'linkify-plugin-ip/src/ip.js';
+import * as linkify from 'linkifyjs/src/linkify.mjs';
+import { init as initScanner, run as runScanner } from 'linkifyjs/src/scanner.mjs';
+import { ipv4Tokens, ipv6Tokens, ip } from 'linkify-plugin-ip/src/ip.mjs';
 import { expect } from 'chai';
 
 describe('linkify-plugin-ip', () => {

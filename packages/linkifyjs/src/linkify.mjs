@@ -1,7 +1,7 @@
-import { init as initScanner, run as runScanner } from './scanner.js';
-import { init as initParser, run as runParser } from './parser.js';
-import { Options } from './options.js';
-import { State } from './fsm.js';
+import { init as initScanner, run as runScanner } from './scanner.mjs';
+import { init as initParser, run as runParser } from './parser.mjs';
+import { Options } from './options.mjs';
+import { State } from './fsm.mjs';
 
 const warn = (typeof console !== 'undefined' && console && console.warn) || (() => {});
 const warnAdvice =
@@ -212,11 +212,11 @@ export function test(str, type = null) {
 	return tokens.length === 1 && tokens[0].isLink && (!type || tokens[0].t === type);
 }
 
-export * as options from './options.js';
-export * as regexp from './regexp.js';
-export * as multi from './multi.js';
-export * as text from './multi.js';
-export { MultiToken, createTokenClass } from './multi.js';
-export { stringToArray } from './scanner.js';
-export { State } from './fsm.js';
+export * as options from './options.mjs';
+export * as regexp from './regexp.mjs';
+export * as multi from './multi.mjs';
+export * as text from './multi.mjs';
+export { MultiToken, createTokenClass } from './multi.mjs';
+export { stringToArray } from './scanner.mjs';
+export { State } from './fsm.mjs';
 export { Options };

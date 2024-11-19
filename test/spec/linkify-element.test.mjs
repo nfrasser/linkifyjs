@@ -1,5 +1,5 @@
-import linkifyElement from 'linkify-element/src/linkify-element.js';
-import htmlOptions from './html/options.js';
+import linkifyElement from 'linkify-element/src/linkify-element.mjs';
+import htmlOptions from './html/options.mjs';
 import { expect } from 'chai';
 
 let doc, testContainer, JSDOM;

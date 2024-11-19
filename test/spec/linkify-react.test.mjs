@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDOMServer from 'react-dom/server';
 import * as linkify from 'linkifyjs';
-import Linkify from 'linkify-react/src/linkify-react.js';
-import mention from 'linkify-plugin-mention/src/mention.js';
+import Linkify from 'linkify-react/src/linkify-react.mjs';
+import mention from 'linkify-plugin-mention/src/mention.mjs';
 import { expect } from 'chai';
 
 const options = {

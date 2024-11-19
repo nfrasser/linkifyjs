@@ -1,5 +1,5 @@
-import * as linkify from 'linkifyjs/src/linkify.js';
-import { keyword, tokens, registerKeywords } from 'linkify-plugin-keyword/src/keyword.js';
+import * as linkify from 'linkifyjs/src/linkify.mjs';
+import { keyword, tokens, registerKeywords } from 'linkify-plugin-keyword/src/keyword.mjs';
 import { expect } from 'chai';
 
 describe('linkify-plugin-keyword', () => {

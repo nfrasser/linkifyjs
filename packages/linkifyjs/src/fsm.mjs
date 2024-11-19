@@ -1,7 +1,7 @@
 /**
  * Finite State Machine generation utilities
  */
-import assign from './assign.js';
+import assign from './assign.mjs';
 
 /**
  * @template T

@@ -13,9 +13,9 @@
 	@main run
 */
 
-import { State, ta, tt } from './fsm.js';
-import * as tk from './text.js';
-import * as mtk from './multi.js';
+import { State, ta, tt } from './fsm.mjs';
+import * as tk from './text.mjs';
+import * as mtk from './multi.mjs';
 
 const makeState = (arg) => new State(arg);
 

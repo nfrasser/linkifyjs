@@ -1,6 +1,6 @@
 import { expect } from 'chai';
-import * as linkify from 'linkifyjs/src/linkify.js';
-import mention from 'linkify-plugin-mention/src/mention.js';
+import * as linkify from 'linkifyjs/src/linkify.mjs';
+import mention from 'linkify-plugin-mention/src/mention.mjs';
 
 describe('linkify-plugin-mention', () => {
 	beforeEach(() => {

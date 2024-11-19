@@ -1,5 +1,5 @@
-import linkifyHtml from 'linkify-html/src/linkify-html.js';
-import htmlOptions from './html/options.js';
+import linkifyHtml from 'linkify-html/src/linkify-html.mjs';
+import htmlOptions from './html/options.mjs';
 import { expect } from 'chai';
 
 const svg = [

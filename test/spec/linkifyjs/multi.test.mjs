@@ -1,8 +1,8 @@
-import { Options } from 'linkifyjs/src/options.js';
+import { Options } from 'linkifyjs/src/options.mjs';
 import { expect } from 'chai';
-import * as tk from 'linkifyjs/src/text.js';
-import * as mtk from 'linkifyjs/src/multi.js';
-import * as scanner from 'linkifyjs/src/scanner.js';
+import * as tk from 'linkifyjs/src/text.mjs';
+import * as mtk from 'linkifyjs/src/multi.mjs';
+import * as scanner from 'linkifyjs/src/scanner.mjs';
 
 describe('linkifyjs/multi', () => {
 	let scannerStart;

@@ -1,6 +1,6 @@
 import { expect } from 'chai';
-import * as scanner from 'linkifyjs/src/scanner.js';
-import * as t from 'linkifyjs/src/text.js';
+import * as scanner from 'linkifyjs/src/scanner.mjs';
+import * as t from 'linkifyjs/src/text.mjs';
 
 // The elements are
 // 1. input string

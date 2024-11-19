@@ -1,6 +1,6 @@
 /* eslint-disable mocha/no-setup-in-describe */
 import { expect } from 'chai';
-import * as linkify from 'linkifyjs/src/linkify.js';
+import * as linkify from 'linkifyjs/src/linkify.mjs';
 
 const TicketToken = linkify.createTokenClass('ticket', { isLink: true });
 

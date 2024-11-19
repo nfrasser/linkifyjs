@@ -1,6 +1,6 @@
-import { COLON, LOCALHOST } from './text.js';
-import { defaults } from './options.js';
-import assign from './assign.js';
+import { COLON, LOCALHOST } from './text.mjs';
+import { defaults } from './options.mjs';
+import assign from './assign.mjs';
 
 /******************************************************************************
 	Multi-Tokens

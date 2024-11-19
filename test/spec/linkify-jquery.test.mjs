@@ -1,5 +1,5 @@
-import applyLinkify from 'linkify-jquery/src/linkify-jquery.js';
-import htmlOptions from './html/options.js';
+import applyLinkify from 'linkify-jquery/src/linkify-jquery.mjs';
+import htmlOptions from './html/options.mjs';
 import { expect } from 'chai';
 let $, doc, testContainer, JSDOM;
 

@@ -1,8 +1,8 @@
 import { expect } from 'chai';
 import { fake } from 'sinon';
-import * as options from 'linkifyjs/src/options.js';
-import * as scanner from 'linkifyjs/src/scanner.js';
-import * as mtk from 'linkifyjs/src/multi.js';
+import * as options from 'linkifyjs/src/options.mjs';
+import * as scanner from 'linkifyjs/src/scanner.mjs';
+import * as mtk from 'linkifyjs/src/multi.mjs';
 
 const Options = options.Options;
 

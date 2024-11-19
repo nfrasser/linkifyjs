@@ -1,4 +1,4 @@
-import * as linkify from 'linkifyjs/src/linkify.js';
+import * as linkify from 'linkifyjs/src/linkify.mjs';
 
 /**
 	Gracefully truncate a string to a given limit. Will replace extraneous

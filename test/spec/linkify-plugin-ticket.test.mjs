@@ -1,5 +1,5 @@
-import * as linkify from 'linkifyjs/src/linkify.js';
-import ticket from 'linkify-plugin-ticket/src/ticket.js';
+import * as linkify from 'linkifyjs/src/linkify.mjs';
+import ticket from 'linkify-plugin-ticket/src/ticket.mjs';
 import { expect } from 'chai';
 
 describe('linkify-plugin-ticket', () => {
