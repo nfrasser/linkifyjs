@@ -13,7 +13,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Hypercontext/linkifyjs.git",
+    "url": "git+https://github.com/nfrasser/linkifyjs.git",
     "directory": "packages/linkifyjs"
   },
   "keywords": [
@@ -28,10 +28,10 @@
     "twitter",
     "url"
   ],
-  "author": "Hypercontext",
+  "author": "Nick Frasser (https://nfrasser.com)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/Hypercontext/linkifyjs/issues"
+    "url": "https://github.com/nfrasser/linkifyjs/issues"
   },
   "homepage": "https://linkify.js.org"
 }

@@ -3,9 +3,8 @@ const fs = require('fs');
 const punycode = require('punycode/');
 
 const tldsListUrl = 'https://data.iana.org/TLD/tlds-alpha-by-domain.txt';
-const tldsjs = 'packages/linkifyjs/src/tlds.js';
+const tldsjs = 'packages/linkifyjs/src/tlds.mjs';
 let tldsListContents = '';
-
 
 /**
  * Given a list of TLDs, encodes into a compact string that may be decoded
@@ -51,7 +50,6 @@ function createTrie(words) {
 	}
 	return root;
 }
-
 
 /**
  * Given an object trie created by `createTrie`, encodes into a compact string
@@ -117,7 +115,9 @@ function decodeTlds(encoded) {
 
 http.get(tldsListUrl, (response) => {
 	console.log(`Downloading ${tldsListUrl}...`);
-	response.on('data', (chunk) => { tldsListContents += chunk; });
+	response.on('data', (chunk) => {
+		tldsListContents += chunk;
+	});
 	response.on('end', () => {
 		console.log(`Downloaded. Re-generating ${tldsjs}...`);
 
@@ -131,10 +131,12 @@ http.get(tldsListUrl, (response) => {
 		// they're the only ones that contain a mix of ASCII and non-ASCII
 		// characters.
 		const specialTlds = ['XN--VERMGENSBERATER-CTB', 'XN--VERMGENSBERATUNG-PWB'];
-		const specialUtlds = specialTlds.map(tld => punycode.toUnicode(tld.toLowerCase()));
+		const specialUtlds = specialTlds.map((tld) => punycode.toUnicode(tld.toLowerCase()));
 
-		for (const line of tldsListContents.split('\n').map(line => line.trim())) {
-			if (!line || line[0] === '#' || specialTlds.includes(line)) { continue; }
+		for (const line of tldsListContents.split('\n').map((line) => line.trim())) {
+			if (!line || line[0] === '#' || specialTlds.includes(line)) {
+				continue;
+			}
 			if (/^XN--/.test(line)) {
 				utlds.push(punycode.toUnicode(line.toLowerCase()));
 			} else {
@@ -158,13 +160,13 @@ http.get(tldsListUrl, (response) => {
 		fs.writeSync(jsFile, `// ${tldsListUrl}\n`);
 
 		// Write TLDs
-		fs.writeSync(jsFile, 'export const encodedTlds = \'');
+		fs.writeSync(jsFile, "export const encodedTlds = '");
 		fs.writeSync(jsFile, encodedTlds);
-		fs.writeSync(jsFile, '\';\n');
+		fs.writeSync(jsFile, "';\n");
 		fs.writeSync(jsFile, '// Internationalized domain names containing non-ASCII\n');
-		fs.writeSync(jsFile, 'export const encodedUtlds = \'');
+		fs.writeSync(jsFile, "export const encodedUtlds = '");
 		fs.writeSync(jsFile, encodedUtlds);
-		fs.writeSync(jsFile, '\';\n');
+		fs.writeSync(jsFile, "';\n");
 		fs.closeSync(jsFile);
 
 		console.log('Done');

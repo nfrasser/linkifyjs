@@ -1,9 +1,9 @@
 # Linkify
 
 [![npm version](https://badge.fury.io/js/linkifyjs.svg)](https://www.npmjs.com/package/linkifyjs)
-[![CI](https://github.com/Hypercontext/linkifyjs/actions/workflows/ci.yml/badge.svg)](https://github.com/Hypercontext/linkifyjs/actions/workflows/ci.yml)
+[![CI](https://github.com/nfrasser/linkifyjs/actions/workflows/ci.yml/badge.svg)](https://github.com/nfrasser/linkifyjs/actions/workflows/ci.yml)
 [![BrowserStack Status](https://automate.browserstack.com/badge.svg?badge_key=ZVZXNFhhQ044a01nQStVeWJXSng1b01MTWFpZlZRZVg1WnAvdE9aVE9LVT0tLWZpekx6ZHUrZ2E0dDRHMDZRMnJNQlE9PQ==--4d91db279fbd0475f8d8e4b221b5a4c1e0c6a76e)](https://automate.browserstack.com/public-build/ZVZXNFhhQ044a01nQStVeWJXSng1b01MTWFpZlZRZVg1WnAvdE9aVE9LVT0tLWZpekx6ZHUrZ2E0dDRHMDZRMnJNQlE9PQ==--4d91db279fbd0475f8d8e4b221b5a4c1e0c6a76e)
-[![Coverage Status](https://coveralls.io/repos/github/Hypercontext/linkifyjs/badge.svg?branch=main)](https://coveralls.io/github/Hypercontext/linkifyjs?branch=main)
+[![Coverage Status](https://coveralls.io/repos/github/nfrasser/linkifyjs/badge.svg?branch=main)](https://coveralls.io/github/nfrasser/linkifyjs?branch=main)
 
 Linkify is a JavaScript plugin. Use Linkify to find links in plain-text and
 convert them to HTML &lt;a&gt; tags. It automatically highlights URLs,
@@ -40,7 +40,7 @@ convert them to HTML &lt;a&gt; tags. It automatically highlights URLs,
 
 [View full documentation](https://linkify.js.org/docs/).
 
-Download the [latest release](https://github.com/Hypercontext/linkifyjs/releases) for direct use in the browser, or install via [NPM](https://www.npmjs.com/):
+Download the [latest release](https://github.com/nfrasser/linkifyjs/releases) for direct use in the browser, or install via [NPM](https://www.npmjs.com/):
 
 ```
 npm install linkifyjs linkify-html
@@ -150,7 +150,7 @@ supported.
 
 ## Downloads
 
-Download the [**latest release**](https://github.com/Hypercontext/linkifyjs/releases)
+Download the [**latest release**](https://github.com/nfrasser/linkifyjs/releases)
 
 ## API Documentation
 
@@ -158,7 +158,7 @@ View full documentation at [linkify.js.org/docs](https://linkify.js.org/docs/)
 
 ## Contributing
 
-Check out [CONTRIBUTING.md](https://github.com/Hypercontext/linkifyjs/blob/main/CONTRIBUTING.md).
+Check out [CONTRIBUTING.md](https://github.com/nfrasser/linkifyjs/blob/main/CONTRIBUTING.md).
 
 ## License
 
@@ -166,4 +166,4 @@ MIT
 
 ## Authors
 
-Linkify is made with ❤️ by [Hypercontext](https://hypercontext.com/) and [@nfrasser](https://github.com/nfrasser)
+Linkify is made with ❤️ by [@nfrasser](https://github.com/nfrasser)

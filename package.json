@@ -4,7 +4,7 @@
   "description": "Intelligent link recognition, made easy",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Hypercontext/linkifyjs.git"
+    "url": "git+https://github.com/nfrasser/linkifyjs.git"
   },
   "scripts": {
     "build": "npm run build --workspaces",
@@ -26,7 +26,7 @@
     "test:ci2": "karma start test/ci2.conf.js --single-run",
     "tlds": "node tasks/update-tlds.js"
   },
-  "author": "Hypercontext",
+  "author": "Nick Frasser (https://nfrasser.com)",
   "license": "MIT",
   "devDependencies": {
     "@babel/core": "^7.13.10",
