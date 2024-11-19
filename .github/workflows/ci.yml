@@ -21,10 +21,7 @@ jobs:
           node-version: ${{ matrix.node-version }}
           cache: 'npm'
       - run: npm install
-      - name: 'Setup tests'
-        run: bash test/setup.sh
-      - name: 'Run basic tests'
-        run: bash test/run.sh
+      - run: npm test
 
   integration:
     runs-on: ubuntu-latest
@@ -38,8 +35,15 @@ jobs:
       - run: npm install
       - name: 'Setup dist'
         run: bash test/setup.sh --dist
-      - name: 'Run complete test suite'
-        run: bash test/run.sh --dist
+      - name: Run coverage
+        run: |
+          npm run build
+          npm run test:coverage
+      - name: Run browser tests
+        if: ${{ github.secret_source == 'Actions' }}
+        run: |
+          npm run copy
+          npm run test:ci
         env:
           BROWSERSTACK_USERNAME: ${{ secrets.BROWSERSTACK_USERNAME }}
           BROWSERSTACK_ACCESS_KEY: ${{ secrets.BROWSERSTACK_ACCESS_KEY }}
