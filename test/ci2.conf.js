@@ -21,8 +21,8 @@ module.exports = function (config) {
 			base: 'BrowserStack',
 			browser: 'iphone',
 			os: 'ios',
-			os_version: '14',
-			device: 'iPhone 12',
+			os_version: '16',
+			device: 'iPhone 14',
 		},
 		bs_edge: {
 			base: 'BrowserStack',
