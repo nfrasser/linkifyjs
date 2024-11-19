@@ -11,14 +11,6 @@ charset = utf-8
 trim_trailing_whitespace = true
 insert_final_newline = true
 
-[*.yml]
-indent_style = space
-tab_width = 2
-
-[*.md]
-indent_style = space
-tab_width = 2
-
-[package.json]
+[*.yml,*.md,package.json]
 indent_style = space
 tab_width = 2

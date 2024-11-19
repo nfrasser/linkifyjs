@@ -2,14 +2,14 @@
 
 [![npm version](https://badge.fury.io/js/linkifyjs.svg)](https://www.npmjs.com/package/linkifyjs)
 [![CI](https://github.com/Hypercontext/linkifyjs/actions/workflows/ci.yml/badge.svg)](https://github.com/Hypercontext/linkifyjs/actions/workflows/ci.yml)
-[![BrowserStack Status](https://automate.browserstack.com/badge.svg?badge_key=alN1cUFSYVI3Yitudjh6NkJuNURhVy9sRHQ0RXE2L0t2RWpDY3lHM3Rtbz0tLVZScU8rRHAyMWRoYjVVY000elJybHc9PQ==--35ad6d7d5981f5bc0efdb7b6ba78972d8174e7e5)](https://automate.browserstack.com/public-build/alN1cUFSYVI3Yitudjh6NkJuNURhVy9sRHQ0RXE2L0t2RWpDY3lHM3Rtbz0tLVZScU8rRHAyMWRoYjVVY000elJybHc9PQ==--35ad6d7d5981f5bc0efdb7b6ba78972d8174e7e5)
+[![BrowserStack Status](https://automate.browserstack.com/badge.svg?badge_key=ZVZXNFhhQ044a01nQStVeWJXSng1b01MTWFpZlZRZVg1WnAvdE9aVE9LVT0tLWZpekx6ZHUrZ2E0dDRHMDZRMnJNQlE9PQ==--4d91db279fbd0475f8d8e4b221b5a4c1e0c6a76e)](https://automate.browserstack.com/public-build/ZVZXNFhhQ044a01nQStVeWJXSng1b01MTWFpZlZRZVg1WnAvdE9aVE9LVT0tLWZpekx6ZHUrZ2E0dDRHMDZRMnJNQlE9PQ==--4d91db279fbd0475f8d8e4b221b5a4c1e0c6a76e)
 [![Coverage Status](https://coveralls.io/repos/github/Hypercontext/linkifyjs/badge.svg?branch=main)](https://coveralls.io/github/Hypercontext/linkifyjs?branch=main)
 
 Linkify is a JavaScript plugin. Use Linkify to find links in plain-text and
 convert them to HTML &lt;a&gt; tags. It automatically highlights URLs,
 #hashtags, @mentions and more.
 
-__Jump to__
+**Jump to**
 
 - [Features](#features)
 - [Demo](#demo)
@@ -23,16 +23,17 @@ __Jump to__
 
 ## Features
 
-* Detect URLs and email addresses
-* #hashtag, @mention and #-ticket plugins
-* React and jQuery support
-* Multi-language and emoji support
-* Custom link plugins
-* Fast, accurate and small footprint (~20kB minified, ~11kB gzipped)
-* 99% test coverage
-* Compatible with all modern browsers (Internet Explorer 11 and up)
+- Detect URLs and email addresses
+- #hashtag, @mention and #-ticket plugins
+- React and jQuery support
+- Multi-language and emoji support
+- Custom link plugins
+- Fast, accurate and small footprint (~20kB minified, ~11kB gzipped)
+- 99% test coverage
+- Compatible with all modern browsers (Internet Explorer 11 and up)
 
 ## Demo
+
 [Launch demo](https://linkify.js.org/#demo)
 
 ## Installation and Usage
@@ -78,7 +79,7 @@ linkifyHtml('Any links to github.com here? If not, contact test@example.com', op
 Returns the following string:
 
 ```js
-'Any links to <a href="https://github.com">github.com</a> here? If not, contact <a href="mailto:test@example.com">test@example.com</a>'
+'Any links to <a href="https://github.com">github.com</a> here? If not, contact <a href="mailto:test@example.com">test@example.com</a>';
 ```
 
 To modify the resulting links with a target attribute, class name and more, [use
@@ -100,7 +101,7 @@ Returns the following array
     isLink: true,
     href: 'http://github.com',
     start: 13,
-    end: 23
+    end: 23,
   },
   {
     type: 'email',
@@ -108,9 +109,9 @@ Returns the following array
     isLink: true,
     href: 'mailto:test@example.com',
     start: 46,
-    end: 62
-  }
-]
+    end: 62,
+  },
+];
 ```
 
 #### Example 3: Check whether a string is a valid link:
@@ -130,7 +131,7 @@ linkify.test('noreply@github.com', 'email'); // true
 
 ### Usage with React, jQuery or the browser DOM
 
-[Read the interface documentation](https://linkify.js.org/docs/interfaces.html)  to learn how to use linkify when working with a specific JavaScript environment such as React.
+[Read the interface documentation](https://linkify.js.org/docs/interfaces.html) to learn how to use linkify when working with a specific JavaScript environment such as React.
 
 ### Plugins for @mentions, #hashtags and more
 

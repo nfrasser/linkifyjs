@@ -3,6 +3,7 @@
 ## v4.1.4
 
 - Add support for full width middle dot `・` in hashtag plugin
+- Development updates for newest Node.js versions
 
 ## v4.1.3
 
@@ -93,12 +94,12 @@
 - React, jQuery and Element interfaces moved to dedicated packages at `linkify-react`,`linkify-jquery` and `linkify-element` respectively:
 - Remove default `class="linkified"` from all discovered links. Opt back in by setting the `className` option:
   ```js
-  linkifyStr(str, { className: "linkified" });
+  linkifyStr(str, { className: 'linkified' });
   ```
 - Remove default `target="_blank"` attribute for discovered URLs. Opt back in by setting the `target` option:
   ```js
   linkifyHtml(str, {
-    target: (href, type) => type === "url" && "_blank",
+    target: (href, type) => type === 'url' && '_blank',
   });
   ```
 - React component: Remove outer `<span>` tag wrapper in favour of tag-less `React.Fragment` for React >=16. To opt back-in, set `tagName='span'`:
@@ -130,13 +131,13 @@
 
   ```js
   // Before
-  import * as linkify from "linkifyjs";
-  import hashtag from "linkifyjs/plugins/hashtag";
+  import * as linkify from 'linkifyjs';
+  import hashtag from 'linkifyjs/plugins/hashtag';
   hashtag(linkify);
 
   // After
-  import * as linkify from "linkifyjs";
-  import "linkifyjs/plugins/hashtag";
+  import * as linkify from 'linkifyjs';
+  import 'linkifyjs/plugins/hashtag';
   ```
 
 ## v2.1.9
