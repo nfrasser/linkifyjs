@@ -33,8 +33,6 @@ jobs:
           node-version: 'lts/*'
           cache: 'npm'
       - run: npm install
-      - name: 'Setup dist'
-        run: bash test/setup.sh --dist
       - name: Run coverage
         run: |
           npm run build

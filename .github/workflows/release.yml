@@ -13,17 +13,18 @@ jobs:
         with:
           node-version: 'lts/*'
           cache: 'npm'
-      - name: Configure npm
+      - run: npm install
+      - name: configure npm
         run: |
           echo "//registry.npmjs.org/:_authToken=${NODE_AUTH_TOKEN}" > .npmrc
-          cat .npmrc
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-      - run: npm install
-      - run: npm publish --workspaces
+      - name: publish to npm
+        run: npm publish --workspaces
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-      - run: npm run dist:postpublish
+      - name: postpublish
+        run: npm run dist:postpublish
       - uses: actions/upload-artifact@v3
         with:
           name: linkify
