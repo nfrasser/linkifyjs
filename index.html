@@ -1,22 +1,48 @@
 ---
 layout: default
 headeroffset: y
-showbyhypercontext: true
+showsubtitle: true
 scripts:
   - home.js
   - demo.js
 ---
+
 <section id="linkify-home-logo" class="mb-4">
   {% include linkify-logo.svg %}
 </section>
 <section>
   <p class="blurb text-center">
-    <a href="https://github.com/{{ site.github_username }}/releases/download/v{{ site.version }}/linkifyjs.zip" class="btn btn-lg btn-primary rounded-pill version-download" download="linkifyjs.zip">Download Zip</a>
+    <a
+      href="https://github.com/{{ site.github_username }}/releases/download/v{{ site.version }}/linkifyjs.zip"
+      class="btn btn-lg btn-primary rounded-pill version-download"
+      download="linkifyjs.zip"
+    >
+      Download Zip
+    </a>
     &nbsp;
-    <a href="docs" class="btn btn-lg btn-secondary rounded-pill">Read the Docs</a>
+    <a href="docs" class="btn btn-lg btn-secondary rounded-pill">
+      Read the Docs
+    </a>
   </p>
-  <p class="lead text-center">Install with <a href="https://docs.npmjs.com/about-npm">NPM</a>:&nbsp; <code class="badge bg-lighter text-danger">npm install linkifyjs</code></p>
-  <p class="text-center small">v{{ site.version }} &middot; <a href="https://github.com/{{ site.github_username }}/blob/master/CHANGELOG.md">view release notes</a> &middot; <a href="https://github.com/{{ site.github_username }}">browse code on GitHub</a></p>
+  <p class="lead text-center">
+    Install with <a href="https://docs.npmjs.com/about-npm">NPM</a>:&nbsp;
+    <code class="badge bg-lighter text-danger">npm install linkifyjs</code>
+  </p>
+  <p class="text-center small">
+    <a href="https://www.npmjs.com/package/linkifyjs">
+      <img src="https://badge.fury.io/js/linkifyjs.svg" alt="npm version" />
+    </a>
+    &middot;
+    <a
+      href="https://github.com/{{ site.github_username }}/blob/master/CHANGELOG.md"
+    >
+      view release notes
+    </a>
+    &middot;
+    <a href="https://github.com/{{ site.github_username }}">
+      browse code on GitHub
+    </a>
+  </p>
 </section>
 
 <section class="my-5">
@@ -26,15 +52,22 @@ scripts:
 <section id="demo" class="row g-0 my-5">
   <div class="col-12 text-center">
     <h2>Demo</h2>
-    <p>Enter some links into the "Before" box below. The result will appear in the "After" box in real-time.</p>
+    <p>
+      Enter some links into the "Before" box below. The result will appear in
+      the "After" box in real-time.
+    </p>
   </div>
   <div class="col-6 text-center"><h3>Before</h3></div>
   <div class="col-6 text-center"><h3>After</h3></div>
   <div class="col-6">
-    <textarea id="linkify-demo-before" class="form-control rounded-0 rounded-start h-100">Linkify works with all kinds of links. Here are some examples:
+    <textarea
+      id="linkify-demo-before"
+      class="form-control rounded-0 rounded-start h-100"
+    >
+Linkify works with all kinds of links. Here are some examples:
 
 - URLs with protocols: https://github.com
-- URLs without protocols: www.twitter.com
+- URLs without protocols: www.npmjs.com
 - Emoji domains like 👻💥.ws
 - IP Addresses such as 127.0.0.1
 - Email addresses (hello@example.com)
@@ -43,10 +76,14 @@ scripts:
 
 Custom link formats are also possible!
 
-Linkify is made with ❤️ by @Hypercontext and @nfrasser</textarea>
+Linkify is made with ❤️ by @nfrasser
+    </textarea>
   </div>
   <div class="col-6">
-    <div id="linkify-demo-after" class="bg-light text-dark form-control border-start-0 rounded-0 rounded-end"></div>
+    <div
+      id="linkify-demo-after"
+      class="bg-light text-dark form-control border-start-0 rounded-0 rounded-end"
+    ></div>
   </div>
   <div class="col-12">
     <details>
@@ -74,10 +111,9 @@ Linkify is made with ❤️ by @Hypercontext and @nfrasser</textarea>
 
 <section id="learn" class="text-center my-5">
   <h2 class="mb-4">Learn how to use Linkify in your project</h2>
-  <p><a href="docs" class="btn btn-lg btn-secondary rounded-pill">Read the Documentation</a></p>
-</section>
-
-<section id="hypercontext" class="text-center my-5">
-  <h2 class="mb-4">What is Hypercontext?</h2>
-  <p>Linkify is maintained by <a href="https://github.com/nfrasser">@nfrasser</a> and&nbsp;<a href="https://github.com/Hypercontext">@Hypercontext</a>. Hypercontext helps managers have better 1:1s and team&nbsp;meetings. <br class="d-none d-lg-block">Build agendas, manage meetings, set goals, and get feedback—all in one&nbsp;place. <a href="https://hypercontext.com">Learn more at&nbsp;hypercontext.com</a></p>
+  <p>
+    <a href="docs" class="btn btn-lg btn-secondary rounded-pill">
+      Read the Documentation
+    </a>
+  </p>
 </section>

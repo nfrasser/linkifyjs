@@ -1,30 +1,18 @@
 <footer class="site-footer py-5">
   <div class="container text-center">
     <ul class="social-media-list list-inline">
-      <li class="list-inline-item footer-icon mr-4">
-        <a href="{{ site.websiteurl }}" title="Hypercontext">
-          {% include icon-hypercontext.html %}
-          <span class="visually-hidden">Hypercontext</span>
-        </a>
-      </li>
-      {% if site.github_username %}
       <li class="list-inline-item footer-icon">
-        <a href="https://github.com/{{ site.github_username }}" title="{{ site.github_username }} on GitHub">
+        <a
+          href="https://github.com/{{ site.github_username }}"
+          title="{{ site.github_username }} on GitHub"
+        >
           {% include icon-github.html %}
-          <span class="visually-hidden">{{ site.github_username }} on GitHub</span>
+          <span class="visually-hidden"
+            >{{ site.github_username }} on GitHub</span
+          >
         </a>
       </li>
-      {% endif %}
-
-      {% if site.twitter_username %}
-      <li class="list-inline-item footer-icon">
-        <a href="https://twitter.com/{{ site.twitter_username }}" title="@{{ site.twitter_username }} on Twitter">
-          {% include icon-twitter.html %}
-          <span class="visually-hidden">@{{ site.twitter_username }} on Twitter</span>
-        </a>
-      </li>
-      {% endif %}
     </ul>
-    <p>©{{ 'now' | date: "%Y" }} Hypercontext</p>
+    <p>©{{ 'now' | date: "%Y" }} Nick Frasser</p>
   </div>
 </footer>

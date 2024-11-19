@@ -169,7 +169,7 @@ etc.) and each value is the formatting function to use for that type.
       }
       return value;
     },
-  }
+  },
 );
 
 // or
@@ -179,7 +179,7 @@ etc.) and each value is the formatting function to use for that type.
     format: {
       url: (value) => (value.length > 50 ? value.slice(0, 50) + "…" : value),
     },
-  }
+  },
 );
 ```
 
@@ -201,7 +201,7 @@ etc.) and each value is the formatting function to use for that type.
 "This site is #rad".linkify({
   formatHref: function (href, type) {
     if (type === "hashtag") {
-      href = "https://twitter.com/hashtag/" + href.substring(1);
+      href = "https://bsky.app/hashtag/" + href.substring(1);
     }
     return href;
   },
@@ -235,14 +235,18 @@ linkifyHtml(
     "but do <span>b.ca</span>",
   {
     ignoreTags: ["script", "style"],
-  }
+  },
 );
 ```
 
 Returns
 
 ```html
-Please ignore <script>var a = {}; a.com = "Hi";</script>
+Please ignore
+<script>
+  var a = {};
+  a.com = "Hi";
+</script>
 but do <span><a href="http://b.ca">b.ca</a></span>
 ```
 
@@ -403,7 +407,7 @@ Applies to the result of the [`format` option](#format), if also specified.
 "http://github.com/{{ site.github_username }}/search/?q=this+is+a+really+long+query+string".linkify(
   {
     truncate: 42,
-  }
+  },
 );
 ```
 

@@ -144,7 +144,7 @@ before invoking linkify for the first time.
 
 **Caution:** The plugin development API is in its very early stages and only supports very basic plugins. Updated features, APIs, and docs are in progress.
 
-Check out the sample [Hashtag plugin](https://github.com/Hypercontext/linkifyjs/blob/main/packages/linkify-plugin-hashtag/src/hashtag.js) for an example. Check out the [Keyword plugin](https://github.com/Hypercontext/linkifyjs/blob/main/packages/linkify-plugin-keyword/src/keyword.js) for more advanced usage. 
+Check out the sample [Hashtag plugin](https://github.com/mfrasser/linkifyjs/blob/main/packages/linkify-plugin-hashtag/src/hashtag.js) for an example. Check out the [Keyword plugin](https://github.com/nfrasser/linkifyjs/blob/main/packages/linkify-plugin-keyword/src/keyword.js) for more advanced usage.
 
 ### linkify.test _(str [, type])_
 

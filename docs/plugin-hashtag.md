@@ -6,7 +6,7 @@ toc: true
 
 # Linkify #Hashtag Plugin
 
-Adds basic support for Twitter-style hashtags.
+Adds basic support for #-hashtags.
 
 ## Installation
 
@@ -44,13 +44,13 @@ Include the following scripts in your HTML:
 ## Usage
 
 Use the `formatHref` option with your preferred [interface](interfaces.html) to
-correctly resolve a hashtag. Example linking to Twitter hashtags with
+correctly resolve a hashtag. Example linking to social media hashtags with
 `linkifyHtml`:
 
 ```jsx
 const options = {
   formatHref: {
-    hashtag: (href) => "https://twitter.com/hashtag/" + href.substr(1),
+    hashtag: (href) => "https://bsky.app/hashtag/" + href.substr(1),
   },
 };
 
@@ -58,11 +58,13 @@ const options = {
 linkifyHtml("Works with hashtags #PhotoOfTheDay or #일상", options);
 
 // With linkify-react
-<Linkify options={options}>Works with hashtags #PhotoOfTheDay or #일상</Linkify>
+<Linkify options={options}>
+  Works with hashtags #PhotoOfTheDay or #일상
+</Linkify>;
 ```
 
 The last line returns the following string:
 
 ```js
-'Works with hashtags <a href="https://twitter.com/hashtag/PhotoOfTheDay">#PhotoOfTheDay</a> or <a href="https://twitter.com/hashtag/일상">#일상</a>';
+'Works with hashtags <a href="https://bsky.app/hashtag/PhotoOfTheDay">#PhotoOfTheDay</a> or <a href="https://bsky.app/hashtag/일상">#일상</a>';
 ```

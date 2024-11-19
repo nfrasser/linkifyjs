@@ -1,13 +1,15 @@
 <header class="site-header container">
   <h1 id="page-title" class="display-1">
-    <a href="{{ site.baseurl }}/" class="text-decoration-none fw-bold">Linkify</a>
-    {%if page.showbyhypercontext %}
-    <br>
-    <small class="display-6 mt-0">a JS plugin by <a href="{{ site.websiteurl }}">{% include hypercontext-logo.svg %}</a></small>
+    <a href="{{ site.baseurl }}/" class="text-decoration-none fw-bold">
+      Linkify
+    </a>
+    {%if page.showsubtitle %}
+    <br />
+    <small class="display-6 mt-0">a JavaScript plugin</small>
     {% endif %}
   </h1>
   {%if layout.subtitle %}
-  <h2 id="page-subtitle" class="display-6 d-inline-block ms-3">
+  <h2 id="page-subtitle" class="display-6 d-inline-block">
     {{ layout.subtitle }}
   </h2>
   {% endif %}

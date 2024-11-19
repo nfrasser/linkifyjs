@@ -6,7 +6,7 @@ toc: true
 
 # Linkify @Mention Plugin
 
-Adds basic support for Twitter- and GitHub- style "at"-mentions.
+Adds basic support for @-mentions.
 
 ## Installation
 
@@ -59,14 +59,14 @@ const options = {
 };
 
 // With linkify-html
-linkifyHtml("Check out @Hypercontext and @nfrasser", options);
+linkifyHtml("Check out @cryoem-uoft and @nfrasser", options);
 
 // With linkify-react
-<Linkify options={options}>Check out @Hypercontext and @nfrasser</Linkify>
+<Linkify options={options}>Check out @cryoem-uoft and @nfrasser</Linkify>;
 ```
 
 The last line returns the following string:
 
 ```js
-'Check out <a href="https://example.com/profiles/Hypercontext">@Hypercontext</a> and <a href="https://example.com/profiles/nfrasser">@nfrasser</a>';
+'Check out <a href="https://example.com/profiles/cryoem-uoft">@cryoem-uoft</a> and <a href="https://example.com/profiles/nfrasser">@nfrasser</a>';
 ```

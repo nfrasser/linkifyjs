@@ -7,7 +7,7 @@ options =
   rel: 'nofollow noreferrer noopener'
   formatHref:
     hashtag: (val) ->
-      "https://www.twitter.com/hashtag/#{val.substr(1)}"
+      "https://bsky.app/hashtag/#{val.substr(1)}"
     mention: (val) ->
       "https://github.com/#{val.substr(1)}"
 

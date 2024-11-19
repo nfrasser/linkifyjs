@@ -51,7 +51,7 @@ correctly resolve a ticket. Example linking to GitHub issues with
 const options = {
   formatHref: {
     ticket: (href) =>
-      "https://github.com/Hypercontext/linkifyjs/issues/" + href.substr(1),
+      "https://github.com/nfrasser/linkifyjs/issues/" + href.substr(1),
   },
 };
 
@@ -59,11 +59,11 @@ const options = {
 linkifyHtml("This is related to #42.", options);
 
 // With linkify-react
-<Linkify options={options}>This is related to #42.</Linkify>
+<Linkify options={options}>This is related to #42.</Linkify>;
 ```
 
 The last line returns the following string:
 
 ```js
-'This is related to <a href="https://github.com/Hypercontext/linkifyjs/issues/42">#42</a>.';
+'This is related to <a href="https://github.com/nfrasser/linkifyjs/issues/42">#42</a>.';
 ```

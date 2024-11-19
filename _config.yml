@@ -1,16 +1,15 @@
 # Site settings
 title: Linkify
-email: info@hypercontext.com
-website: hypercontext.com
-websiteurl: https://hypercontext.com
+email: info@example.com
+website: nfrasser.com
+websiteurl: https://nfrasser.com
 description: > # this means to ignore newlines until "baseurl:"
   Linkify is a JavaScript plugin. Use Linkify to find links in plain-text and
   convert them to HTML &lt;a&gt; tags. It automatically highlights URLs,
   #hashtags, @mentions and more.
 url: "https://linkify.js.org" # the base hostname & protocol for your site
-twitter_username: HypercontextApp
-github_username: Hypercontext/linkifyjs
-version: "4.1.3"
+github_username: nfrasser/linkifyjs
+version: "4.1.4"
 
 # Build settings
 markdown: kramdown
