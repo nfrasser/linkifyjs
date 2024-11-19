@@ -18,7 +18,7 @@
     "lint": "eslint .",
     "format": "prettier --plugin-search-dir . --write .",
     "prepack": "npm run prepack --workspaces",
-    "pretest": "npm run build --workspace linkifyjs --silent",
+    "pretest": "npm run build -- --silent",
     "test": "mocha --file test/setup.mjs --recursive",
     "test:coverage": "nyc --reporter=lcov --reporter=text mocha test/index.js",
     "test:ci": "run-s test:ci1 test:ci2",
