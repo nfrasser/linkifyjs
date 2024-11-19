@@ -21,7 +21,7 @@ export function linkifyInterface(name, opts = {}) {
 	}
 
 	return {
-		input: `src/linkify-${name}.js`,
+		input: `src/linkify-${name}.mjs`,
 		external,
 		output: [
 			{ file: `dist/linkify-${name}.js`, format: 'iife', globals, ...iifeOpts },
@@ -40,7 +40,7 @@ export function linkifyPlugin(plugin, opts = {}) {
 	const name = opts.globalName || false; // Most plugins don't export anything
 	const globals = { linkifyjs: 'linkify' };
 	return {
-		input: 'src/index.js',
+		input: 'src/index.mjs',
 		external: ['linkifyjs'],
 		output: [
 			{ file: `dist/linkify-plugin-${plugin}.js`, format: 'iife', globals, name },

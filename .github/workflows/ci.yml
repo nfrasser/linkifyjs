@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [14.x, 16.x, 18.x, 20.x]
+        node-version: [18.x, 20.x, 22.x]
     steps:
       - uses: actions/checkout@v3
       - name: Use Node.js ${{ matrix.node-version }}
@@ -21,10 +21,7 @@ jobs:
           node-version: ${{ matrix.node-version }}
           cache: 'npm'
       - run: npm install
-      - name: 'Setup tests'
-        run: bash test/setup.sh
-      - name: 'Run basic tests'
-        run: bash test/run.sh
+      - run: npm test
 
   integration:
     runs-on: ubuntu-latest
@@ -36,10 +33,15 @@ jobs:
           node-version: 'lts/*'
           cache: 'npm'
       - run: npm install
-      - name: 'Setup dist'
-        run: bash test/setup.sh --dist
-      - name: 'Run complete test suite'
-        run: bash test/run.sh --dist
+      - name: Run coverage
+        run: |
+          npm run build
+          npm run test:coverage
+      - name: Run browser tests
+        if: ${{ github.secret_source == 'Actions' }}
+        run: |
+          npm run copy
+          npm run test:ci
         env:
           BROWSERSTACK_USERNAME: ${{ secrets.BROWSERSTACK_USERNAME }}
           BROWSERSTACK_ACCESS_KEY: ${{ secrets.BROWSERSTACK_ACCESS_KEY }}

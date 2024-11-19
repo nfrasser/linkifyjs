@@ -3,7 +3,7 @@ import { plugins } from '../../rollup.config';
 
 export default [
 	{
-		input: 'src/linkify.js',
+		input: 'src/linkify.mjs',
 		output: [
 			{ file: 'dist/linkify.js', name: 'linkify', format: 'iife' },
 			{ file: 'dist/linkify.min.js', name: 'linkify', format: 'iife', plugins: [terser()] },

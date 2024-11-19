@@ -3,12 +3,12 @@
 	outputs an array of tokens instances that can be used for easy URL parsing.
 */
 
-import { encodedTlds, encodedUtlds } from './tlds';
-import { State, addToGroups, tr, ts, tt } from './fsm';
-import * as fsm from './fsm';
-import * as tk from './text';
-import * as re from './regexp';
-import assign from './assign';
+import { encodedTlds, encodedUtlds } from './tlds.mjs';
+import { State, addToGroups, tr, ts, tt } from './fsm.mjs';
+import * as fsm from './fsm.mjs';
+import * as tk from './text.mjs';
+import * as re from './regexp.mjs';
+import assign from './assign.mjs';
 
 const NL = '\n'; // New line character
 const EMOJI_VARIATION = '\ufe0f'; // Variation selector, follows heart and others

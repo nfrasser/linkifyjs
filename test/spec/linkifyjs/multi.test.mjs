@@ -1,8 +1,8 @@
-import { Options } from 'linkifyjs/src/options';
+import { Options } from 'linkifyjs/src/options.mjs';
 import { expect } from 'chai';
-import * as tk from 'linkifyjs/src/text';
-import * as mtk from 'linkifyjs/src/multi';
-import * as scanner from 'linkifyjs/src/scanner';
+import * as tk from 'linkifyjs/src/text.mjs';
+import * as mtk from 'linkifyjs/src/multi.mjs';
+import * as scanner from 'linkifyjs/src/scanner.mjs';
 
 describe('linkifyjs/multi', () => {
 	let scannerStart;
@@ -14,15 +14,17 @@ describe('linkifyjs/multi', () => {
 		className: 'my-linkify-class',
 		defaultProtocol: 'https',
 		rel: 'nofollow',
-		attributes: { onclick: 'console.log(\'Hello World!\')' },
+		attributes: { onclick: "console.log('Hello World!')" },
 		truncate: 40,
 		format: (val) => val.replace(/^(ht|f)tps?:\/\/(www\.)?/i, ''),
 		formatHref: {
-			email: (href) => href + '?subject=Hello%20from%20Linkify'
+			email: (href) => href + '?subject=Hello%20from%20Linkify',
 		},
 	});
 
-	before(() => { scannerStart = scanner.init().start; });
+	before(() => {
+		scannerStart = scanner.init().start;
+	});
 
 	describe('Multitoken', () => {
 		it('Constructor runs', () => {
@@ -33,7 +35,8 @@ describe('linkifyjs/multi', () => {
 	describe('Url', () => {
 		let input1 = 'Ftps://www.github.com/Hypercontext/linkify';
 		let input2 = 'co.co/?o=%2D&p=@gc#wat';
-		let input3 = 'https://www.google.com/maps/place/The+DMZ/@43.6578984,-79.3819437,17z/data=!4m9!1m2!2m1!1sRyerson+DMZ!3m5!1s0x882b34cad13907bf:0x393038cf922e1378!8m2!3d43.6563702!4d-79.3793919!15sCgtSeWVyc29uIERNWloNIgtyeWVyc29uIGRtepIBHmJ1c2luZXNzX21hbmFnZW1lbnRfY29uc3VsdGFudA';
+		let input3 =
+			'https://www.google.com/maps/place/The+DMZ/@43.6578984,-79.3819437,17z/data=!4m9!1m2!2m1!1sRyerson+DMZ!3m5!1s0x882b34cad13907bf:0x393038cf922e1378!8m2!3d43.6563702!4d-79.3793919!15sCgtSeWVyc29uIERNWloNIgtyeWVyc29uIGRtepIBHmJ1c2luZXNzX21hbmFnZW1lbnRfY29uc3VsdGFudA';
 		let url1, url2, url3;
 
 		before(() => {
@@ -72,14 +75,13 @@ describe('linkifyjs/multi', () => {
 
 		describe('#toObject()', () => {
 			it('Returns a hash with correct type, value, and href', () => {
-
 				expect(url1.toObject('file')).to.be.eql({
 					type: 'url',
 					value: input1,
 					href: input1,
 					isLink: true,
 					start: 0,
-					end: input1.length
+					end: input1.length,
 				});
 
 				expect(url2.toObject('https')).to.be.eql({
@@ -88,7 +90,7 @@ describe('linkifyjs/multi', () => {
 					href: 'https://co.co/?o=%2D&p=@gc#wat',
 					isLink: true,
 					start: 0,
-					end: input2.length
+					end: input2.length,
 				});
 			});
 		});
@@ -135,7 +137,7 @@ describe('linkifyjs/multi', () => {
 					isLink: true,
 					href: 'Ftps://www.github.com/Hypercontext/linkify',
 					start: 0,
-					end: 42
+					end: 42,
 				});
 			});
 		});
@@ -152,7 +154,7 @@ describe('linkifyjs/multi', () => {
 					tagName: 'a',
 					attributes: { href: 'Ftps://www.github.com/Hypercontext/linkify' },
 					content: 'Ftps://www.github.com/Hypercontext/linkify',
-					eventListeners: null
+					eventListeners: null,
 				});
 			});
 
@@ -160,14 +162,14 @@ describe('linkifyjs/multi', () => {
 				expect(url1.render(opts)).to.eql({
 					tagName: 'Link',
 					attributes: {
-						href: 'Ftps://www.github.com/Hypercontext/linkify' ,
+						href: 'Ftps://www.github.com/Hypercontext/linkify',
 						class: 'my-linkify-class',
 						target: '_parent',
 						rel: 'nofollow',
-						onclick: 'console.log(\'Hello World!\')'
+						onclick: "console.log('Hello World!')",
 					},
 					content: 'github.com/Hypercontext/linkify',
-					eventListeners: null
+					eventListeners: null,
 				});
 			});
 		});
@@ -199,7 +201,6 @@ describe('linkifyjs/multi', () => {
 				expect(email.toHref()).to.be.eql('mailto:test@example.com');
 			});
 		});
-
 	});
 
 	describe('MailtoEmail', () => {
@@ -228,14 +229,13 @@ describe('linkifyjs/multi', () => {
 				expect(email.toHref()).to.be.eql('mailto:test@example.com');
 			});
 		});
-
 	});
 
 	describe('Nl', () => {
 		var nlTokens, nl;
 
 		before(() => {
-			nlTokens = [{t: tk.NL, v: '\n', s: 0, e: 1}];
+			nlTokens = [{ t: tk.NL, v: '\n', s: 0, e: 1 }];
 			nl = new mtk.Nl('\n', nlTokens);
 		});
 
@@ -253,7 +253,8 @@ describe('linkifyjs/multi', () => {
 	});
 
 	describe('Text', () => {
-		let text, input = 'Hello, World!';
+		let text,
+			input = 'Hello, World!';
 
 		before(() => {
 			const textTokens = scanner.run(scannerStart, input);

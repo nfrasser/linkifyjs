@@ -1,5 +1,6 @@
-import linkifyElement from 'linkify-element/src/linkify-element';
-import htmlOptions from './html/options';
+import linkifyElement from 'linkify-element/src/linkify-element.mjs';
+import htmlOptions from './html/options.mjs';
+import { expect } from 'chai';
 
 let doc, testContainer, JSDOM;
 try {
@@ -9,17 +10,16 @@ try {
 }
 
 if (!doc) {
-	JSDOM = require('jsdom').JSDOM;
+	const jsdom = await import('jsdom');
+	JSDOM = jsdom.JSDOM;
 }
 
 describe('linkify-element', () => {
-
 	/**
 		Set up the JavaScript document and the element for it
 		This code allows testing on Node.js and on Browser environments
 	*/
 	before(function (done) {
-
 		function onDoc(doc) {
 			testContainer = doc.createElement('div');
 			testContainer.id = 'linkify-element-test-container';

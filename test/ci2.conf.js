@@ -3,34 +3,33 @@
 const base = require('./conf');
 
 module.exports = function (config) {
-
 	// https://www.browserstack.com/docs/automate/api-reference/selenium/introduction#rest-api-browsers
 	const customLaunchers = {
 		bs_safari_sierra: {
 			base: 'BrowserStack',
 			browser: 'safari',
 			os: 'OS X',
-			os_version: 'High Sierra'
+			os_version: 'Monterey',
 		},
 		bs_safari_bigsur: {
 			base: 'BrowserStack',
 			browser: 'safari',
 			os: 'OS X',
-			os_version: 'Ventura'
+			os_version: 'Sonoma',
 		},
 		bs_ios_safari: {
 			base: 'BrowserStack',
 			browser: 'iphone',
 			os: 'ios',
-			os_version: '12',
-			device: 'iPhone 8',
+			os_version: '16',
+			device: 'iPhone 14',
 		},
 		bs_edge: {
 			base: 'BrowserStack',
 			browser: 'edge',
 			os: 'Windows',
-			os_version: '11'
-		}
+			os_version: '11',
+		},
 	};
 
 	config.set({
@@ -45,7 +44,7 @@ module.exports = function (config) {
 			username: process.env.BROWSERSTACK_USERNAME,
 			accessKey: process.env.BROWSERSTACK_ACCESS_KEY,
 			name: process.env.GITHUB_WORKFLOW,
-			build: process.env.GITHUB_RUN_NUMBER
+			build: process.env.GITHUB_RUN_NUMBER,
 		},
 
 		customLaunchers,

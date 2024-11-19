@@ -1,5 +1,6 @@
-import linkifyHtml from 'linkify-html/src/linkify-html';
-import htmlOptions from './html/options';
+import linkifyHtml from 'linkify-html/src/linkify-html.mjs';
+import htmlOptions from './html/options.mjs';
+import { expect } from 'chai';
 
 const svg = [
 	'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 801.197 614.273">',

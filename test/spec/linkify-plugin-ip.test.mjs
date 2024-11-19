@@ -1,12 +1,12 @@
-import * as linkify from 'linkifyjs';
-import { init as initScanner, run as runScanner } from 'linkifyjs/src/scanner';
-import { ipv4Tokens, ipv6Tokens, ip } from 'linkify-plugin-ip/src/ip';
+import * as linkify from 'linkifyjs/src/linkify.mjs';
+import { init as initScanner, run as runScanner } from 'linkifyjs/src/scanner.mjs';
+import { ipv4Tokens, ipv6Tokens, ip } from 'linkify-plugin-ip/src/ip.mjs';
 import { expect } from 'chai';
 
 describe('linkify-plugin-ip', () => {
-	before(() => { linkify.reset(); });
-
-	after(() => { linkify.reset(); });
+	beforeEach(() => {
+		linkify.reset();
+	});
 
 	it('cannot parse IP addresse before applying the plugin', () => {
 		expect(linkify.find('No place like 127.0.0.1')).to.be.eql([]);
@@ -25,12 +25,14 @@ describe('linkify-plugin-ip', () => {
 
 		it('Scans IPV6 tokens', () => {
 			const tokens = runScanner(scanner.start, '[2606:4700:4700:0:0:0:0:1111]');
-			expect(tokens).to.eql([{
-				t: 'B_IPV6_B',
-				v: '[2606:4700:4700:0:0:0:0:1111]',
-				s: 0,
-				e: 29
-			}]);
+			expect(tokens).to.eql([
+				{
+					t: 'B_IPV6_B',
+					v: '[2606:4700:4700:0:0:0:0:1111]',
+					s: 0,
+					e: 29,
+				},
+			]);
 		});
 	});
 
@@ -42,14 +44,16 @@ describe('linkify-plugin-ip', () => {
 		});
 
 		it('can parse ips after applying the plugin', () => {
-			expect(linkify.find('No place like 127.0.0.1')).to.be.eql([{
-				type: 'ipv4',
-				value: '127.0.0.1',
-				href: 'http://127.0.0.1',
-				isLink: true,
-				start: 14,
-				end: 23
-			}]);
+			expect(linkify.find('No place like 127.0.0.1')).to.be.eql([
+				{
+					type: 'ipv4',
+					value: '127.0.0.1',
+					href: 'http://127.0.0.1',
+					isLink: true,
+					start: 14,
+					end: 23,
+				},
+			]);
 
 			expect(linkify.test('255.255.255.255', 'ipv4')).to.be.ok;
 		});
@@ -86,11 +90,11 @@ describe('linkify-plugin-ip', () => {
 			'232.121.20/',
 			'232.121.3:255',
 			'121.20.3.242.232:3000',
-			'http://[f:f:f:f:f:f:f]',  // too few components
-			'http://[:f:f:f:f:f:f]',  // too few components
-			'http://[f:f:f:f:f:f:]',  // too few components
-			'http://[f:f:f:f:f:f:f:f:f]',  // too many components
-			'http://[f:f:f:f:::f]',  // too many colons
+			'http://[f:f:f:f:f:f:f]', // too few components
+			'http://[:f:f:f:f:f:f]', // too few components
+			'http://[f:f:f:f:f:f:]', // too few components
+			'http://[f:f:f:f:f:f:f:f:f]', // too many components
+			'http://[f:f:f:f:::f]', // too many colons
 			'http://[::123ef]', // component too long
 			'http://[123ef::]', // component too long
 			'http://[123ef::fed21]', // component too long
