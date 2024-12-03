@@ -9,6 +9,9 @@ Linkify is a JavaScript plugin. Use Linkify to find links in plain-text and
 convert them to HTML &lt;a&gt; tags. It automatically highlights URLs,
 #hashtags, @mentions and more.
 
+> [!NOTE]
+> In November 2024, linkifyjs was transferred from its previous namespace [Hypercontext](/Hypercontext) to its primary maintainer [@nfrasser](/nfrasser), as Hypercontext winds down operations.
+
 **Jump to**
 
 - [Features](#features)
