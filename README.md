@@ -10,7 +10,7 @@ convert them to HTML &lt;a&gt; tags. It automatically highlights URLs,
 #hashtags, @mentions and more.
 
 > [!NOTE]
-> In November 2024, linkifyjs was transferred from its previous namespace [Hypercontext](/Hypercontext) to its primary maintainer [@nfrasser](/nfrasser), as Hypercontext winds down operations.
+> In November 2024, linkifyjs was transferred from its previous namespace [Hypercontext](https://github.com/Hypercontext) to its primary maintainer [@nfrasser](https://github.com/nfrasser), as Hypercontext winds down operations.
 
 **Jump to**
 
