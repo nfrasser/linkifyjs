@@ -8,7 +8,7 @@ const HashtagToken = createTokenClass('hashtag', { isLink: true });
  */
 export default function hashtag({ scanner, parser }) {
 	// Various tokens that may compose a hashtag
-	const { POUND, UNDERSCORE, FULLWIDTHMIDDLEDOT } = scanner.tokens;
+	const { POUND, UNDERSCORE, FULLWIDTHMIDDLEDOT, ASCIINUMERICAL, ALPHANUMERICAL } = scanner.tokens;
 	const { alpha, numeric, alphanumeric, emoji } = scanner.tokens.groups;
 
 	// Take or create a transition from start to the '#' sign (non-accepting)
@@ -18,10 +18,14 @@ export default function hashtag({ scanner, parser }) {
 	const HashPrefix = Hash.tt(UNDERSCORE);
 	const Hashtag = new State(HashtagToken);
 
+	Hash.tt(ASCIINUMERICAL, Hashtag);
+	Hash.tt(ALPHANUMERICAL, Hashtag);
 	Hash.ta(numeric, HashPrefix);
 	Hash.ta(alpha, Hashtag);
 	Hash.ta(emoji, Hashtag);
 	Hash.ta(FULLWIDTHMIDDLEDOT, Hashtag);
+	HashPrefix.tt(ASCIINUMERICAL, Hashtag);
+	HashPrefix.tt(ALPHANUMERICAL, Hashtag);
 	HashPrefix.ta(alpha, Hashtag);
 	HashPrefix.ta(emoji, Hashtag);
 	HashPrefix.ta(FULLWIDTHMIDDLEDOT, Hashtag);

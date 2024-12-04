@@ -6,6 +6,8 @@ Identifiers for token outputs from the regexp scanner
 // A valid web domain token
 export const WORD = 'WORD'; // only contains a-z
 export const UWORD = 'UWORD'; // contains letters other than a-z, used for IDN
+export const ASCIINUMERICAL = 'ASCIINUMERICAL'; // contains a-z, 0-9
+export const ALPHANUMERICAL = 'ALPHANUMERICAL'; // contains numbers and letters other than a-z, used for IDN
 
 // Special case of word
 export const LOCALHOST = 'LOCALHOST';

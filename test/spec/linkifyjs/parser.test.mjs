@@ -318,6 +318,7 @@ const tests = [
 		[Url, Text],
 		['https://google.com', '\ufffcthis'],
 	],
+	['some string with somefile.mp4 token', [Text], ['some string with somefile.mp4 token']],
 ];
 
 describe('linkifyjs/parser#run()', () => {
