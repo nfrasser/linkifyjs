@@ -1,5 +1,15 @@
 # Linkify Changelog
 
+## v4.2.0
+
+- Correctly sanitize object replacement character by treating as whitespace
+- Avoid detecting invalid URLs with numbers around boundaries
+- Prevent delimiter apostrophes from being included in URLs
+- Correctly interpret \r\n as newline character
+- Correctly interpret emoji followed by # sign
+- Fix support for domain names with multiple hyphens
+- Fix parsing for magnet links
+
 ## v4.1.4
 
 - Add support for full width middle dot `・` in hashtag plugin

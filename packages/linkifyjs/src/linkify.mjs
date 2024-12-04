@@ -107,7 +107,7 @@ export function registerPlugin(name, plugin) {
  * Detect URLs with the following additional protocol. Anything with format
  * "protocol://..." will be considered a link. If `optionalSlashSlash` is set to
  * `true`, anything with format "protocol:..." will be considered a link.
- * @param {string} protocol
+ * @param {string} scheme
  * @param {boolean} [optionalSlashSlash]
  */
 export function registerCustomProtocol(scheme, optionalSlashSlash = false) {

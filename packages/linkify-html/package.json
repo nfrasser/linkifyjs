@@ -1,6 +1,6 @@
 {
   "name": "linkify-html",
-  "version": "4.1.4",
+  "version": "4.2.0",
   "description": "HTML String interface for linkifyjs",
   "main": "dist/linkify-html.cjs.js",
   "module": "dist/linkify-html.es.js",

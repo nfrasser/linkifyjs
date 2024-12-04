@@ -1,6 +1,6 @@
 {
   "name": "linkify-plugin-keyword",
-  "version": "4.1.4",
+  "version": "4.2.0",
   "description": "Keyword plugin for linkifyjs",
   "main": "dist/linkify-plugin-keyword.cjs.js",
   "module": "dist/linkify-plugin-keyword.es.js",

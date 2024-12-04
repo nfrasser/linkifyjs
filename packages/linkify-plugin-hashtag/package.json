@@ -1,6 +1,6 @@
 {
   "name": "linkify-plugin-hashtag",
-  "version": "4.1.4",
+  "version": "4.2.0",
   "description": "Hashtag plugin for linkifyjs",
   "main": "dist/linkify-plugin-hashtag.cjs.js",
   "module": "dist/linkify-plugin-hashtag.es.js",
