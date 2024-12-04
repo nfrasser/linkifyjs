@@ -144,6 +144,7 @@ export function init({ groups }) {
 
 	// Hyphen can jump back to a domain name
 	const EmailDomainHyphen = tt(EmailDomain, tk.HYPHEN); // parsed string starts with local email info + @ with a potential domain name
+	tt(EmailDomainHyphen, tk.HYPHEN, EmailDomainHyphen);
 	ta(EmailDomainHyphen, groups.domain, EmailDomain);
 	ta(Email, groups.domain, EmailDomain);
 	tt(Email, tk.DOT, EmailDomainDot);
@@ -157,6 +158,7 @@ export function init({ groups }) {
 	// (but not TLDs)
 	const DomainHyphen = tt(Domain, tk.HYPHEN); // domain followed by hyphen
 	const DomainDot = tt(Domain, tk.DOT); // domain followed by DOT
+	tt(DomainHyphen, tk.HYPHEN, DomainHyphen);
 	ta(DomainHyphen, groups.domain, Domain);
 	ta(DomainDot, localpartAccepting, Localpart);
 	ta(DomainDot, groups.domain, Domain);

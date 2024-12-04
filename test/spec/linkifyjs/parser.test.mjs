@@ -324,6 +324,8 @@ const tests = [
 		['https://google.com', '\ufffcthis'],
 	],
 	['some string with somefile.mp4 token', [Text], ['some string with somefile.mp4 token']],
+	['hp--community.force.com', [Url], ['hp--community.force.com']],
+	['example@hp--community.force.com', [Email], ['example@hp--community.force.com']],
 ];
 
 describe('linkifyjs/parser#run()', () => {
