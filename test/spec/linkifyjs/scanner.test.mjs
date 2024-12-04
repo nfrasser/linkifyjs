@@ -107,6 +107,7 @@ const tests = [
 		[t.UWORD, t.SLASH_SCHEME, t.COLON, t.SLASH, t.SLASH, t.WORD, t.DOT, t.TLD, t.UWORD],
 		['テスト', 'http', ':', '/', '/', 'example', '.', 'com', 'テスト'],
 	],
+	['👻#PhotoOfTheDay', [t.EMOJI, t.POUND, t.WORD], ['👻', '#', 'PhotoOfTheDay']],
 ];
 
 const customSchemeTests = [

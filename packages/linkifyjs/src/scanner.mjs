@@ -137,11 +137,13 @@ export function init(customSchemes = []) {
 	// Emoji tokens. They are not grouped by the scanner except in cases where a
 	// zero-width joiner is present
 	const Emoji = tr(Start, re.EMOJI, tk.EMOJI, { [fsm.emoji]: true });
+	tt(Emoji, '#'); // no transition, emoji regex seems to match #
 	tr(Emoji, re.EMOJI, Emoji);
 	tt(Emoji, EMOJI_VARIATION, Emoji);
 	// tt(Start, EMOJI_VARIATION, Emoji); // This one is sketchy
 
 	const EmojiJoiner = tt(Emoji, EMOJI_JOINER);
+	tt(EmojiJoiner, '#');
 	tr(EmojiJoiner, re.EMOJI, Emoji);
 	// tt(EmojiJoiner, EMOJI_VARIATION, Emoji); // also sketchy
 
