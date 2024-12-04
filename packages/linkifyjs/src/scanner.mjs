@@ -10,7 +10,8 @@ import * as tk from './text.mjs';
 import * as re from './regexp.mjs';
 import assign from './assign.mjs';
 
-const NL = '\n'; // New line character
+const CR = '\r'; // carriage-return character
+const LF = '\n'; // line-feed character
 const EMOJI_VARIATION = '\ufe0f'; // Variation selector, follows heart and others
 const EMOJI_JOINER = '\u200d'; // zero-width joiner
 const OBJECT_REPLACEMENT = '\ufffc'; // whitespace placeholder that sometimes appears in rich text editors
@@ -121,10 +122,15 @@ export function init(customSchemes = []) {
 	// Whitespace jumps
 	// Tokens of only non-newline whitespace are arbitrarily long
 	// If any whitespace except newline, more whitespace!
+	const Nl = tt(Start, LF, tk.NL, { [fsm.whitespace]: true });
+	const Cr = tt(Start, CR, tk.WS, { [fsm.whitespace]: true });
 	const Ws = tr(Start, re.SPACE, tk.WS, { [fsm.whitespace]: true });
 	tt(Start, OBJECT_REPLACEMENT, Ws);
-	tt(Start, NL, tk.NL, { [fsm.whitespace]: true });
-	tt(Ws, NL); // non-accepting state to avoid mixing whitespaces
+	tt(Cr, LF, Nl); // \r\n
+	tt(Cr, OBJECT_REPLACEMENT, Ws);
+	tr(Cr, re.SPACE, Ws);
+	tt(Ws, CR); // non-accepting state to avoid mixing whitespaces
+	tt(Ws, LF); // non-accepting state to avoid mixing whitespaces
 	tr(Ws, re.SPACE, Ws);
 	tt(Ws, OBJECT_REPLACEMENT, Ws);
 
