@@ -50,7 +50,6 @@ export function init({ groups }) {
 	// but cannot be the very last characters
 	// Characters that cannot appear in the URL at all should be excluded
 	const qsNonAccepting = [
-		tk.APOSTROPHE,
 		tk.COLON,
 		tk.COMMA,
 		tk.DOT,
