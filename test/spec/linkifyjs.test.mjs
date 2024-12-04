@@ -37,8 +37,9 @@ describe('linkifyjs', () => {
 
 	describe('registerCustomProtocol', () => {
 		beforeEach(() => {
-			linkify.registerCustomProtocol('instagram', true);
 			linkify.registerCustomProtocol('view-source');
+			linkify.registerCustomProtocol('instagram', true);
+			linkify.registerCustomProtocol('magnet', true);
 		});
 
 		it('Detects basic protocol', () => {
@@ -47,6 +48,12 @@ describe('linkifyjs', () => {
 
 		it('Detects basic protocol with slash slash', () => {
 			expect(linkify.test('instagram://user/nfrasser', 'url')).to.be.ok;
+		});
+
+		it('Detects magnet protocol', () => {
+			const magnetLink =
+				'magnet:?xt=urn:btih:5a7f5e0f3ce439e2f1a83e718a8405ec8809110b&dn=ernfkjenrkfk%5FSQ80%5FV%5Fv1.0.0%5Ferfnkerkf%5Ferfnkerkfefrfvegrteggt.net.rar';
+			expect(linkify.test(magnetLink, 'url')).to.be.ok;
 		});
 
 		it('Detects compound protocol', () => {
