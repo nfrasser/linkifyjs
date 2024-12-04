@@ -21,7 +21,7 @@ describe('linkify-plugin-hashtag', () => {
 
 		it('can parse hashtags after applying the plugin', () => {
 			expect(
-				linkify.find('There is a #hashtag #️⃣#YOLO_2015 #__swag__ and #1234 and #%^&*( #_ #__ should not work'),
+				linkify.find('There is a #hashtag 💃#YOLO_2015 #__swag__ and #1234 and #%^&*( #_ #__ should not work'),
 			).to.be.eql([
 				{
 					type: 'hashtag',
@@ -36,16 +36,16 @@ describe('linkify-plugin-hashtag', () => {
 					value: '#YOLO_2015',
 					href: '#YOLO_2015',
 					isLink: true,
-					start: 23,
-					end: 33,
+					start: 22,
+					end: 32,
 				},
 				{
 					type: 'hashtag',
 					value: '#__swag__',
 					href: '#__swag__',
 					isLink: true,
-					start: 34,
-					end: 43,
+					start: 33,
+					end: 42,
 				},
 			]);
 		});
