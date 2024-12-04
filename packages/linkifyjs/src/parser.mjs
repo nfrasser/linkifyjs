@@ -54,6 +54,7 @@ export function init({ groups }) {
 		tk.COMMA,
 		tk.DOT,
 		tk.EXCLAMATION,
+		tk.PERCENT,
 		tk.QUERY,
 		tk.QUOTE,
 		tk.SEMI,
@@ -211,6 +212,7 @@ export function init({ groups }) {
 	// Force URL with scheme prefix followed by anything sane
 	ta(SchemeColon, groups.domain, Url);
 	tt(SchemeColon, tk.SLASH, Url);
+	tt(SchemeColon, tk.QUERY, Url);
 	ta(UriPrefix, groups.domain, Url);
 	ta(UriPrefix, qsAccepting, Url);
 	tt(UriPrefix, tk.SLASH, Url);
