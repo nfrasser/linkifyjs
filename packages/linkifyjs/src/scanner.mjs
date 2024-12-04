@@ -99,15 +99,24 @@ export function init(customSchemes = []) {
 
 	const Num = tr(Start, re.DIGIT, tk.NUM, { [fsm.numeric]: true });
 	tr(Num, re.DIGIT, Num);
+	const Asciinumeric = tr(Num, re.ASCII_LETTER, tk.ASCIINUMERICAL, { [fsm.asciinumeric]: true });
+	const Alphanumeric = tr(Num, re.LETTER, tk.ALPHANUMERICAL, { [fsm.alphanumeric]: true });
 
 	// State which emits a word token
 	const Word = tr(Start, re.ASCII_LETTER, tk.WORD, { [fsm.ascii]: true });
+	tr(Word, re.DIGIT, Asciinumeric);
 	tr(Word, re.ASCII_LETTER, Word);
+	tr(Asciinumeric, re.DIGIT, Asciinumeric);
+	tr(Asciinumeric, re.ASCII_LETTER, Asciinumeric);
 
 	// Same as previous, but specific to non-fsm.ascii alphabet words
 	const UWord = tr(Start, re.LETTER, tk.UWORD, { [fsm.alpha]: true });
 	tr(UWord, re.ASCII_LETTER); // Non-accepting
+	tr(UWord, re.DIGIT, Alphanumeric);
 	tr(UWord, re.LETTER, UWord);
+	tr(Alphanumeric, re.DIGIT, Alphanumeric);
+	tr(Alphanumeric, re.ASCII_LETTER); // Non-accepting
+	tr(Alphanumeric, re.LETTER, Alphanumeric); // Non-accepting
 
 	// Whitespace jumps
 	// Tokens of only non-newline whitespace are arbitrarily long
@@ -132,10 +141,14 @@ export function init(customSchemes = []) {
 
 	// Generates states for top-level domains
 	// Note that this is most accurate when tlds are in alphabetical order
-	const wordjr = [[re.ASCII_LETTER, Word]];
+	const wordjr = [
+		[re.ASCII_LETTER, Word],
+		[re.DIGIT, Asciinumeric],
+	];
 	const uwordjr = [
 		[re.ASCII_LETTER, null],
 		[re.LETTER, UWord],
+		[re.DIGIT, Alphanumeric],
 	];
 	for (let i = 0; i < tlds.length; i++) {
 		fastts(Start, tlds[i], tk.TLD, tk.WORD, wordjr);
