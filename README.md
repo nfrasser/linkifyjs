@@ -144,11 +144,11 @@ plugin documentation](https://linkify.js.org/docs/plugins.html).
 
 ## Browser Support
 
-Linkify natively supports all modern browsers.
+Linkify natively supports all modern browsers. Older browsers supported with [Babel](https://babeljs.io).
 
 ## Node.js Support
 
-Linkify is tested on Node.js 14 and up. Older Node.js versions are unofficially
+Linkify is tested on Node.js 18 and up. Older Node.js versions are unofficially
 supported.
 
 ## Downloads
