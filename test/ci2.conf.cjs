@@ -1,6 +1,6 @@
 // Karma CI configuration (2/2)
 // The CIs are split up to prevent too many parellel launchers
-const base = require('./conf');
+const base = require('./conf.cjs');
 
 module.exports = function (config) {
 	// https://www.browserstack.com/docs/automate/api-reference/selenium/introduction#rest-api-browsers

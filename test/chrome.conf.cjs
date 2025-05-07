@@ -1,7 +1,7 @@
 // Karma Chrome configuration
 // Just opens Google Chrome for testing
 
-const base = require('./conf');
+const base = require('./conf.cjs');
 
 module.exports = function (config) {
 	config.set({
