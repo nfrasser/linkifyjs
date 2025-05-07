@@ -1,5 +1,5 @@
 import terser from '@rollup/plugin-terser';
-import { plugins } from '../../rollup.config';
+import { plugins } from '../../rollup.config.js';
 
 export default [
 	{
@@ -7,8 +7,8 @@ export default [
 		output: [
 			{ file: 'dist/linkify.js', name: 'linkify', format: 'iife' },
 			{ file: 'dist/linkify.min.js', name: 'linkify', format: 'iife', plugins: [terser()] },
-			{ file: 'dist/linkify.cjs.js', format: 'cjs', exports: 'auto' },
-			{ file: 'dist/linkify.es.js', format: 'es' },
+			{ file: 'dist/linkify.cjs', format: 'cjs', exports: 'auto' },
+			{ file: 'dist/linkify.mjs', format: 'es' },
 		],
 		plugins,
 	},

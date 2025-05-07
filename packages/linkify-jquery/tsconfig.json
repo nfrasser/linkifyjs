@@ -1,10 +1,10 @@
 {
-	"include": ["dist/linkify-jquery.cjs.js", "dist/linkify-jquery.es.js"],
-	"exclude": [],
-	"compilerOptions": {
-		"allowJs": true,
-		"declaration": true,
-		"emitDeclarationOnly": true,
-		"maxNodeModuleJsDepth": 1
-	}
+  "include": ["dist/linkify-jquery.cjs", "dist/linkify-jquery.mjs"],
+  "exclude": [],
+  "compilerOptions": {
+    "allowJs": true,
+    "declaration": true,
+    "emitDeclarationOnly": true,
+    "maxNodeModuleJsDepth": 1
+  }
 }

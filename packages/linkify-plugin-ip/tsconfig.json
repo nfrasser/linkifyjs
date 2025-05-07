@@ -1,10 +1,10 @@
 {
-	"include": ["dist/linkify-plugin-ip.cjs.js", "dist/linkify-plugin-ip.es.js"],
-	"exclude": [],
-	"compilerOptions": {
-		"allowJs": true,
-		"declaration": true,
-		"emitDeclarationOnly": true,
-		"maxNodeModuleJsDepth": 1
-	}
+  "include": ["dist/linkify-plugin-ip.cjs", "dist/linkify-plugin-ip.mjs"],
+  "exclude": [],
+  "compilerOptions": {
+    "allowJs": true,
+    "declaration": true,
+    "emitDeclarationOnly": true,
+    "maxNodeModuleJsDepth": 1
+  }
 }

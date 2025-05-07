@@ -1,10 +1,10 @@
 {
-	"include": ["dist/linkify.cjs.js", "dist/linkify.es.js"],
-	"exclude": [],
-	"compilerOptions": {
-		"allowJs": true,
-		// "checkJs": true,
-		"declaration": true,
-		"emitDeclarationOnly": true
-	}
+  "include": ["dist/linkify.cjs", "dist/linkify.mjs"],
+  "exclude": [],
+  "compilerOptions": {
+    "allowJs": true,
+    // "checkJs": true,
+    "declaration": true,
+    "emitDeclarationOnly": true
+  }
 }

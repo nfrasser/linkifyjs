@@ -1,3 +1,3 @@
-import { linkifyInterface } from '../../rollup.config';
+import { linkifyInterface } from '../../rollup.config.js';
 
 export default linkifyInterface('element', { globalName: 'linkifyElement' });

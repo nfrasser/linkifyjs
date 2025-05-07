@@ -1,10 +1,10 @@
 {
-	"include": [ "dist/linkify-plugin-keyword.cjs.js", "dist/linkify-plugin-keyword.es.js"],
-	"exclude": [],
-	"compilerOptions": {
-		"allowJs": true,
-		"declaration": true,
-		"emitDeclarationOnly": true,
-		"maxNodeModuleJsDepth": 1
-	}
+  "include": ["dist/linkify-plugin-keyword.cjs", "dist/linkify-plugin-keyword.mjs"],
+  "exclude": [],
+  "compilerOptions": {
+    "allowJs": true,
+    "declaration": true,
+    "emitDeclarationOnly": true,
+    "maxNodeModuleJsDepth": 1
+  }
 }

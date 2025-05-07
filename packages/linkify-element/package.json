@@ -1,9 +1,10 @@
 {
   "name": "linkify-element",
+  "type": "module",
   "version": "4.2.0",
   "description": "Browser DOM element interface for linkifyjs",
-  "main": "dist/linkify-element.cjs.js",
-  "module": "dist/linkify-element.es.js",
+  "main": "dist/linkify-element.cjs",
+  "module": "dist/linkify-element.mjs",
   "scripts": {
     "build": "rollup -c rollup.config.js",
     "clean": "rm -rf lib dist *.tgz *.d.ts",

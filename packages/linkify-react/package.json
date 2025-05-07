@@ -1,9 +1,10 @@
 {
   "name": "linkify-react",
+  "type": "module",
   "version": "4.2.0",
   "description": "React element interface for linkifyjs",
-  "main": "dist/linkify-react.cjs.js",
-  "module": "dist/linkify-react.es.js",
+  "main": "dist/linkify-react.cjs",
+  "module": "dist/linkify-react.mjs",
   "scripts": {
     "build": "rollup -c rollup.config.js",
     "clean": "rm -rf lib dist *.tgz *.d.ts",
@@ -34,6 +35,6 @@
     "react": ">= 15.0.0"
   },
   "devDependencies": {
-    "@types/react": "^18.0.29"
+    "@types/react": "^19.1.3"
   }
 }

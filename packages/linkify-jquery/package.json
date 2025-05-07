@@ -1,9 +1,10 @@
 {
   "name": "linkify-jquery",
+  "type": "module",
   "version": "4.2.0",
   "description": "jQuery interface for linkifyjs",
-  "main": "dist/linkify-jquery.cjs.js",
-  "module": "dist/linkify-jquery.es.js",
+  "main": "dist/linkify-jquery.cjs",
+  "module": "dist/linkify-jquery.mjs",
   "scripts": {
     "build": "rollup -c rollup.config.js",
     "clean": "rm -rf lib dist *.tgz *.d.ts",

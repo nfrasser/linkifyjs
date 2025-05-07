@@ -1,9 +1,10 @@
 {
   "name": "linkify-plugin-mention",
+  "type": "module",
   "version": "4.2.0",
   "description": "@mentions plugin for linkifyjs",
-  "main": "dist/linkify-plugin-mention.cjs.js",
-  "module": "dist/linkify-plugin-mention.es.js",
+  "main": "dist/linkify-plugin-mention.cjs",
+  "module": "dist/linkify-plugin-mention.mjs",
   "scripts": {
     "build": "rollup -c rollup.config.js",
     "clean": "rm -rf lib dist *.tgz *.d.ts",

@@ -1,2 +1,2 @@
-import { linkifyPlugin } from '../../rollup.config';
+import { linkifyPlugin } from '../../rollup.config.js';
 export default linkifyPlugin('ticket');
