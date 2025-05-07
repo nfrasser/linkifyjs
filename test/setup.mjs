@@ -9,6 +9,7 @@ String.prototype.truncate = function (limit) {
 	return this.length > limit ? this.substring(0, limit) + '…' : this;
 };
 
+// eslint-disable-next-line mocha/no-top-level-hooks
 beforeEach(() => {
 	linkify.reset();
 });
