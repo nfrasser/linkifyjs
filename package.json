@@ -1,7 +1,7 @@
 {
   "name": "linkify",
   "type": "module",
-  "version": "4.2.0",
+  "version": "4.3.0",
   "description": "Intelligent link recognition, made easy",
   "repository": {
     "type": "git",
@@ -26,7 +26,7 @@
     "test:ci": "run-s test:ci1 test:ci2",
     "test:ci1": "karma start test/ci1.conf.cjs --single-run",
     "test:ci2": "karma start test/ci2.conf.cjs --single-run",
-    "tlds": "node tasks/update-tlds.js"
+    "tlds": "node tasks/update-tlds.cjs"
   },
   "author": "Nick Frasser (https://nfrasser.com)",
   "license": "MIT",

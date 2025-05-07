@@ -1,7 +1,7 @@
 {
   "name": "linkify-plugin-ip",
   "type": "module",
-  "version": "4.2.0",
+  "version": "4.3.0",
   "description": "IP address plugin for linkifyjs",
   "main": "dist/linkify-plugin-ip.cjs",
   "module": "dist/linkify-plugin-ip.mjs",

@@ -1,5 +1,11 @@
 # Linkify Changelog
 
+## v4.3.0
+
+- HTML comments opened or closed with 3 dashes tokenized correctly
+- Restore support for delimiter apostrophes in URLs
+- Rename dist file `.cjs.js` and `.es.js` extensions to `.cjs` and `.mjs`, respectively
+
 ## v4.2.0
 
 - Correctly sanitize object replacement character by treating as whitespace
