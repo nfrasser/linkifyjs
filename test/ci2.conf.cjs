@@ -1,41 +1,34 @@
-// Karma CI configuration (1/2)
+// Karma CI configuration (2/2)
 // The CIs are split up to prevent too many parellel launchers
-const base = require('./conf');
+const base = require('./conf.cjs');
 
 module.exports = function (config) {
 	// https://www.browserstack.com/docs/automate/api-reference/selenium/introduction#rest-api-browsers
 	const customLaunchers = {
-		bs_chrome_mac: {
+		bs_safari_sierra: {
 			base: 'BrowserStack',
-			browser: 'chrome',
+			browser: 'safari',
 			os: 'OS X',
-			os_version: 'Ventura',
+			os_version: 'Monterey',
 		},
-		bs_chrome_windows: {
+		bs_safari_bigsur: {
 			base: 'BrowserStack',
-			browser: 'chrome',
+			browser: 'safari',
+			os: 'OS X',
+			os_version: 'Sonoma',
+		},
+		bs_ios_safari: {
+			base: 'BrowserStack',
+			browser: 'iphone',
+			os: 'ios',
+			os_version: '16',
+			device: 'iPhone 14',
+		},
+		bs_edge: {
+			base: 'BrowserStack',
+			browser: 'edge',
 			os: 'Windows',
-			os_version: '10',
-		},
-		bs_firefox_windows: {
-			base: 'BrowserStack',
-			browser: 'firefox',
-			os: 'Windows',
-			os_version: '10',
-		},
-		bs_android_8: {
-			base: 'BrowserStack',
-			os: 'android',
-			os_version: '9.0',
-			browser: 'android',
-			device: 'Google Pixel 3',
-		},
-		bs_android_11: {
-			base: 'BrowserStack',
-			os: 'android',
-			os_version: '11.0',
-			browser: 'android',
-			device: 'Google Pixel 5',
+			os_version: '11',
 		},
 	};
 

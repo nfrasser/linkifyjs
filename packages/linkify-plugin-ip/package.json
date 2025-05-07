@@ -1,9 +1,10 @@
 {
   "name": "linkify-plugin-ip",
+  "type": "module",
   "version": "4.2.0",
   "description": "IP address plugin for linkifyjs",
-  "main": "dist/linkify-plugin-ip.cjs.js",
-  "module": "dist/linkify-plugin-ip.es.js",
+  "main": "dist/linkify-plugin-ip.cjs",
+  "module": "dist/linkify-plugin-ip.mjs",
   "scripts": {
     "build": "rollup -c rollup.config.js",
     "clean": "rm -rf lib dist *.tgz *.d.ts",

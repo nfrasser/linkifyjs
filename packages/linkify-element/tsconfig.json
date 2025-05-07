@@ -1,10 +1,10 @@
 {
-	"include": ["dist/linkify-element.cjs.js", "dist/linkify-element.es.js"],
-	"exclude": [],
-	"compilerOptions": {
-		"allowJs": true,
-		"declaration": true,
-		"emitDeclarationOnly": true,
-		"maxNodeModuleJsDepth": 2
-	}
+  "include": ["dist/linkify-element.cjs", "dist/linkify-element.mjs"],
+  "exclude": [],
+  "compilerOptions": {
+    "allowJs": true,
+    "declaration": true,
+    "emitDeclarationOnly": true,
+    "maxNodeModuleJsDepth": 2
+  }
 }

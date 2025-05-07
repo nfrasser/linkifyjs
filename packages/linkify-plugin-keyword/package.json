@@ -1,9 +1,10 @@
 {
   "name": "linkify-plugin-keyword",
+  "type": "module",
   "version": "4.2.0",
   "description": "Keyword plugin for linkifyjs",
-  "main": "dist/linkify-plugin-keyword.cjs.js",
-  "module": "dist/linkify-plugin-keyword.es.js",
+  "main": "dist/linkify-plugin-keyword.cjs",
+  "module": "dist/linkify-plugin-keyword.mjs",
   "scripts": {
     "build": "rollup -c rollup.config.js",
     "clean": "rm -rf lib dist *.tgz *.d.ts",

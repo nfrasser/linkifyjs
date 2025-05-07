@@ -104,9 +104,9 @@ describe('linkify-plugin-ip', () => {
 			// 'http://[f::ff:ff::f]', // too many colons, ambiguous (hard to implement)
 		];
 
-		for (const test of validTests) {
-			it(`Detects ${test[0]} as ${test[1]}`, () => {
-				expect(linkify.test(test[0], test[1])).to.be.ok;
+		for (const [value, type] of validTests) {
+			it(`Detects ${value} as ${type}`, () => {
+				expect(linkify.test(value, type)).to.be.ok;
 			});
 		}
 

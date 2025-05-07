@@ -50,7 +50,7 @@ Linkify is built and tested in the command line with `npm` scripts. Build tasks 
 npm run build
 ```
 
-This transpiles ES6 to ES5 (via [Babel](http://babeljs.io/)) from `src/` into `dist/`. The Node.js modules have a `.cjs.js` extension. The dist folder is published to [NPM](https://www.npmjs.com/). Also generates browser-ready scripts (classic globals with `.js` and `.min.js` extensions, and ES modules with `.es.js` extensions) into the `dist/` folder.
+This transpiles ES6 to ES5 (via [Babel](http://babeljs.io/)) from `src/` into `dist/`. The Node.js modules have a `.cjs` extension. The dist folder is published to [NPM](https://www.npmjs.com/). Also generates browser-ready scripts (classic globals with `.js` and `.min.js` extensions, and ES modules with `.mjs` extensions) into the `dist/` folder.
 
 ### Running tests
 

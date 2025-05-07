@@ -1,10 +1,10 @@
 {
-	"include": ["dist/linkify-react.cjs.js", "dist/linkify-react.es.js"],
-	"exclude": [],
-	"compilerOptions": {
-		"allowJs": true,
-		"declaration": true,
-		"emitDeclarationOnly": true,
-		"maxNodeModuleJsDepth": 1
-	}
+  "include": ["dist/linkify-react.cjs", "dist/linkify-react.mjs"],
+  "exclude": [],
+  "compilerOptions": {
+    "allowJs": true,
+    "declaration": true,
+    "emitDeclarationOnly": true,
+    "maxNodeModuleJsDepth": 1
+  }
 }

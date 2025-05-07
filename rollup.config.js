@@ -2,8 +2,9 @@ import terser from '@rollup/plugin-terser';
 import resolve from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
 import babel from '@rollup/plugin-babel';
+import replace from '@rollup/plugin-replace';
 
-export const plugins = [resolve(), commonjs(), babel({ babelHelpers: 'bundled' })];
+export const plugins = [resolve({ browser: true }), babel({ babelHelpers: 'bundled' })];
 
 // For interfaces in their dedicated packages
 export function linkifyInterface(name, opts = {}) {
@@ -26,8 +27,8 @@ export function linkifyInterface(name, opts = {}) {
 		output: [
 			{ file: `dist/linkify-${name}.js`, format: 'iife', globals, ...iifeOpts },
 			{ file: `dist/linkify-${name}.min.js`, format: 'iife', globals, ...iifeOpts, plugins: [terser()] },
-			{ file: `dist/linkify-${name}.cjs.js`, format: 'cjs', exports: 'auto' },
-			{ file: `dist/linkify-${name}.es.js`, format: 'es' },
+			{ file: `dist/linkify-${name}.cjs`, format: 'cjs', exports: 'auto' },
+			{ file: `dist/linkify-${name}.mjs`, format: 'es' },
 		],
 		plugins,
 	};
@@ -45,9 +46,44 @@ export function linkifyPlugin(plugin, opts = {}) {
 		output: [
 			{ file: `dist/linkify-plugin-${plugin}.js`, format: 'iife', globals, name },
 			{ file: `dist/linkify-plugin-${plugin}.min.js`, format: 'iife', globals, name, plugins: [terser()] },
-			{ file: `dist/linkify-plugin-${plugin}.cjs.js`, format: 'cjs', exports: 'auto' },
-			{ file: `dist/linkify-plugin-${plugin}.es.js`, format: 'es' },
+			{ file: `dist/linkify-plugin-${plugin}.cjs`, format: 'cjs', exports: 'auto' },
+			{ file: `dist/linkify-plugin-${plugin}.mjs`, format: 'es' },
 		],
 		plugins,
 	};
 }
+
+// Build react globals for qunit tests
+export default [
+	{
+		input: 'test/react.mjs',
+		output: [
+			{
+				file: 'test/qunit/vendor/react.min.js',
+				name: 'React',
+				format: 'iife',
+				plugins: [terser()],
+			},
+		],
+		plugins: plugins.concat([
+			replace({ 'process.env.NODE_ENV': '"production"', preventAssignment: true }),
+			commonjs(),
+		]),
+	},
+	{
+		input: 'test/react-dom.mjs',
+		output: [
+			{
+				file: 'test/qunit/vendor/react-dom.min.js',
+				name: 'ReactDOM',
+				globals: { react: 'React' },
+				format: 'iife',
+				plugins: [terser()],
+			},
+		],
+		plugins: plugins.concat([
+			replace({ 'process.env.NODE_ENV': '"production"', preventAssignment: true }),
+			commonjs(),
+		]),
+	},
+];

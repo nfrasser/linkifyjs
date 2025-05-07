@@ -1,9 +1,10 @@
 {
   "name": "linkifyjs",
+  "type": "module",
   "version": "4.2.0",
   "description": "Find URLs, email addresses, #hashtags and @mentions in plain-text strings, then convert them into HTML <a> links.",
-  "main": "dist/linkify.cjs.js",
-  "module": "dist/linkify.es.js",
+  "main": "dist/linkify.cjs",
+  "module": "dist/linkify.mjs",
   "scripts": {
     "build": "rollup -c rollup.config.js",
     "clean": "rm -rf lib dist *.tgz *.d.ts",

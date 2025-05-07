@@ -1,9 +1,10 @@
 {
   "name": "linkify-plugin-ticket",
+  "type": "module",
   "version": "4.2.0",
   "description": "Numeric ticket plugin for linkifyjs",
-  "main": "dist/linkify-plugin-ticket.cjs.js",
-  "module": "dist/linkify-plugin-ticket.es.js",
+  "main": "dist/linkify-plugin-ticket.cjs",
+  "module": "dist/linkify-plugin-ticket.mjs",
   "scripts": {
     "build": "rollup -c rollup.config.js",
     "clean": "rm -rf lib dist *.tgz *.d.ts",

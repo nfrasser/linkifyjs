@@ -1,4 +1,4 @@
 ignore:
   - 'test/qunit/*'
-  - 'test/conf.js'
-  - 'test/*.conf.js'
+  - 'test/conf.cjs'
+  - 'test/*.conf.cjs'

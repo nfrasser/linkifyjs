@@ -1,9 +1,10 @@
 {
   "name": "linkify-plugin-hashtag",
+  "type": "module",
   "version": "4.2.0",
   "description": "Hashtag plugin for linkifyjs",
-  "main": "dist/linkify-plugin-hashtag.cjs.js",
-  "module": "dist/linkify-plugin-hashtag.es.js",
+  "main": "dist/linkify-plugin-hashtag.cjs",
+  "module": "dist/linkify-plugin-hashtag.mjs",
   "scripts": {
     "build": "rollup -c rollup.config.js",
     "clean": "rm -rf lib dist *.tgz *.d.ts",

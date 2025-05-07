@@ -1,10 +1,10 @@
 {
-	"include": ["dist/linkify-plugin-ticket.cjs.js", "dist/linkify-plugin-ticket.es.js"],
-	"exclude": [],
-	"compilerOptions": {
-		"allowJs": true,
-		"declaration": true,
-		"emitDeclarationOnly": true,
-		"maxNodeModuleJsDepth": 1
-	}
+  "include": ["dist/linkify-plugin-ticket.cjs", "dist/linkify-plugin-ticket.mjs"],
+  "exclude": [],
+  "compilerOptions": {
+    "allowJs": true,
+    "declaration": true,
+    "emitDeclarationOnly": true,
+    "maxNodeModuleJsDepth": 1
+  }
 }

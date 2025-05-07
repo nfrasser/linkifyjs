@@ -1,10 +1,10 @@
 {
-	"include": ["dist/linkify-plugin-hashtag.cjs.js", "dist/linkify-plugin-hashtag.es.js"],
-	"exclude": [],
-	"compilerOptions": {
-		"allowJs": true,
-		"declaration": true,
-		"emitDeclarationOnly": true,
-		"maxNodeModuleJsDepth": 1
-	}
+  "include": ["dist/linkify-plugin-hashtag.cjs", "dist/linkify-plugin-hashtag.mjs"],
+  "exclude": [],
+  "compilerOptions": {
+    "allowJs": true,
+    "declaration": true,
+    "emitDeclarationOnly": true,
+    "maxNodeModuleJsDepth": 1
+  }
 }
