@@ -9,9 +9,8 @@
   },
   "scripts": {
     "build": "npm run build --workspaces",
-    "build:ci": "run-s build:packages build:test",
-    "build:packages": "for dir in `ls packages` ; do cd packages/${dir} && npm run build && cd ../.. ; done",
     "build:test": "rollup -c rollup.config.js",
+    "build:ci": "run-s build build:test",
     "clean": "rm -rf dist",
     "copy": "copyfiles -u 3 packages/*/dist/*.js packages/*/dist/*/LICENSE dist",
     "copy:license": "copyfiles LICENSE dist",

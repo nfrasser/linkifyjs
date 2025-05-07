@@ -35,7 +35,7 @@ jobs:
       - run: npm install
       - name: Run coverage
         run: |
-          npm run build
+          npm run build:ci
           npm run test:coverage
       - name: Run browser tests
         if: ${{ github.secret_source == 'Actions' }}
