@@ -24,8 +24,8 @@
     "test": "mocha --recursive",
     "test:coverage": "c8 --reporter=lcov --reporter=text mocha --recursive",
     "test:ci": "run-s test:ci1 test:ci2",
-    "test:ci1": "karma start test/ci1.conf.js --single-run",
-    "test:ci2": "karma start test/ci2.conf.js --single-run",
+    "test:ci1": "karma start test/ci1.conf.cjs --single-run",
+    "test:ci2": "karma start test/ci2.conf.cjs --single-run",
     "tlds": "node tasks/update-tlds.js"
   },
   "author": "Nick Frasser (https://nfrasser.com)",
