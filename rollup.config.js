@@ -2,8 +2,9 @@ import terser from '@rollup/plugin-terser';
 import resolve from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
 import babel from '@rollup/plugin-babel';
+import replace from '@rollup/plugin-replace';
 
-export const plugins = [resolve(), commonjs(), babel({ babelHelpers: 'bundled' })];
+export const plugins = [resolve({ browser: true }), babel({ babelHelpers: 'bundled' })];
 
 // For interfaces in their dedicated packages
 export function linkifyInterface(name, opts = {}) {
@@ -51,3 +52,38 @@ export function linkifyPlugin(plugin, opts = {}) {
 		plugins,
 	};
 }
+
+// Build react globals for qunit tests
+export default [
+	{
+		input: 'test/react.mjs',
+		output: [
+			{
+				file: 'test/qunit/vendor/react.min.js',
+				name: 'React',
+				format: 'iife',
+				plugins: [terser()],
+			},
+		],
+		plugins: plugins.concat([
+			replace({ 'process.env.NODE_ENV': '"production"', preventAssignment: true }),
+			commonjs(),
+		]),
+	},
+	{
+		input: 'test/react-dom.mjs',
+		output: [
+			{
+				file: 'test/qunit/vendor/react-dom.min.js',
+				name: 'ReactDOM',
+				globals: { react: 'React' },
+				format: 'iife',
+				plugins: [terser()],
+			},
+		],
+		plugins: plugins.concat([
+			replace({ 'process.env.NODE_ENV': '"production"', preventAssignment: true }),
+			commonjs(),
+		]),
+	},
+];

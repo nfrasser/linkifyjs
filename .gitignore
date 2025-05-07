@@ -40,6 +40,7 @@ node_modules
 # Build files
 build
 !test/qunit/build
+test/qunit/vendor
 dist
 lib
 vendor

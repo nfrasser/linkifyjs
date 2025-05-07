@@ -16,8 +16,8 @@ QUnit.assert.oneOf = function (value, possibleExpected, message) {
 	this.pushResult({
 		result: result,
 		actual: value,
-		expected: possibleExpected[i-1],
-		message: message
+		expected: possibleExpected[i - 1],
+		message: message,
 	});
 };
 
@@ -65,7 +65,6 @@ QUnit.test('linkify.find correctly finds an email address', function (assert) {
 	assert.equal(result[0].href, 'mailto:test@example.com');
 });
 
-
 QUnit.module('linkify.test');
 
 QUnit.test('correctly identifies a URL as a link', function (assert) {
@@ -80,7 +79,6 @@ QUnit.test('correctly identifies text as not an email', function (assert) {
 	assert.notOk(w.linkify.test('gobbledegook'));
 });
 
-
 QUnit.module('linkify.options');
 
 QUnit.test('contains defaults object', function (assert) {
@@ -92,7 +90,6 @@ QUnit.test('contains Options class', function (assert) {
 	assert.ok('Options' in w.linkify.options);
 	assert.equal(typeof w.linkify.options.Options, 'function');
 });
-
 
 QUnit.module('linkify.options.Options');
 
@@ -108,66 +105,73 @@ QUnit.test('returns object of default options when given an empty object', funct
 	assert.equal(result.get('rel'), null);
 });
 
-
 QUnit.module('linkify-plugin-hashtag');
 
 QUnit.test('finds valid hashtags', function (assert) {
 	var result = w.linkify.find('#urls are #awesome2015');
-	assert.deepEqual(result, [{
-		type: 'hashtag',
-		value: '#urls',
-		href: '#urls',
-		isLink: true,
-		start: 0,
-		end: 5
-	}, {
-		type: 'hashtag',
-		value: '#awesome2015',
-		href: '#awesome2015',
-		isLink: true,
-		start: 10,
-		end: 22
-	}]);
+	assert.deepEqual(result, [
+		{
+			type: 'hashtag',
+			value: '#urls',
+			href: '#urls',
+			isLink: true,
+			start: 0,
+			end: 5,
+		},
+		{
+			type: 'hashtag',
+			value: '#awesome2015',
+			href: '#awesome2015',
+			isLink: true,
+			start: 10,
+			end: 22,
+		},
+	]);
 });
-
 
 QUnit.module('linkify-plugin-mention');
 
 QUnit.test('finds valid mentions', function (assert) {
 	var result = w.linkify.find('Hey @foo say hello to @bar!');
-	assert.deepEqual(result, [{
-		type: 'mention',
-		value: '@foo',
-		href: '/foo',
-		isLink: true,
-		start: 4,
-		end: 8
-	}, {
-		type: 'mention',
-		value: '@bar',
-		href: '/bar',
-		isLink: true,
-		start: 22,
-		end: 26
-	}]);
+	assert.deepEqual(result, [
+		{
+			type: 'mention',
+			value: '@foo',
+			href: '/foo',
+			isLink: true,
+			start: 4,
+			end: 8,
+		},
+		{
+			type: 'mention',
+			value: '@bar',
+			href: '/bar',
+			isLink: true,
+			start: 22,
+			end: 26,
+		},
+	]);
 });
 
 QUnit.module('linkify-plugin-ticket');
 
 QUnit.test('finds valid tickets', function (assert) {
 	var result = w.linkify.find('Please see issue #42!');
-	assert.deepEqual(result, [{
-		type: 'ticket',
-		value: '#42',
-		href: '#42',
-		isLink: true,
-		start: 17,
-		end: 20
-	}]);
+	assert.deepEqual(result, [
+		{
+			type: 'ticket',
+			value: '#42',
+			href: '#42',
+			isLink: true,
+			start: 17,
+			end: 20,
+		},
+	]);
 });
 
 // HTML rendered in body
-var originalHtml = 'Hello here are some links to ftp://awesome.com/?where=this and localhost:8080, pretty neat right? <p>Here is a nested github.com/Hypercontext/linkifyjs paragraph</p>';
+var originalHtml =
+	'Hello here are some links to ftp://awesome.com/?where=this and localhost:8080, pretty neat right? <p>Here is a nested github.com/Hypercontext/linkifyjs paragraph</p>';
 
 // Possible results with regular settings (will vary by browser)
 var linkifiedHtml = [
@@ -179,7 +183,7 @@ var linkifiedHtmlAlt = [
 	'Hello here are some links to <a href="ftp://awesome.com/?where=this" rel="nofollow">ftp://awesome.com/?where=this</a> and <a href="http://localhost:8080" rel="nofollow">localhost:8080</a>, pretty neat right? <p>Here is a nested <a href="http://github.com/Hypercontext/linkifyjs" rel="nofollow">github.com/Hypercontext/linkifyjs</a> paragraph</p>',
 	'Hello here are some links to <a rel="nofollow" href="ftp://awesome.com/?where=this">ftp://awesome.com/?where=t fhis</a> and <a rel="nofollow" href="http://localhost:8080">localhost:8080</a>, pretty neat right? <p>Here is a nested <a rel="nofollow" href="http://github.com/Hypercontext/linkifyjs">github.com/Hypercontext/linkifyjs</a> paragraph</p>',
 	'Hello here are some links to <a href="ftp://awesome.com/?where=this" rel="nofollow">ftp://awesome.com/?where=this</a> and <a href="http://localhost:8080" rel="nofollow">localhost:8080</a>, pretty neat right? <p>Here is a nested <a href="http://github.com/Hypercontext/linkifyjs" rel="nofollow">github.com/Hypercontext/linkifyjs</a> paragraph</p>',
-	'Hello here are some links to <a href="ftp://awesome.com/?where=this" rel="nofollow">ftp://awesome.com/?where=this</a> and <a href="http://localhost:8080" rel="nofollow">localhost:8080</a>, pretty neat right? <p>Here is a nested <a href="http://github.com/Hypercontext/linkifyjs" rel="nofollow">github.com/Hypercontext/linkifyjs</a> paragraph</p>'
+	'Hello here are some links to <a href="ftp://awesome.com/?where=this" rel="nofollow">ftp://awesome.com/?where=this</a> and <a href="http://localhost:8080" rel="nofollow">localhost:8080</a>, pretty neat right? <p>Here is a nested <a href="http://github.com/Hypercontext/linkifyjs" rel="nofollow">github.com/Hypercontext/linkifyjs</a> paragraph</p>',
 ];
 
 QUnit.module('linkify-jquery', {
@@ -190,7 +194,7 @@ QUnit.module('linkify-jquery', {
 	},
 	afterEach: function () {
 		jQuery('#linkify-test-elem').remove();
-	}
+	},
 });
 
 QUnit.test('jQuery plugin exists', function (assert) {
@@ -206,8 +210,8 @@ QUnit.test('works with default options', function (assert) {
 QUnit.test('works with overriden options', function (assert) {
 	var $elem = jQuery('#linkify-test-elem').linkify({
 		attributes: {
-			rel: 'nofollow'
-		}
+			rel: 'nofollow',
+		},
 	});
 	assert.oneOf($elem.html(), linkifiedHtmlAlt);
 });
@@ -220,7 +224,7 @@ QUnit.module('linkify-element', {
 	},
 	afterEach: function () {
 		jQuery('#linkify-test-elem').remove();
-	}
+	},
 });
 
 QUnit.test('linkifyElement exists', function (assert) {
@@ -238,12 +242,11 @@ QUnit.test('works with overriden options', function (assert) {
 	var elem = document.getElementById('linkify-test-elem');
 	w.linkifyElement(elem, {
 		attributes: {
-			rel: 'nofollow'
-		}
+			rel: 'nofollow',
+		},
 	});
 	assert.oneOf(jQuery(elem).html(), linkifiedHtmlAlt);
 });
-
 
 QUnit.module('linkify-html');
 
@@ -260,12 +263,11 @@ QUnit.test('works with default options', function (assert) {
 QUnit.test('works with overriden options', function (assert) {
 	var result = w.linkifyHtml(originalHtml, {
 		attributes: {
-			rel: 'nofollow'
-		}
+			rel: 'nofollow',
+		},
 	});
 	assert.equal(result, linkifiedHtmlAlt[0]);
 });
-
 
 QUnit.module('linkify-string');
 
@@ -282,12 +284,14 @@ QUnit.test('works with default options', function (assert) {
 QUnit.test('works with overriden options', function (assert) {
 	var result = w.linkifyStr('google.ca and me@gmail.com', {
 		attributes: {
-			rel: 'nofollow'
-		}
+			rel: 'nofollow',
+		},
 	});
-	assert.equal(result, '<a href="http://google.ca" rel="nofollow">google.ca</a> and <a href="mailto:me@gmail.com" rel="nofollow">me@gmail.com</a>');
+	assert.equal(
+		result,
+		'<a href="http://google.ca" rel="nofollow">google.ca</a> and <a href="mailto:me@gmail.com" rel="nofollow">me@gmail.com</a>',
+	);
 });
-
 
 // React does not officially support IE8
 // https://facebook.github.io/react/docs/working-with-the-browser.html#browser-support
@@ -307,13 +311,14 @@ QUnit.test('can be used to create valid components', function (assert) {
 QUnit.test('renders into a DOM element', function (assert) {
 	var linkified = w.React.createElement(
 		w.Linkify,
-		{tagName: 'em'},
+		{ tagName: 'em' },
 		'A few links are github.com and google.com and ',
-		w.React.createElement('strong', {className: 'pi'}, 'https://amazon.ca')
+		w.React.createElement('strong', { className: 'pi' }, 'https://amazon.ca'),
 	);
 	var container = document.createElement('div');
 	document.body.appendChild(container);
 
+	// React 16+ requires a container to be passed to render
 	w.ReactDOM.render(w.React.createElement('p', null, linkified), container);
 
 	assert.ok(container.innerHTML.indexOf('<em') > 0);

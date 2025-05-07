@@ -321,6 +321,17 @@ const tests = [
 	['some string with somefile.mp4 token', [Text], ['some string with somefile.mp4 token']],
 	['hp--community.force.com', [Url], ['hp--community.force.com']],
 	['example@hp--community.force.com', [Email], ['example@hp--community.force.com']],
+	[
+		'Google maps URL https://www.google.fr/maps/place/42°56\'46.6"N+0°38\'31.6"E/@42.9462778,0.6421111,194m/data=!3m2!1e3!4b1!4m4!3m3!8m2!3d42.9462778!4d0.6421111 or without quotes google.fr/maps/place/42°56\'46.6"N+0°38\'31.6"E/@42.9462778,0.6421111,194m.',
+		[Text, Url, Text, Url, Text],
+		[
+			'Google maps URL ',
+			'https://www.google.fr/maps/place/42°56\'46.6"N+0°38\'31.6"E/@42.9462778,0.6421111,194m/data=!3m2!1e3!4b1!4m4!3m3!8m2!3d42.9462778!4d0.6421111',
+			' or without quotes ',
+			'google.fr/maps/place/42°56\'46.6"N+0°38\'31.6"E/@42.9462778,0.6421111,194m',
+			'.',
+		],
+	],
 ];
 
 describe('linkifyjs/parser#run()', () => {

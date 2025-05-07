@@ -1,8 +1,8 @@
 // Karma CI configuration (1/2)
 // The CIs are split up to prevent too many parellel launchers
-const base = require('./conf');
+import base from './conf';
 
-module.exports = function (config) {
+export default function (config) {
 	// https://www.browserstack.com/docs/automate/api-reference/selenium/introduction#rest-api-browsers
 	const customLaunchers = {
 		bs_chrome_mac: {
@@ -59,4 +59,4 @@ module.exports = function (config) {
 		singleRun: true,
 		reporters: ['dots', 'BrowserStack'],
 	});
-};
+}
