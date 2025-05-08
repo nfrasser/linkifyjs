@@ -2,7 +2,7 @@
 
 [![npm version](https://badge.fury.io/js/linkifyjs.svg)](https://www.npmjs.com/package/linkifyjs)
 [![CI](https://github.com/nfrasser/linkifyjs/actions/workflows/ci.yml/badge.svg)](https://github.com/nfrasser/linkifyjs/actions/workflows/ci.yml)
-[![BrowserStack Status](https://automate.browserstack.com/badge.svg?badge_key=ZVZXNFhhQ044a01nQStVeWJXSng1b01MTWFpZlZRZVg1WnAvdE9aVE9LVT0tLWZpekx6ZHUrZ2E0dDRHMDZRMnJNQlE9PQ==--4d91db279fbd0475f8d8e4b221b5a4c1e0c6a76e)](https://automate.browserstack.com/public-build/ZVZXNFhhQ044a01nQStVeWJXSng1b01MTWFpZlZRZVg1WnAvdE9aVE9LVT0tLWZpekx6ZHUrZ2E0dDRHMDZRMnJNQlE9PQ==--4d91db279fbd0475f8d8e4b221b5a4c1e0c6a76e)
+[![BrowserStack Status](https://automate.browserstack.com/badge.svg?badge_key=ekZJeEJEOVlYTjFPR2lYU0VBN0RSSEREbW5rUnJaT0Zzd2pKYzdzNC9qTT0tLW44YkxiSUo4REFHNm9EUC8vdkxBblE9PQ==--45e7e07e1b4fbe9be5d9aaa4af8d183749a4bd25)](https://automate.browserstack.com/public-build/ekZJeEJEOVlYTjFPR2lYU0VBN0RSSEREbW5rUnJaT0Zzd2pKYzdzNC9qTT0tLW44YkxiSUo4REFHNm9EUC8vdkxBblE9PQ==--45e7e07e1b4fbe9be5d9aaa4af8d183749a4bd25)
 [![Coverage Status](https://coveralls.io/repos/github/nfrasser/linkifyjs/badge.svg?branch=main)](https://coveralls.io/github/nfrasser/linkifyjs?branch=main)
 
 Linkify is a JavaScript plugin. Use Linkify to find links in plain-text and
