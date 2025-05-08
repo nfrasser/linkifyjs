@@ -27,5 +27,5 @@ jobs:
         run: npm run dist:postpublish
       - uses: actions/upload-artifact@v4
         with:
-          name: linkify
+          name: linkifyjs
           path: dist/
