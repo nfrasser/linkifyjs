@@ -1,5 +1,9 @@
 # Linkify Changelog
 
+## v4.3.1
+
+- Use correct simple-html-tokenizer version for linkify-html
+
 ## v4.3.0
 
 - HTML comments opened or closed with 3 dashes tokenized correctly
