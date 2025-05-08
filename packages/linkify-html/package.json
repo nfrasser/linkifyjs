@@ -31,7 +31,7 @@
   },
   "homepage": "https://linkify.js.org",
   "devDependencies": {
-    "@nfrasser/simple-html-tokenizer": "==0.5.11-3"
+    "@nfrasser/simple-html-tokenizer": "==0.5.11-4"
   },
   "peerDependencies": {
     "linkifyjs": "^4.0.0"
