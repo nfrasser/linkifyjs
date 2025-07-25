@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { tokenize, Options, options } from 'linkifyjs';
+import { tokenize, Options } from 'linkifyjs';
 
 /**
  * Given a string, converts to an array of valid React components
