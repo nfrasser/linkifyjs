@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { tokenize, Options, options } from 'linkifyjs';
+import { tokenize, Options } from 'linkifyjs';
 
 /**
  * Given a string, converts to an array of valid React components
@@ -10,7 +10,6 @@ import { tokenize, Options, options } from 'linkifyjs';
  * @returns {React.ReactNodeArray}
  */
 function stringToElements(str, opts, meta) {
-
 	const tokens = tokenize(str);
 	const elements = [];
 
@@ -28,7 +27,7 @@ function stringToElements(str, opts, meta) {
 			if (!('key' in rendered.props)) {
 				// Ensure generated element has unique key
 				const key = `__linkify-el-${meta.elementId++}`;
-				const props = options.assign({ key }, rendered.props);
+				const props = Object.assign({ key }, rendered.props);
 				rendered = React.cloneElement(rendered, props);
 			}
 			elements.push(rendered);
@@ -60,9 +59,7 @@ function linkifyReactElement(element, opts, meta) {
 			// ensure that we always generate unique element IDs for keys
 			children.push.apply(children, stringToElements(child, opts, meta));
 		} else if (React.isValidElement(child)) {
-			if (typeof child.type === 'string'
-				&& opts.ignoreTags.indexOf(child.type.toUpperCase()) >= 0
-			) {
+			if (typeof child.type === 'string' && opts.ignoreTags.indexOf(child.type.toUpperCase()) >= 0) {
 				// Don't linkify this element
 				children.push(child);
 			} else {
@@ -76,7 +73,7 @@ function linkifyReactElement(element, opts, meta) {
 
 	// Set a default unique key, copy over remaining props
 	const key = `__linkify-el-${meta.elementId++}`;
-	const newProps = options.assign({ key }, element.props);
+	const newProps = Object.assign({ key }, element.props);
 	return React.cloneElement(element, newProps, children);
 }
 

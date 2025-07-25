@@ -1,5 +1,3 @@
-import assign from './assign.mjs';
-
 /**
  * An object where each key is a valid DOM Event Name such as `click` or `focus`
  * and each value is an event handler function.
@@ -109,9 +107,9 @@ export const defaults = {
  *   Similar to render option
  */
 export function Options(opts, defaultRender = null) {
-	let o = assign({}, defaults);
+	let o = Object.assign({}, defaults);
 	if (opts) {
-		o = assign(o, opts instanceof Options ? opts.o : opts);
+		o = Object.assign(o, opts instanceof Options ? opts.o : opts);
 	}
 
 	// Ensure all ignored tags are uppercase
@@ -213,8 +211,6 @@ Options.prototype = {
 		return renderFn(ir, token.t, token);
 	},
 };
-
-export { assign };
 
 function noop(val) {
 	return val;
