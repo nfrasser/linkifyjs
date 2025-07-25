@@ -1,5 +1,9 @@
 # Linkify Changelog
 
+## v4.3.2
+
+- Replace assign helper with Object.assign to avoid prototype pollution
+
 ## v4.3.1
 
 - Use correct simple-html-tokenizer version for linkify-html

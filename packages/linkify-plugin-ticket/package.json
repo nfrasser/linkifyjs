@@ -1,7 +1,7 @@
 {
   "name": "linkify-plugin-ticket",
   "type": "module",
-  "version": "4.3.1",
+  "version": "4.3.2",
   "description": "Numeric ticket plugin for linkifyjs",
   "main": "dist/linkify-plugin-ticket.cjs",
   "module": "dist/linkify-plugin-ticket.mjs",
