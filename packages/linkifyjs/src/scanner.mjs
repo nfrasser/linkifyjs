@@ -8,7 +8,6 @@ import { State, addToGroups, tr, ts, tt } from './fsm.mjs';
 import * as fsm from './fsm.mjs';
 import * as tk from './text.mjs';
 import * as re from './regexp.mjs';
-import assign from './assign.mjs';
 
 const CR = '\r'; // carriage-return character
 const LF = '\n'; // line-feed character
@@ -203,7 +202,7 @@ export function init(customSchemes = []) {
 
 	// Set default transition for start state (some symbol)
 	Start.jd = new State(tk.SYM);
-	return { start: Start, tokens: assign({ groups }, tk) };
+	return { start: Start, tokens: Object.assign({ groups }, tk) };
 }
 
 /**

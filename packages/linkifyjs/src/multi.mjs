@@ -1,6 +1,5 @@
 import { COLON, LOCALHOST } from './text.mjs';
 import { defaults } from './options.mjs';
-import assign from './assign.mjs';
 
 /******************************************************************************
 	Multi-Tokens
@@ -163,7 +162,7 @@ MultiToken.prototype = {
 			attributes.rel = rel;
 		}
 		if (attrs) {
-			assign(attributes, attrs);
+			Object.assign(attributes, attrs);
 		}
 
 		return { tagName, attributes, content, eventListeners };

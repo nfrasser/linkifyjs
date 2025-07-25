@@ -1,7 +1,6 @@
 /**
  * Finite State Machine generation utilities
  */
-import assign from './assign.mjs';
 
 /**
  * @template T
@@ -273,7 +272,7 @@ State.prototype = {
 			templateState = state.go(input);
 		if (templateState) {
 			nextState = new State();
-			assign(nextState.j, templateState.j);
+			Object.assign(nextState.j, templateState.j);
 			nextState.jr.push.apply(nextState.jr, templateState.jr);
 			nextState.jd = templateState.jd;
 			nextState.t = templateState.t;
@@ -285,7 +284,7 @@ State.prototype = {
 			// Ensure newly token is in the same groups as the old token
 			if (groups) {
 				if (nextState.t && typeof nextState.t === 'string') {
-					const allFlags = assign(flagsForToken(nextState.t, groups), flags);
+					const allFlags = Object.assign(flagsForToken(nextState.t, groups), flags);
 					addToGroups(t, allFlags, groups);
 				} else if (flags) {
 					addToGroups(t, flags, groups);
