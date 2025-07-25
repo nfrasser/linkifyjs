@@ -105,12 +105,14 @@ describe('linkify-plugin-ip', () => {
 		];
 
 		for (const [value, type] of validTests) {
+
 			it(`Detects ${value} as ${type}`, () => {
 				expect(linkify.test(value, type)).to.be.ok;
 			});
 		}
 
 		for (const test of invalidTests) {
+
 			it(`Does not detect ${test}`, () => {
 				expect(linkify.test(test)).to.not.be.ok;
 			});

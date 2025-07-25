@@ -63,6 +63,7 @@ export default [
 			],
 
 			'mocha/no-mocha-arrows': 0,
+			'mocha/consistent-spacing-between-blocks': 0,
 		},
 	},
 ];

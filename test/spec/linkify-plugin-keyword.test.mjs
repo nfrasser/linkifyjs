@@ -85,12 +85,14 @@ describe('linkify-plugin-keyword', () => {
 		});
 
 		for (const keyword of keywords) {
+
 			it(`Detects keyword ${keyword}`, () => {
 				expect(linkify.test(keyword, 'keyword')).to.be.ok;
 			});
 		}
 
 		for (const [str, type] of potentiallyConflictingStrings) {
+
 			it(`Does not conflict with existing token ${type} ${str}`, () => {
 				expect(linkify.test(str, type)).to.be.ok;
 			});
