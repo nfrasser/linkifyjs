@@ -215,7 +215,7 @@ export function test(str, type = null) {
 export * as options from './options.mjs';
 export * as regexp from './regexp.mjs';
 export * as multi from './multi.mjs';
-export * as text from './multi.mjs';
+export * as text from './text.mjs';
 export { MultiToken, createTokenClass } from './multi.mjs';
 export { stringToArray } from './scanner.mjs';
 export { State } from './fsm.mjs';
