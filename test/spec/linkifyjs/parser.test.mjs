@@ -332,6 +332,11 @@ const tests = [
 			'.',
 		],
 	],
+	// [
+	// 	'https://zh.wikipedia.org/wiki/%E7%B4%85_(%E5%BC%B5%E5%9C%8B%E6%A6%AE%E5%B0%88%E8%BC%AF)',
+	// 	[Url],
+	// 	['https://zh.wikipedia.org/wiki/%E7%B4%85_(%E5%BC%B5%E5%9C%8B%E6%A6%AE%E5%B0%88%E8%BC%AF)'],
+	// ],
 ];
 
 describe('linkifyjs/parser#run()', () => {
