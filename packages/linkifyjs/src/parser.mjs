@@ -152,10 +152,6 @@ export function init({ groups }) {
 	tt(Email, tk.DOT, EmailDomainDot);
 	tt(Email, tk.HYPHEN, EmailDomainHyphen);
 
-	// Final possible email states
-	const EmailColon = tt(Email, tk.COLON); // URL followed by colon (potential port number here)
-	/*const EmailColonPort = */ ta(EmailColon, groups.numeric, mtk.Email); // URL followed by colon and port number
-
 	// Account for dots and hyphens. Hyphens are usually parts of domain names
 	// (but not TLDs)
 	const DomainHyphen = tt(Domain, tk.HYPHEN); // domain followed by hyphen

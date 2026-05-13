@@ -337,6 +337,7 @@ const tests = [
 		[Url],
 		['https://zh.wikipedia.org/wiki/%E7%B4%85_(%E5%BC%B5%E5%9C%8B%E6%A6%AE%E5%B0%88%E8%BC%AF)'],
 	],
+	['toto@example.com:123', [Email, Text], ['toto@example.com', ':123']],
 ];
 
 describe('linkifyjs/parser#run()', () => {
