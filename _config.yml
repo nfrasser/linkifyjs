@@ -9,7 +9,7 @@ description: > # this means to ignore newlines until "baseurl:"
   #hashtags, @mentions and more.
 url: "https://linkify.js.org" # the base hostname & protocol for your site
 github_username: nfrasser/linkifyjs
-version: "4.3.2"
+version: "4.3.3"
 
 # Build settings
 markdown: kramdown
