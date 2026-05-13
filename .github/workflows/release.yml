@@ -2,22 +2,26 @@ name: Publish
 
 on:
   push:
-    tags: ['*']
+    tags: ['v*']
+
+permissions:
+  id-token: write # Required for OIDC
+  contents: read
 
 jobs:
   publish:
     runs-on: ubuntu-latest
+    environment: publish
     steps:
       - uses: actions/checkout@v6
       - uses: actions/setup-node@v6
         with:
           node-version: 'lts/*'
           registry-url: 'https://registry.npmjs.org'
+          package-manager-cache: false
       - run: npm ci
       - name: npm publish
         run: npm publish --workspaces --provenance --access public
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
       - name: postpublish
         run: npm run dist:postpublish
       - uses: actions/upload-artifact@v7
