@@ -12,15 +12,10 @@ jobs:
       - uses: actions/setup-node@v6
         with:
           node-version: 'lts/*'
-          cache: 'npm'
-      - run: npm install
-      - name: configure npm
-        run: |
-          echo "//registry.npmjs.org/:_authToken=${NODE_AUTH_TOKEN}" > .npmrc
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-      - name: publish to npm
-        run: npm publish --workspaces
+          registry-url: 'https://registry.npmjs.org'
+      - run: npm ci
+      - name: npm publish
+        run: npm publish --workspaces --provenance --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
       - name: postpublish

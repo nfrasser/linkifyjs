@@ -16,7 +16,7 @@ jobs:
         with:
           node-version: 'lts/*'
           cache: 'npm'
-      - run: npm install
+      - run: npm ci
       - run: npm run lint
 
   unit:
@@ -32,7 +32,7 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
           cache: 'npm'
-      - run: npm install
+      - run: npm ci
       - run: npm test
 
   integration:
@@ -44,7 +44,7 @@ jobs:
         with:
           node-version: 'lts/*'
           cache: 'npm'
-      - run: npm install
+      - run: npm ci
       - name: Run coverage
         run: |
           npm run build:ci
