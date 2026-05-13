@@ -1,7 +1,7 @@
 {
   "name": "linkify-plugin-keyword",
   "type": "module",
-  "version": "4.3.2",
+  "version": "4.3.3",
   "description": "Keyword plugin for linkifyjs",
   "main": "dist/linkify-plugin-keyword.cjs",
   "module": "dist/linkify-plugin-keyword.mjs",
@@ -31,6 +31,6 @@
   },
   "homepage": "https://linkify.js.org",
   "peerDependencies": {
-    "linkifyjs": "^4.0.0"
+    "linkifyjs": "==4.3.3"
   }
 }

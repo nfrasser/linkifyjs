@@ -1,5 +1,10 @@
 # Linkify Changelog
 
+## v4.3.3
+
+- Fix parsing bugs with some special encoded URLs
+- Parsed emails should not include port numbers
+
 ## v4.3.2
 
 - Replace assign helper with Object.assign to avoid prototype pollution

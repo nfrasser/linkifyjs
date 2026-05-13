@@ -1,7 +1,7 @@
 {
   "name": "linkify-plugin-ip",
   "type": "module",
-  "version": "4.3.2",
+  "version": "4.3.3",
   "description": "IP address plugin for linkifyjs",
   "main": "dist/linkify-plugin-ip.cjs",
   "module": "dist/linkify-plugin-ip.mjs",
@@ -33,6 +33,6 @@
   },
   "homepage": "https://linkify.js.org",
   "peerDependencies": {
-    "linkifyjs": "^4.0.0"
+    "linkifyjs": "==4.3.3"
   }
 }

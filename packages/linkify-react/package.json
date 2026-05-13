@@ -1,7 +1,7 @@
 {
   "name": "linkify-react",
   "type": "module",
-  "version": "4.3.2",
+  "version": "4.3.3",
   "description": "React element interface for linkifyjs",
   "main": "dist/linkify-react.cjs",
   "module": "dist/linkify-react.mjs",
@@ -31,7 +31,7 @@
   },
   "homepage": "https://linkify.js.org",
   "peerDependencies": {
-    "linkifyjs": "^4.0.0",
+    "linkifyjs": "==4.3.3",
     "react": ">= 15.0.0"
   },
   "devDependencies": {

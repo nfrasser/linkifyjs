@@ -1,7 +1,7 @@
 {
   "name": "linkify-html",
   "type": "module",
-  "version": "4.3.2",
+  "version": "4.3.3",
   "description": "HTML String interface for linkifyjs",
   "main": "dist/linkify-html.cjs",
   "module": "dist/linkify-html.mjs",
@@ -34,6 +34,6 @@
     "@nfrasser/simple-html-tokenizer": "==0.5.11-4"
   },
   "peerDependencies": {
-    "linkifyjs": "^4.0.0"
+    "linkifyjs": "==4.3.3"
   }
 }
