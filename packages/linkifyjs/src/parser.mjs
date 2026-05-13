@@ -236,17 +236,19 @@ export function init({ groups }) {
 		// Continue not accepting for open brackets
 		tt(UrlNonaccept, OPEN, UrlOpen);
 
-		// Closing bracket component. This character WILL be included in the URL
-		tt(UrlOpen, CLOSE, Url);
-
-		// URL that beings with an opening bracket, followed by a symbols.
+		// URL that begins with an opening bracket, followed by a symbols.
 		// Note that the final state can still be `UrlOpen` (if the URL has a
 		// single opening bracket for some reason).
 		const UrlOpenQ = makeState(mtk.Url);
 		ta(UrlOpen, qsAccepting, UrlOpenQ);
 
 		const UrlOpenSyms = makeState(); // UrlOpen followed by some symbols it cannot end it
-		ta(UrlOpen, qsNonAccepting);
+		ta(UrlOpen, qsNonAccepting, UrlOpenSyms);
+
+		// Closing bracket component. This character WILL be included in the URL.
+		// Must come after qsNonAccepting (which includes all close-bracket tokens)
+		// so that CLOSE -> Url wins over CLOSE -> UrlOpenSyms.
+		tt(UrlOpen, CLOSE, Url);
 
 		// URL that begins with an opening bracket, followed by some symbols
 		ta(UrlOpenQ, qsAccepting, UrlOpenQ);
