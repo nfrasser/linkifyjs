@@ -61,7 +61,7 @@ export const ipv6Tokens = ({ scanner }) => {
 	const { start } = scanner;
 
 	const HEX = /[0-9a-f]/;
-	let z = start.tt('[');  // [
+	let z = start.tt('['); // [
 	let _ = z.tt(':'); // [:
 
 	let x = z.tr(HEX);
@@ -114,7 +114,6 @@ export const ipv6Tokens = ({ scanner }) => {
 		x_x_x_x_x_x_x = x_x_x_x_x_x_x.tr(HEX);
 		x_x_x_x_x_x_x_x = x_x_x_x_x_x_x_x.tr(HEX);
 
-
 		x.tt(':', x_);
 		x_x.tt(':', x_x_);
 		x_x_x.tt(':', x_x_x_);
@@ -134,8 +133,7 @@ export const ipv6Tokens = ({ scanner }) => {
  * @type {import('linkifyjs').Plugin}
  */
 export function ip({ scanner, parser }) {
-	const { COLON, DOT, SLASH, LOCALHOST, SLASH_SCHEME, groups } =
-		scanner.tokens;
+	const { COLON, DOT, SLASH, LOCALHOST, SLASH_SCHEME, groups } = scanner.tokens;
 
 	const ByteDot = new State();
 	const ByteDotByte = new State();

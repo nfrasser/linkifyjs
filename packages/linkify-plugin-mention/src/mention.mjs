@@ -4,7 +4,7 @@ const MentionToken = createTokenClass('mention', {
 	isLink: true,
 	toHref() {
 		return '/' + this.toString().slice(1);
-	}
+	},
 });
 
 /**

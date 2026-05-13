@@ -1,4 +1,3 @@
-import jQuery from 'jquery';
 import linkifyElement from 'linkify-element';
 
 // Applies the plugin to jQuery
@@ -9,7 +8,6 @@ import linkifyElement from 'linkify-element';
  * @returns
  */
 export default function apply($, doc = false) {
-
 	$.fn = $.fn || {};
 	if (typeof $.fn.linkify === 'function') {
 		// Already applied
@@ -17,14 +15,16 @@ export default function apply($, doc = false) {
 	}
 
 	try {
-		doc = doc || document || (window && window.document) || global && global.document;
-	} catch (e) { /* do nothing for now */ }
+		doc = doc || document || (window && window.document) || (global && global.document);
+	} catch (e) {
+		/* do nothing for now */
+	}
 
 	if (!doc) {
 		throw new Error(
 			'Cannot find document implementation. ' +
-			'If you are in a non-browser environment like Node.js, ' +
-			'pass the document implementation as the second argument to linkify-jquery'
+				'If you are in a non-browser environment like Node.js, ' +
+				'pass the document implementation as the second argument to linkify-jquery',
 		);
 	}
 
@@ -45,7 +45,7 @@ export default function apply($, doc = false) {
 			const nl2br = data.linkifyNl2br;
 
 			const opts = {
-				nl2br: !!nl2br && nl2br !== 0 && nl2br !== 'false'
+				nl2br: !!nl2br && nl2br !== 0 && nl2br !== 'false',
 			};
 
 			if ('linkifyAttributes' in data) {
@@ -98,8 +98,20 @@ export default function apply($, doc = false) {
 	});
 }
 
-// Try applying to the globally-defined jQuery element, if possible
-try { apply(jQuery); } catch (e) { /**/ }
+// Try applying to the globally-defined jQuery element, if possible.
+// This runs in browser environments where jQuery is already loaded as a global.
+// The typeof check and try/catch prevent errors in Node.js or when jQuery is absent.
+if (typeof jQuery !== 'undefined') {
+	try {
+		apply(jQuery);
+	} catch (e) {
+		/**/
+	}
+}
 
 // Try assigning linkifyElement to the browser scope
-try { window.linkifyElement = linkifyElement; } catch (e) { /**/ }
+try {
+	window.linkifyElement = linkifyElement;
+} catch (e) {
+	/**/
+}

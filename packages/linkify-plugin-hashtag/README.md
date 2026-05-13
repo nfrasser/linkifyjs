@@ -1,5 +1,4 @@
-linkify-plugin-hashtag
-===
+# linkify-plugin-hashtag
 
 [![npm version](https://badge.fury.io/js/linkify-plugin-hashtag.svg)](https://www.npmjs.com/package/linkify-plugin-hashtag)
 
@@ -14,10 +13,12 @@ npm install linkifyjs linkify-plugin-hashtag
 ```
 
 Import into your JavaScript with `require`
+
 ```js
-const linkify = require('linkifyjs')
+const linkify = require('linkifyjs');
 require('linkify-plugin-hashtag');
 ```
+
 or with ES modules
 
 ```js

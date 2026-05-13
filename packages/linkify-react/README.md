@@ -1,5 +1,4 @@
-linkify-react
-===
+# linkify-react
 
 [![npm version](https://badge.fury.io/js/linkify-react.svg)](https://www.npmjs.com/package/linkify-react)
 
@@ -14,9 +13,11 @@ npm install linkifyjs linkify-react
 ```
 
 Import into your JavaScript with `require`
+
 ```js
 const Linkify = require('linkify-react');
 ```
+
 or with ES modules
 
 ```js

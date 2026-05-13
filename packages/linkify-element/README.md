@@ -1,5 +1,4 @@
-linkify-element
-===
+# linkify-element
 
 [![npm version](https://badge.fury.io/js/linkify-element.svg)](https://www.npmjs.com/package/linkify-element)
 
@@ -16,10 +15,13 @@ npm install linkifyjs linkify-element
 ```
 
 Import into your JavaScript with `require`
+
 ```js
 const linkifyElement = require('linkify-element');
 ```
+
 or with ES modules
+
 ```js
 import linkifyElement from 'linkify-element';
 ```

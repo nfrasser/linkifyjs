@@ -316,14 +316,20 @@ QUnit.test('renders into a DOM element', function (assert) {
 		w.React.createElement('strong', { className: 'pi' }, 'https://amazon.ca'),
 	);
 	var container = document.createElement('div');
+	container.id = 'root';
 	document.body.appendChild(container);
 
-	// React 16+ requires a container to be passed to render
-	w.ReactDOM.render(w.React.createElement('p', null, linkified), container);
+	var root = w.ReactDOM.createRoot(container);
+	var component = w.React.createElement('p', null, linkified);
+	root.render(component);
 
-	assert.ok(container.innerHTML.indexOf('<em') > 0);
-	assert.ok(container.innerHTML.indexOf('class="pi"') > 0);
-	assert.ok(container.innerHTML.indexOf('href="http://github.com"') > 0);
-	assert.ok(container.innerHTML.indexOf('href="http://google.com"') > 0);
-	assert.ok(container.innerHTML.indexOf('href="https://amazon.ca"') > 0);
+	var done = assert.async();
+	setTimeout(() => {
+		assert.ok(container.innerHTML.indexOf('<em') > 0);
+		assert.ok(container.innerHTML.indexOf('class="pi"') > 0);
+		assert.ok(container.innerHTML.indexOf('href="http://github.com"') > 0);
+		assert.ok(container.innerHTML.indexOf('href="http://google.com"') > 0);
+		assert.ok(container.innerHTML.indexOf('href="https://amazon.ca"') > 0);
+		done();
+	}, 100);
 });

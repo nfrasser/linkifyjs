@@ -1,5 +1,4 @@
-linkify-html
-===
+# linkify-html
 
 [![npm version](https://badge.fury.io/js/linkify-html.svg)](https://www.npmjs.com/package/linkify-html)
 
@@ -14,9 +13,11 @@ npm install linkifyjs linkify-html
 ```
 
 Import into your JavaScript with `require`
+
 ```js
 const linkifyHtml = require('linkify-html');
 ```
+
 or with ES modules
 
 ```js

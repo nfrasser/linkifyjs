@@ -4,10 +4,7 @@
 import { tokenize, Options } from 'linkifyjs';
 
 function escapeText(text) {
-	return text
-	.replace(/&/g, '&amp;')
-	.replace(/</g, '&lt;')
-	.replace(/>/g, '&gt;');
+	return text.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 }
 
 function escapeAttr(href) {
@@ -62,7 +59,7 @@ if (!String.prototype.linkify) {
 		writable: false,
 		value: function linkify(options) {
 			return linkifyStr(this, options);
-		}
+		},
 	});
 }
 

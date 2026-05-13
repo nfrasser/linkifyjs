@@ -1,16 +1,14 @@
-linkify-string
-===
+# linkify-string
 
 [![npm version](https://badge.fury.io/js/linkify-string.svg)](https://www.npmjs.com/package/linkify-string)
 
 [Linkify](https://linkify.js.org/) String Interface. Use `linkify-string` to detect URLs, email addresses and more in plain-text strings and wrap them with anchor `<a>` tags.
 
-This function will ***not*** parse strings with HTML. Use one of the following instead, depending on your application:
+This function will **_not_** parse strings with HTML. Use one of the following instead, depending on your application:
 
-* [`linkify-html`](../linkify-html/)
-* [`linkify-element`](../linkify-element/)
-* [`linkify-jquery`](../linkify-jquery/)
-
+- [`linkify-html`](../linkify-html/)
+- [`linkify-element`](../linkify-element/)
+- [`linkify-jquery`](../linkify-jquery/)
 
 ## Installation
 
@@ -21,9 +19,11 @@ npm install linkifyjs linkify-string
 ```
 
 Import into your JavaScript with `require`
+
 ```js
 const linkifyStr = require('linkify-string');
 ```
+
 or with ES modules
 
 ```js

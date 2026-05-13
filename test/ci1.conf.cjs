@@ -5,37 +5,37 @@ const base = require('./conf.cjs');
 module.exports = function (config) {
 	// https://www.browserstack.com/docs/automate/api-reference/selenium/introduction#rest-api-browsers
 	const customLaunchers = {
-		bs_chrome_mac: {
+		bs_firefox_windows: {
 			base: 'BrowserStack',
-			browser: 'chrome',
-			os: 'OS X',
-			os_version: 'Ventura',
+			browser: 'firefox',
+			os: 'Windows',
+			os_version: '11',
 		},
 		bs_chrome_windows: {
 			base: 'BrowserStack',
 			browser: 'chrome',
 			os: 'Windows',
-			os_version: '10',
+			os_version: '11',
 		},
-		bs_firefox_windows: {
+		bs_edge_windows: {
 			base: 'BrowserStack',
-			browser: 'firefox',
+			browser: 'edge',
 			os: 'Windows',
-			os_version: '10',
+			os_version: '11',
 		},
-		bs_android_8: {
+		bs_android_14: {
 			base: 'BrowserStack',
 			os: 'android',
-			os_version: '9.0',
+			os_version: '14.0',
 			browser: 'android',
-			device: 'Google Pixel 3',
+			device: 'Google Pixel 8',
 		},
-		bs_android_11: {
+		bs_android_12: {
 			base: 'BrowserStack',
 			os: 'android',
-			os_version: '11.0',
+			os_version: '12.0',
 			browser: 'android',
-			device: 'Google Pixel 5',
+			device: 'Google Pixel 6',
 		},
 	};
 

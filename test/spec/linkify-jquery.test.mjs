@@ -1,61 +1,49 @@
 import applyLinkify from 'linkify-jquery/src/linkify-jquery.mjs';
 import htmlOptions from './html/options.mjs';
 import { expect } from 'chai';
-let $, doc, testContainer, JSDOM;
+let $, doc, testContainer;
 
 try {
+	// Browser environment (e.g. Browserify): use existing document and require jQuery
 	doc = document;
-	$ = require('jquery'); // should be available through Browserify
+	$ = require('jquery');
 } catch (e) {
 	doc = null;
 	$ = null;
 }
 
-if (!doc) {
-	const jsdom = await import('jsdom');
-	JSDOM = jsdom.JSDOM;
-}
-
 describe('linkify-jquery', function () {
-	// Sometimes jQuery is slow to load
 	this.timeout(10000);
 
 	/**
 		Set up the JavaScript document and the element for it
 		This code allows testing on Node.js and on Browser environments
 	*/
-	before(function (done) {
-		function onDoc($, doc) {
-			doc.body.innerHTML = htmlOptions.extra;
-
-			// Add the linkify plugin to jQuery
-			applyLinkify($, doc);
-			$(doc).trigger('ready');
-
-			testContainer = doc.createElement('div');
-			testContainer.id = 'linkify-jquery-test-container';
-
-			doc.body.appendChild(testContainer);
-			done();
+	before(async function () {
+		if (!doc) {
+			// Node.js environment: use jsdom + jQuery 4 factory
+			const { JSDOM } = await import('jsdom');
+			const { jQueryFactory } = await import('jquery/factory');
+			const dom = new JSDOM('<html><head><title>Linkify Test</title></head><body></body></html>');
+			doc = dom.window.document;
+			$ = jQueryFactory(dom.window);
 		}
 
-		if (doc) {
-			return onDoc($, doc);
-		}
-		// no document element, use a virtual dom to test
+		doc.body.innerHTML = htmlOptions.extra;
 
-		let dom = new JSDOM(
-			'<html><head><title>Linkify Test</title></head><body><script src="https://code.jquery.com/jquery.js"></script></body></html>',
-			{
-				runScripts: 'dangerously',
-				resources: 'usable',
-			},
-		);
-		doc = dom.window.document;
-		dom.window.onload = () => {
-			$ = dom.window.jQuery;
-			onDoc($, doc);
-		};
+		// Add the linkify plugin to jQuery
+		applyLinkify($, doc);
+
+		// Wait for jQuery's async ready callbacks to finish.
+		// applyLinkify registers data-linkify processing via $(function(){…});
+		// since the jsdom document is already complete when jQuery initialises,
+		// those callbacks are queued as microtasks. Awaiting a new $(fn) promise
+		// (which is appended after them) ensures they have all run first.
+		await new Promise((resolve) => $(resolve));
+
+		testContainer = doc.createElement('div');
+		testContainer.id = 'linkify-jquery-test-container';
+		doc.body.appendChild(testContainer);
 	});
 
 	// Make sure we start out with a fresh DOM every time
