@@ -1,5 +1,4 @@
-linkifyjs
-===
+# linkifyjs
 
 [![npm version](https://badge.fury.io/js/linkifyjs.svg)](https://www.npmjs.com/package/linkifyjs)
 
@@ -15,9 +14,11 @@ npm install linkifyjs
 ```
 
 Import into your JavaScript with `require`
+
 ```js
 const linkify = require('linkifyjs');
 ```
+
 or with ES modules
 
 ```js
@@ -25,6 +26,7 @@ import * as linkify from 'linkifyjs';
 ```
 
 Separate packages are available for each of the following features:
+
 - [HTML strings](../linkify-html)
 - [React component](../linkify-react)
 - [jQuery plugin](../linkify-jquery)

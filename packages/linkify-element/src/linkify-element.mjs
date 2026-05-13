@@ -1,6 +1,7 @@
 import { tokenize, Options } from 'linkifyjs';
 
-const HTML_NODE = 1, TXT_NODE = 3;
+const HTML_NODE = 1,
+	TXT_NODE = 3;
 
 /**
  * @param {HTMLElement} parent
@@ -46,7 +47,6 @@ function tokensToNodes(tokens, options, doc) {
  * @returns {HTMLElement}
  */
 function linkifyElementHelper(element, options, doc) {
-
 	// Can the element be linkified?
 	if (!element || element.nodeType !== HTML_NODE) {
 		throw new Error(`Cannot linkify ${element} - Invalid DOM Node type`);
@@ -64,28 +64,28 @@ function linkifyElementHelper(element, options, doc) {
 		let str, tokens, nodes;
 
 		switch (childElement.nodeType) {
-		case HTML_NODE:
-			linkifyElementHelper(childElement, options, doc);
-			break;
-		case TXT_NODE: {
-			str = childElement.nodeValue;
-			tokens = tokenize(str);
+			case HTML_NODE:
+				linkifyElementHelper(childElement, options, doc);
+				break;
+			case TXT_NODE: {
+				str = childElement.nodeValue;
+				tokens = tokenize(str);
 
-			if (tokens.length === 0 || tokens.length === 1 && tokens[0].t === 'text') {
-				// No node replacement required
+				if (tokens.length === 0 || (tokens.length === 1 && tokens[0].t === 'text')) {
+					// No node replacement required
+					break;
+				}
+
+				nodes = tokensToNodes(tokens, options, doc);
+
+				// Swap out the current child for the set of nodes
+				replaceChildWithChildren(element, childElement, nodes);
+
+				// so that the correct sibling is selected next
+				childElement = nodes[nodes.length - 1];
+
 				break;
 			}
-
-			nodes = tokensToNodes(tokens, options, doc);
-
-			// Swap out the current child for the set of nodes
-			replaceChildWithChildren(element, childElement, nodes);
-
-			// so that the correct sibling is selected next
-			childElement = nodes[nodes.length - 1];
-
-			break;
-		}
 		}
 
 		childElement = childElement.nextSibling;
@@ -126,14 +126,16 @@ function getDefaultRender(doc) {
  */
 export default function linkifyElement(element, opts = null, doc = null) {
 	try {
-		doc = doc || document || window && window.document || global && global.document;
-	} catch (_) { /* do nothing for now */ }
+		doc = doc || document || (window && window.document) || (global && global.document);
+	} catch (_) {
+		/* do nothing for now */
+	}
 
 	if (!doc) {
 		throw new Error(
 			'Cannot find document implementation. ' +
-			'If you are in a non-browser environment like Node.js, ' +
-			'pass the document implementation as the third argument to linkifyElement.'
+				'If you are in a non-browser environment like Node.js, ' +
+				'pass the document implementation as the third argument to linkifyElement.',
 		);
 	}
 
@@ -151,4 +153,3 @@ linkifyElement.getDefaultRender = getDefaultRender;
  * @param {Document} doc
  */
 linkifyElement.normalize = (opts, doc) => new Options(opts, getDefaultRender(doc));
-

@@ -1,5 +1,4 @@
-linkify-plugin-ip
-===
+# linkify-plugin-ip
 
 [![npm version](https://badge.fury.io/js/linkify-plugin-ip.svg)](https://www.npmjs.com/package/linkify-plugin-ip)
 
@@ -14,10 +13,12 @@ npm install linkifyjs linkify-plugin-ip
 ```
 
 Import into your JavaScript with `require`
+
 ```js
-const linkify = require('linkifyjs')
+const linkify = require('linkifyjs');
 require('linkify-plugin-ip');
 ```
+
 or with ES modules
 
 ```js

@@ -1,5 +1,4 @@
-linkify-jquery
-===
+# linkify-jquery
 
 [![npm version](https://badge.fury.io/js/linkify-jquery.svg)](https://www.npmjs.com/package/linkify-jquery)
 
@@ -14,11 +13,14 @@ npm install linkifyjs linkify-jquery
 ```
 
 Import into your JavaScript with `require`
+
 ```js
 const $ = require('jquery');
-require('linkify-jquery')
+require('linkify-jquery');
 ```
+
 or with ES modules
+
 ```js
 import $ from 'jquery';
 import 'linkify-jquery';
@@ -27,10 +29,13 @@ import 'linkify-jquery';
 If a `window.document` global is not available in your environment, provide it manually instead as follows.
 
 With `require`:
+
 ```js
 require('linkify-jquery')($, document);
 ```
+
 or with ES modules:
+
 ```js
 import linkifyJq from 'linkify-jquery';
 linkifyJq($, document);

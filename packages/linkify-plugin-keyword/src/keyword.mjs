@@ -5,7 +5,6 @@ import { createTokenClass, stringToArray } from 'linkifyjs';
  */
 const Keyword = createTokenClass('keyword', { isLink: true });
 
-
 /**
  * Keys are registered tokens recognized by the scanner in the plugin
  * definition, associated with one or more collections. Values are the list of
@@ -51,7 +50,7 @@ function nMatch(str, regexp) {
  *
  * @param {string[]} keywords Keywords to linkify
  */
- export function registerKeywords(keywords) {
+export function registerKeywords(keywords) {
 	// validate all keywords
 	for (let i = 0; i < keywords.length; i++) {
 		const keyword = keywords[i];

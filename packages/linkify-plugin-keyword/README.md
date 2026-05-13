@@ -1,5 +1,4 @@
-linkify-plugin-keyword
-===
+# linkify-plugin-keyword
 
 [![npm version](https://badge.fury.io/js/linkify-plugin-keyword.svg)](https://www.npmjs.com/package/linkify-plugin-keyword)
 
@@ -14,10 +13,12 @@ npm install linkifyjs linkify-plugin-keyword
 ```
 
 Import into your JavaScript with `require`
+
 ```js
-const linkify = require('linkifyjs')
+const linkify = require('linkifyjs');
 const registerKeywords = require('linkify-plugin-keyword');
 ```
+
 or with ES modules
 
 ```js
@@ -28,8 +29,8 @@ import registerKeywords from 'linkify-plugin-keyword';
 ## Usage
 
 ```js
-registerKeywords(['foo', 'bar', 'baz'])
-linkify.find('Any foo keywords here?')
+registerKeywords(['foo', 'bar', 'baz']);
+linkify.find('Any foo keywords here?');
 ```
 
 [Read the full documentation](https://linkify.js.org/docs/plugin-keyword.html).
