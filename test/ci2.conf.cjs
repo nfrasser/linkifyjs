@@ -5,30 +5,31 @@ const base = require('./conf.cjs');
 module.exports = function (config) {
 	// https://www.browserstack.com/docs/automate/api-reference/selenium/introduction#rest-api-browsers
 	const customLaunchers = {
-		bs_safari_sierra: {
+		bs_safari_ventura: {
 			base: 'BrowserStack',
 			browser: 'safari',
 			os: 'OS X',
-			os_version: 'Monterey',
+			os_version: 'Ventura',
 		},
-		bs_safari_bigsur: {
+		bs_safari_sonoma: {
 			base: 'BrowserStack',
 			browser: 'safari',
 			os: 'OS X',
 			os_version: 'Sonoma',
 		},
-		bs_ios_safari: {
+		bs_safari_ios_17: {
 			base: 'BrowserStack',
 			browser: 'iphone',
 			os: 'ios',
-			os_version: '16',
-			device: 'iPhone 14',
+			os_version: '17',
+			device: 'iPhone 15',
 		},
-		bs_edge: {
+		bs_safari_ios_26: {
 			base: 'BrowserStack',
-			browser: 'edge',
-			os: 'Windows',
-			os_version: '11',
+			browser: 'iphone',
+			os: 'ios',
+			os_version: '26',
+			device: 'iPhone 17',
 		},
 	};
 
