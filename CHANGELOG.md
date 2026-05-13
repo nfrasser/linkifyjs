@@ -4,6 +4,7 @@
 
 - Fix parsing bugs with some special encoded URLs
 - Parsed emails should not include port numbers
+- Exact version requirement for interfaces and plugins to avoid incompatibility issues with older versions of linkify core
 
 ## v4.3.2
 
