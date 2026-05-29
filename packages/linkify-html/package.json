@@ -8,7 +8,7 @@
   "scripts": {
     "build": "rollup -c rollup.config.js",
     "clean": "rm -rf lib dist *.tgz *.d.ts",
-    "copy:license": "copyfiles -f ../../node_modules/@nfrasser/simple-html-tokenizer/LICENSE dist/simple-html-tokenizer",
+    "copy:license": "copyfiles -f ../../node_modules/htmlparser2/LICENSE dist/htmlparser2",
     "prepack": "run-s clean build tsc copy:license",
     "tsc": "tsc",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -31,7 +31,7 @@
   },
   "homepage": "https://linkify.js.org",
   "devDependencies": {
-    "@nfrasser/simple-html-tokenizer": "==0.5.11-4"
+    "htmlparser2": "^12.0.0"
   },
   "peerDependencies": {
     "linkifyjs": "==4.3.3"

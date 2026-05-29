@@ -3,7 +3,7 @@ import htmlOptions from './html/options.mjs';
 import { expect } from 'chai';
 
 const svg = [
-	'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 801.197 614.273">',
+	'<svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 801.197 614.273">',
 	'<rect height="304" width="554" y="50" x="50" stroke="#000" fill="#ff0000" />',
 	'<rect height="304" width="554" y="150" x="131" stroke="#000" fill="#fff" />',
 	'</svg>',
@@ -28,8 +28,8 @@ describe('linkify-html', () => {
 		],
 		[
 			'This link is already in an anchor tag <a href="#bro">google.com</a> LOL and this one <h1>isnt http://github.com</h1><br />',
-			'This link is already in an anchor tag <a href="#bro">google.com</a> LOL and this one <h1>isnt <a href="http://github.com">http://github.com</a></h1><br />',
-			'This link is already in an anchor tag <a href="#bro">google.com</a> LOL and this one <h1>isnt <span href="http://github.com" class="my-linkify-class" target="_parent" rel="nofollow" onclick="console.log(\'Hello World!\')">http://github.com</span></h1><br />',
+			'This link is already in an anchor tag <a href="#bro">google.com</a> LOL and this one <h1>isnt <a href="http://github.com">http://github.com</a></h1><br>',
+			'This link is already in an anchor tag <a href="#bro">google.com</a> LOL and this one <h1>isnt <span href="http://github.com" class="my-linkify-class" target="_parent" rel="nofollow" onclick="console.log(\'Hello World!\')">http://github.com</span></h1><br>',
 		],
 		[
 			'Unterminated anchor tag <a href="http://google.com"> This <em>is a link google.com</em> and this works!! https://reddit.com/r/photography/',
@@ -74,8 +74,8 @@ describe('linkify-html', () => {
 		],
 		[
 			'<p>Here is a link and an extra space: google.com &nbsp;</p><p>Here is a link and a greater-than: google.com &gt;</p><p>Here is a link and an ellipsis: google.com &hellip;</p>',
-			'<p>Here is a link and an extra space: <a href="http://google.com">google.com</a> \u00a0</p><p>Here is a link and a greater-than: <a href="http://google.com">google.com</a> &gt;</p><p>Here is a link and an ellipsis: <a href="http://google.com">google.com</a> &hellip;</p>',
-			'<p>Here is a link and an extra space: <span href="https://google.com" class="my-linkify-class" target="_parent" rel="nofollow" onclick="console.log(\'Hello World!\')">google.com</span> \u00a0</p><p>Here is a link and a greater-than: <span href="https://google.com" class="my-linkify-class" target="_parent" rel="nofollow" onclick="console.log(\'Hello World!\')">google.com</span> &gt;</p><p>Here is a link and an ellipsis: <span href="https://google.com" class="my-linkify-class" target="_parent" rel="nofollow" onclick="console.log(\'Hello World!\')">google.com</span> &hellip;</p>',
+			'<p>Here is a link and an extra space: <a href="http://google.com">google.com</a> \u00a0</p><p>Here is a link and a greater-than: <a href="http://google.com">google.com</a> &gt;</p><p>Here is a link and an ellipsis: <a href="http://google.com">google.com</a> \u2026</p>',
+			'<p>Here is a link and an extra space: <span href="https://google.com" class="my-linkify-class" target="_parent" rel="nofollow" onclick="console.log(\'Hello World!\')">google.com</span> \u00a0</p><p>Here is a link and a greater-than: <span href="https://google.com" class="my-linkify-class" target="_parent" rel="nofollow" onclick="console.log(\'Hello World!\')">google.com</span> &gt;</p><p>Here is a link and an ellipsis: <span href="https://google.com" class="my-linkify-class" target="_parent" rel="nofollow" onclick="console.log(\'Hello World!\')">google.com</span> \u2026</p>',
 		],
 	];
 
