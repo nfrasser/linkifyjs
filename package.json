@@ -32,7 +32,7 @@
   "license": "MIT",
   "devDependencies": {
     "@babel/core": "^7.29.7",
-    "@babel/eslint-parser": "^7.13.10",
+    "@babel/eslint-parser": "^7.29.7",
     "@babel/eslint-plugin": "^7.29.7",
     "@babel/preset-env": "^7.13.10",
     "@eslint/eslintrc": "^3.1.0",
@@ -65,7 +65,7 @@
     "punycode": "^2.1.1",
     "qunit": "^2.14.1",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0",
+    "react-dom": "^19.2.7",
     "rollup": "^4.60.4",
     "sinon": "^22.0.0",
     "typescript": "^6.0.3"
