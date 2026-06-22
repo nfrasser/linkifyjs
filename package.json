@@ -31,7 +31,7 @@
   "author": "Nick Frasser (https://nfrasser.com)",
   "license": "MIT",
   "devDependencies": {
-    "@babel/core": "^7.29.7",
+    "@babel/core": "^8.0.1",
     "@babel/eslint-parser": "^7.13.10",
     "@babel/eslint-plugin": "^7.13.10",
     "@babel/preset-env": "^7.13.10",
