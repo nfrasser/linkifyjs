@@ -103,6 +103,22 @@ describe('linkify-react', () => {
 		expect(result).to.be.oneOf([expected, `<span>${expected}</span>`]);
 	});
 
+	it('Obeys ignoreElementClasses option', () => {
+		const options = { ignoreElementClasses: ['linkify-ignore'] };
+		const ignored = React.createElement(
+			'span',
+			{ className: 'linkify-ignore other' },
+			'ignore.example.com',
+		);
+		const linked = React.createElement('span', { className: 'other' }, 'link.example.com');
+		const linkified = React.createElement(Linkify, { options }, ignored, linked);
+		const result = renderToStaticMarkup(linkified);
+		const expected =
+			'<span class="linkify-ignore other">ignore.example.com</span>' +
+			'<span class="other"><a href="http://link.example.com">link.example.com</a></span>';
+		expect(result).to.be.oneOf([expected, `<span>${expected}</span>`]);
+	});
+
 	it('Correctly renders multiple text and element children', () => {
 		const options = { nl2br: true };
 		const foo = `hello
