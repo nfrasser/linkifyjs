@@ -29,10 +29,13 @@ export default function linkifyHtml(str, opts = {}) {
 		if (token.type === StartTag) {
 			linkifiedTokens.push(token);
 
-			// Ignore all the contents of ignored tags
+			// Ignore all the contents of ignored tags and classes
 			const tagName = token.tagName.toUpperCase();
-			const isIgnored = tagName === 'A' || options.ignoreTags.indexOf(tagName) >= 0;
-			if (!isIgnored) {
+			const isIgnored =
+				tagName === 'A' ||
+				options.ignoreTags.indexOf(tagName) >= 0 ||
+				options.isIgnoredClass(getAttribute(token.attributes, 'class'));
+			if (!isIgnored || token.selfClosing) {
 				continue;
 			}
 
@@ -193,4 +196,13 @@ function attributeArrayToStrings(attrs) {
 		attrStrs.push(`${name}="${escapeAttr(value)}"`);
 	}
 	return attrStrs;
+}
+
+function getAttribute(attrs, name) {
+	for (let i = 0; i < attrs.length; i++) {
+		if (attrs[i][0].toLowerCase() === name) {
+			return attrs[i][1];
+		}
+	}
+	return null;
 }

@@ -88,6 +88,10 @@ export default function apply($, doc = false) {
 				opts.ignoreTags = data.linkifyIgnoreTags;
 			}
 
+			if ('linkifyIgnoreElementClasses' in data) {
+				opts.ignoreElementClasses = data.linkifyIgnoreElementClasses;
+			}
+
 			if ('linkifyClassName' in data) {
 				opts.className = data.linkifyClassName;
 			}
