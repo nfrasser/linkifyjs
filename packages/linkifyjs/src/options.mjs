@@ -72,7 +72,7 @@
  * 	className?: Opt<string>,
  * 	attributes?: OptObj<({ [attr: string]: any })>,
  *  ignoreTags?: string[],
- *  ignoreElementClasses?: string[],
+ *  ignoreClasses?: string[],
  * 	render?: OptFn<((ir: IntermediateRepresentation) => any)>
  * }} Opts
  */
@@ -94,7 +94,7 @@ export const defaults = {
 	className: null,
 	attributes: null,
 	ignoreTags: [],
-	ignoreElementClasses: [],
+	ignoreClasses: [],
 	render: null,
 };
 
@@ -126,7 +126,7 @@ export function Options(opts, defaultRender = null) {
 		this.defaultRender = defaultRender;
 	}
 	this.ignoreTags = uppercaseIgnoredTags;
-	this.ignoreElementClasses = o.ignoreElementClasses.slice();
+	this.ignoreClasses = o.ignoreClasses.slice();
 }
 
 Options.prototype = {
@@ -140,7 +140,7 @@ Options.prototype = {
 	/**
 	 * @type string[]
 	 */
-	ignoreElementClasses: [],
+	ignoreClasses: [],
 
 	/**
 	 * Returns whether a whitespace-separated class attribute contains an
@@ -149,13 +149,13 @@ Options.prototype = {
 	 * @returns {boolean}
 	 */
 	isIgnoredClass(classNames) {
-		if (typeof classNames !== 'string' || this.ignoreElementClasses.length === 0) {
+		if (typeof classNames !== 'string' || this.ignoreClasses.length === 0) {
 			return false;
 		}
 
 		const classes = classNames.split(/\s+/);
 		for (let i = 0; i < classes.length; i++) {
-			if (this.ignoreElementClasses.indexOf(classes[i]) >= 0) {
+			if (this.ignoreClasses.indexOf(classes[i]) >= 0) {
 				return true;
 			}
 		}

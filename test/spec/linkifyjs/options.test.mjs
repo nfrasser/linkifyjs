@@ -98,8 +98,8 @@ describe('linkifyjs/options', () => {
 		});
 
 		it('Preserves ignored element class names', () => {
-			const options = new Options({ ignoreElementClasses: ['CaseSensitive'] });
-			expect(options.ignoreElementClasses).to.eql(['CaseSensitive']);
+			const options = new Options({ ignoreClasses: ['CaseSensitive'] });
+			expect(options.ignoreClasses).to.eql(['CaseSensitive']);
 			expect(options.isIgnoredClass('other CaseSensitive')).to.be.true;
 			expect(options.isIgnoredClass('other casesensitive')).to.be.false;
 		});

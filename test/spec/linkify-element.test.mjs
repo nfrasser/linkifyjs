@@ -63,14 +63,13 @@ describe('linkify-element', () => {
 		expect(testContainer.innerHTML).to.be.oneOf(htmlOptions.linkifiedValidate);
 	});
 
-	it('Obeys ignoreElementClasses option', () => {
+	it('Obeys ignoreClasses option', () => {
 		testContainer.innerHTML =
-			'<p class="linkify-ignore other">ignore.example.com</p>' +
-			'<p class="other">link.example.com</p>';
-		linkifyElement(testContainer, { ignoreElementClasses: ['linkify-ignore'] }, doc);
+			'<p class="linkify-ignore other">ignore.example.com</p>' + '<p class="other">link.example.com</p>';
+		linkifyElement(testContainer, { ignoreClasses: ['linkify-ignore'] }, doc);
 		expect(testContainer.innerHTML).to.equal(
 			'<p class="linkify-ignore other">ignore.example.com</p>' +
-			'<p class="other"><a href="http://link.example.com">link.example.com</a></p>',
+				'<p class="other"><a href="http://link.example.com">link.example.com</a></p>',
 		);
 	});
 

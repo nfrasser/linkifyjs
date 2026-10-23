@@ -90,13 +90,12 @@ describe('linkify-jquery', function () {
 		expect($container.html()).to.be.oneOf(htmlOptions.linkifiedValidate);
 	});
 
-	it('Obeys ignoreElementClasses option', () => {
+	it('Obeys ignoreClasses option', () => {
 		var $container = $('#linkify-jquery-test-container');
 		$container.html(
-			'<p class="linkify-ignore other">ignore.example.com</p>' +
-				'<p class="other">link.example.com</p>',
+			'<p class="linkify-ignore other">ignore.example.com</p>' + '<p class="other">link.example.com</p>',
 		);
-		$container.linkify({ ignoreElementClasses: ['linkify-ignore'] });
+		$container.linkify({ ignoreClasses: ['linkify-ignore'] });
 		expect($container.html()).to.equal(
 			'<p class="linkify-ignore other">ignore.example.com</p>' +
 				'<p class="other"><a href="http://link.example.com">link.example.com</a></p>',

@@ -103,13 +103,9 @@ describe('linkify-react', () => {
 		expect(result).to.be.oneOf([expected, `<span>${expected}</span>`]);
 	});
 
-	it('Obeys ignoreElementClasses option', () => {
-		const options = { ignoreElementClasses: ['linkify-ignore'] };
-		const ignored = React.createElement(
-			'span',
-			{ className: 'linkify-ignore other' },
-			'ignore.example.com',
-		);
+	it('Obeys ignoreClasses option', () => {
+		const options = { ignoreClasses: ['linkify-ignore'] };
+		const ignored = React.createElement('span', { className: 'linkify-ignore other' }, 'ignore.example.com');
 		const linked = React.createElement('span', { className: 'other' }, 'link.example.com');
 		const linkified = React.createElement(Linkify, { options }, ignored, linked);
 		const result = renderToStaticMarkup(linkified);
