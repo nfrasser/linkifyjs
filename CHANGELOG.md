@@ -1,5 +1,14 @@
 # Linkify Changelog
 
+## v4.4.0
+
+- Feature: ignore elements by class
+- Fix: improved performance on long strings by mitigating quadratic parser backtracking on long incomplete-link inputs
+- Fix: detect query string / fragment directly after a domain
+- Fix: correct text export path from './multi.mjs' to './text.mjs'
+- Fix: use valid exact linkifyjs peer dependency ranges
+- Fix: build Unicode regexes dynamically for ICU-free runtimes
+
 ## v4.3.3
 
 - Fix parsing bugs with some special encoded URLs
