@@ -33,7 +33,7 @@
   "homepage": "https://linkify.js.org",
   "peerDependencies": {
     "jquery": ">= 1.11.0",
-    "linkifyjs": "==4.3.3"
+    "linkifyjs": "4.3.3"
   },
   "devDependencies": {
     "linkify-element": "*"

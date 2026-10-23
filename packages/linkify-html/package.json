@@ -34,6 +34,6 @@
     "@nfrasser/simple-html-tokenizer": "==0.5.11-4"
   },
   "peerDependencies": {
-    "linkifyjs": "==4.3.3"
+    "linkifyjs": "4.3.3"
   }
 }

@@ -31,7 +31,7 @@
   },
   "homepage": "https://linkify.js.org",
   "peerDependencies": {
-    "linkifyjs": "==4.3.3",
+    "linkifyjs": "4.3.3",
     "react": ">= 15.0.0"
   },
   "devDependencies": {
