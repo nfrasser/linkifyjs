@@ -57,6 +57,10 @@ describe('linkify-jquery', function () {
 				'href="http://t.co" class="test-class" target="_parent">' +
 				'http://t.co</i> link.',
 		);
+		expect($('#linkify-ignore-data').html()).to.equal(
+			'<span class="linkify-ignore">ignore.example.com</span>' +
+				'<span><a href="http://link.example.com">link.example.com</a></span>',
+		);
 	});
 
 	it('Works with default options', () => {
@@ -84,5 +88,18 @@ describe('linkify-jquery', function () {
 		// `should` is not defined on jQuery objects
 		expect(result === $container).to.be.ok; // should return the same element
 		expect($container.html()).to.be.oneOf(htmlOptions.linkifiedValidate);
+	});
+
+	it('Obeys ignoreElementClasses option', () => {
+		var $container = $('#linkify-jquery-test-container');
+		$container.html(
+			'<p class="linkify-ignore other">ignore.example.com</p>' +
+				'<p class="other">link.example.com</p>',
+		);
+		$container.linkify({ ignoreElementClasses: ['linkify-ignore'] });
+		expect($container.html()).to.equal(
+			'<p class="linkify-ignore other">ignore.example.com</p>' +
+				'<p class="other"><a href="http://link.example.com">link.example.com</a></p>',
+		);
 	});
 });

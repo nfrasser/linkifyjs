@@ -63,6 +63,17 @@ describe('linkify-element', () => {
 		expect(testContainer.innerHTML).to.be.oneOf(htmlOptions.linkifiedValidate);
 	});
 
+	it('Obeys ignoreElementClasses option', () => {
+		testContainer.innerHTML =
+			'<p class="linkify-ignore other">ignore.example.com</p>' +
+			'<p class="other">link.example.com</p>';
+		linkifyElement(testContainer, { ignoreElementClasses: ['linkify-ignore'] }, doc);
+		expect(testContainer.innerHTML).to.equal(
+			'<p class="linkify-ignore other">ignore.example.com</p>' +
+			'<p class="other"><a href="http://link.example.com">link.example.com</a></p>',
+		);
+	});
+
 	it('Works when there is an empty text nodes', () => {
 		testContainer.appendChild(doc.createTextNode(''));
 		var result = linkifyElement(testContainer, null, doc);

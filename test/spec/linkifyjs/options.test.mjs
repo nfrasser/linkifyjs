@@ -97,6 +97,13 @@ describe('linkifyjs/options', () => {
 			});
 		});
 
+		it('Preserves ignored element class names', () => {
+			const options = new Options({ ignoreElementClasses: ['CaseSensitive'] });
+			expect(options.ignoreElementClasses).to.eql(['CaseSensitive']);
+			expect(options.isIgnoredClass('other CaseSensitive')).to.be.true;
+			expect(options.isIgnoredClass('other casesensitive')).to.be.false;
+		});
+
 		describe('#render()', () => {
 			it('Returns intermediate representation when render option not specified', () => {
 				expect(opts.render(urlToken)).to.eql({

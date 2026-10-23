@@ -52,8 +52,12 @@ function linkifyElementHelper(element, options, doc) {
 		throw new Error(`Cannot linkify ${element} - Invalid DOM Node type`);
 	}
 
-	// Is this element already a link?
-	if (element.tagName === 'A' || options.ignoreTags.indexOf(element.tagName) >= 0) {
+	// Is this element already a link, or should its contents be ignored?
+	if (
+		element.tagName === 'A' ||
+		options.ignoreTags.indexOf(element.tagName) >= 0 ||
+		options.isIgnoredClass(element.getAttribute('class'))
+	) {
 		// No need to linkify
 		return element;
 	}

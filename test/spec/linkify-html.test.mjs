@@ -172,6 +172,18 @@ describe('linkify-html', () => {
 		expect(linkified).to.be.oneOf(htmlOptions.linkifiedAlt);
 	});
 
+	it('Obeys ignoreElementClasses option', () => {
+		const input =
+			'<p class="linkify-ignore other">ignore.example.com</p>' +
+			'<p class="other">link.example.com</p>' +
+			'<img class="linkify-ignore" />after.example.com';
+		expect(linkifyHtml(input, { ignoreElementClasses: ['linkify-ignore'] })).to.equal(
+			'<p class="linkify-ignore other">ignore.example.com</p>' +
+				'<p class="other"><a href="http://link.example.com">link.example.com</a></p>' +
+				'<img class="linkify-ignore" /><a href="http://after.example.com">after.example.com</a>',
+		);
+	});
+
 	it('Treats null target options properly', () => {
 		let linkified = linkifyHtml('http://google.com', { target: { url: null } });
 		expect(linkified).to.be.eql('<a href="http://google.com">http://google.com</a>');

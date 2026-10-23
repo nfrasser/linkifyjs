@@ -59,7 +59,11 @@ function linkifyReactElement(element, opts, meta) {
 			// ensure that we always generate unique element IDs for keys
 			children.push.apply(children, stringToElements(child, opts, meta));
 		} else if (React.isValidElement(child)) {
-			if (typeof child.type === 'string' && opts.ignoreTags.indexOf(child.type.toUpperCase()) >= 0) {
+			if (
+				typeof child.type === 'string' &&
+				(opts.ignoreTags.indexOf(child.type.toUpperCase()) >= 0 ||
+					opts.isIgnoredClass(child.props.className))
+			) {
 				// Don't linkify this element
 				children.push(child);
 			} else {
