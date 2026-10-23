@@ -389,12 +389,14 @@ describe('linkifyjs/parser#run()', () => {
 			['https://testdomain.com/path?', 'https://testdomain.com/path', '?'],
 		];
 
+		// eslint-disable-next-line mocha/no-setup-in-describe
 		makeTest([
 			'続行する前に、このリンク「https://testdomain.com」を参照してください。',
 			[Text, Url, Text],
 			['続行する前に、このリンク「', 'https://testdomain.com', '」を参照してください。'],
 		]);
 
+		// eslint-disable-next-line mocha/no-setup-in-describe
 		makeTest([
 			'https://example.com/「x【y」',
 			[Url],
@@ -404,9 +406,7 @@ describe('linkifyjs/parser#run()', () => {
 		// eslint-disable-next-line mocha/no-setup-in-describe
 		pairs.forEach(([open, close]) => {
 			// Mismatched Japanese closes terminate each bracket-interior state.
-			// eslint-disable-next-line mocha/no-setup-in-describe
 			pairs.filter(([, otherClose]) => otherClose !== close).forEach(([, otherClose]) => {
-				// eslint-disable-next-line mocha/no-setup-in-describe
 				[
 					['', '', open],
 					['x', open + 'x', ''],
@@ -421,7 +421,6 @@ describe('linkifyjs/parser#run()', () => {
 			});
 
 			// Unmatched closes end URLs before adjacent prose or end-of-string.
-			// eslint-disable-next-line mocha/no-setup-in-describe
 			['y', ''].forEach((suffix) => {
 				makeTest([
 					`https://example.com/x${close}${suffix}`,
@@ -430,9 +429,7 @@ describe('linkifyjs/parser#run()', () => {
 				]);
 			});
 
-			// eslint-disable-next-line mocha/no-setup-in-describe
 			suffixes.forEach((suffix) => {
-				// eslint-disable-next-line mocha/no-setup-in-describe
 				urls.forEach(([url, expected, punctuation]) => {
 					makeTest([
 						`${open}${url}${close}${suffix}`,
@@ -441,7 +438,6 @@ describe('linkifyjs/parser#run()', () => {
 					]);
 				});
 
-				// eslint-disable-next-line mocha/no-setup-in-describe
 				[
 					['', ''],
 					['', 'x'],
