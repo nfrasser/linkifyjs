@@ -397,6 +397,16 @@ describe('linkifyjs/parser#run()', () => {
 
 		// eslint-disable-next-line mocha/no-setup-in-describe
 		pairs.forEach(([open, close]) => {
+			// Unmatched closes end URLs before adjacent prose or end-of-string.
+			// eslint-disable-next-line mocha/no-setup-in-describe
+			['y', ''].forEach((suffix) => {
+				makeTest([
+					`https://example.com/x${close}${suffix}`,
+					[Url, Text],
+					['https://example.com/x', close + suffix],
+				]);
+			});
+
 			// eslint-disable-next-line mocha/no-setup-in-describe
 			suffixes.forEach((suffix) => {
 				// eslint-disable-next-line mocha/no-setup-in-describe
@@ -412,7 +422,9 @@ describe('linkifyjs/parser#run()', () => {
 				[
 					['', ''],
 					['', 'x'],
+					['', 'x&y'],
 					['', '?'],
+					['', '??'],
 					['', 'x?'],
 					['', '.x'],
 					['.', 'x'],
