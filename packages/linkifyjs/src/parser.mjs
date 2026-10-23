@@ -68,11 +68,9 @@ export function init({ groups }) {
 		tk.OPENPAREN,
 		tk.CLOSEPAREN,
 		tk.FULLWIDTHLEFTPAREN,
-		tk.FULLWIDTHRIGHTPAREN,
 		tk.LEFTCORNERBRACKET,
-		tk.RIGHTCORNERBRACKET,
 		tk.LEFTWHITECORNERBRACKET,
-		tk.RIGHTWHITECORNERBRACKET,
+		tk.LEFTLENTICULARBRACKET,
 		tk.FULLWIDTHLESSTHAN,
 		tk.FULLWIDTHGREATERTHAN,
 	];
@@ -231,6 +229,7 @@ export function init({ groups }) {
 		[tk.FULLWIDTHLEFTPAREN, tk.FULLWIDTHRIGHTPAREN], // （）
 		[tk.LEFTCORNERBRACKET, tk.RIGHTCORNERBRACKET], // 「」
 		[tk.LEFTWHITECORNERBRACKET, tk.RIGHTWHITECORNERBRACKET], // 『』
+		[tk.LEFTLENTICULARBRACKET, tk.RIGHTLENTICULARBRACKET], // 【】
 		[tk.FULLWIDTHLESSTHAN, tk.FULLWIDTHGREATERTHAN], // ＜＞
 	];
 
@@ -251,7 +250,7 @@ export function init({ groups }) {
 		ta(UrlOpen, qsNonAccepting, UrlOpenSyms);
 
 		// Closing bracket component. This character WILL be included in the URL.
-		// Must come after qsNonAccepting (which includes all close-bracket tokens)
+		// Must come after qsNonAccepting (which includes some close-bracket tokens)
 		// so that CLOSE -> Url wins over CLOSE -> UrlOpenSyms.
 		tt(UrlOpen, CLOSE, Url);
 
