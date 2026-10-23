@@ -395,8 +395,31 @@ describe('linkifyjs/parser#run()', () => {
 			['続行する前に、このリンク「', 'https://testdomain.com', '」を参照してください。'],
 		]);
 
+		makeTest([
+			'https://example.com/「x【y」',
+			[Url],
+			['https://example.com/「x【y」'],
+		]);
+
 		// eslint-disable-next-line mocha/no-setup-in-describe
 		pairs.forEach(([open, close]) => {
+			// Mismatched Japanese closes terminate each bracket-interior state.
+			// eslint-disable-next-line mocha/no-setup-in-describe
+			pairs.filter(([, otherClose]) => otherClose !== close).forEach(([, otherClose]) => {
+				// eslint-disable-next-line mocha/no-setup-in-describe
+				[
+					['', '', open],
+					['x', open + 'x', ''],
+					['?', '', open + '?'],
+				].forEach(([content, urlSuffix, textPrefix]) => {
+					makeTest([
+						`https://example.com/${open}${content}${otherClose}y`,
+						[Url, Text],
+						['https://example.com/' + urlSuffix, `${textPrefix}${otherClose}y`],
+					]);
+				});
+			});
+
 			// Unmatched closes end URLs before adjacent prose or end-of-string.
 			// eslint-disable-next-line mocha/no-setup-in-describe
 			['y', ''].forEach((suffix) => {
