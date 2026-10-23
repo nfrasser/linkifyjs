@@ -2,6 +2,7 @@ import { expect } from 'chai';
 import { Text, Url, Email, Nl } from 'linkifyjs/src/multi.mjs';
 import * as scanner from 'linkifyjs/src/scanner.mjs';
 import * as parser from 'linkifyjs/src/parser.mjs';
+import { State } from 'linkifyjs/src/fsm.mjs';
 
 /**
 	[0] - Original text to parse (should tokenize first)
@@ -345,6 +346,11 @@ const tests = [
 		['https://zh.wikipedia.org/wiki/%E7%B4%85_(%E5%BC%B5%E5%9C%8B%E6%A6%AE%E5%B0%88%E8%BC%AF)'],
 	],
 	['toto@example.com:123', [Email, Text], ['toto@example.com', ':123']],
+	['a.a.a.a.a.a.a.a.a.a.a.com', [Url], ['a.a.a.a.a.a.a.a.a.a.a.com']],
+	['a.a.a.a.a.a.a.a.a.a.a.', [Text], ['a.a.a.a.a.a.a.a.a.a.a.']],
+	['a.a.a.a.a.a.a. b.c.d.e.org', [Text, Url], ['a.a.a.a.a.a.a. ', 'b.c.d.e.org']],
+	['a.a.a.a.a.a.a@b.c.d.co.', [Email, Text], ['a.a.a.a.a.a.a@b.c.d.co', '.']],
+	['a-.a-.a-.a-.a-.a.a.a.a-a.ca', [Text, Url], ['a-.a-.a-.a-.a-.', 'a.a.a.a-a.ca']],
 ];
 
 describe('linkifyjs/parser#run()', () => {
@@ -373,6 +379,45 @@ describe('linkifyjs/parser#run()', () => {
 
 	// eslint-disable-next-line mocha/no-setup-in-describe
 	tests.map(makeTest, this);
+
+	describe('Long runs of tokens that look like incomplete links', () => {
+		let go, transitions;
+
+		beforeEach(() => {
+			// Count parser state transitions to verify that the amount of work
+			// done grows linearly (rather than quadratically) with the input
+			transitions = 0;
+			go = State.prototype.go;
+			State.prototype.go = function (input) {
+				transitions++;
+				return go.call(this, input);
+			};
+		});
+
+		afterEach(() => {
+			State.prototype.go = go;
+		});
+
+		const inputs = [
+			['dotted labels', (n) => 'a.'.repeat(n)],
+			['dotted numbers', (n) => '1.'.repeat(n)],
+			['hyphenated labels', (n) => 'a-'.repeat(n)],
+			['dotted labels with trailing link', (n) => 'a.'.repeat(n) + ' example.com'],
+		];
+
+		// eslint-disable-next-line mocha/no-setup-in-describe
+		inputs.forEach(([name, makeInput]) => {
+			it(`Parses ${name} in linear time`, () => {
+				const str = makeInput(5000);
+				const tokens = scanner.run(scannerStart, str);
+				transitions = 0; // only count parser transitions
+				const result = parser.run(start, str, tokens);
+				expect(result.map((token) => token.v).join('')).to.eql(str);
+				expect(transitions).to.be.above(0);
+				expect(transitions).to.be.below(tokens.length * 4);
+			});
+		});
+	});
 
 	it('Correctly sets start and end indexes', () => {
 		const input = 'Hello github.com!';

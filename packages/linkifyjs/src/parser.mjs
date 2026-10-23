@@ -288,6 +288,18 @@ export function run(start, input, tokens) {
 	let multis = [];
 	let textTokens = [];
 
+	// Memo of parser states that are known not to lead to any accepting state
+	// when reached at a given cursor position. dead[i] is a Set of states that,
+	// once reached right before tokens[i], can never reach another accepting
+	// state. Because the parser is deterministic, a run that reaches one of
+	// these (state, cursor) pairs can stop there with the same result as
+	// continuing. Without this, inputs where every token can extend a
+	// potential link that never completes (e.g., 'a.a.a.a.…') make each
+	// failed attempt rescan to the end of the input, which is quadratic.
+	// See https://github.com/Hypercontext/linkifyjs/issues/568
+	/** @type {Array<Set<State<MultiToken>> | undefined>} */
+	const dead = [];
+
 	while (cursor < len) {
 		let state = start;
 		let secondState = null;
@@ -295,6 +307,10 @@ export function run(start, input, tokens) {
 		let multiLength = 0;
 		let latestAccepting = null;
 		let sinceAccepts = -1;
+		// States reached since the latest accepting state (or since the start
+		// of this attempt), in order. visited[k] is the state reached right
+		// before tokens[cursor - visited.length + k + 1]
+		let visited = [];
 
 		while (cursor < len && !(secondState = state.go(tokens[cursor].t))) {
 			// Starting tokens with nowhere to jump to.
@@ -307,16 +323,31 @@ export function run(start, input, tokens) {
 			secondState = null;
 			state = nextState;
 
+			cursor++;
+			multiLength++;
+
 			// Keep track of the latest accepting state
 			if (state.accepts()) {
 				sinceAccepts = 0;
 				latestAccepting = state;
-			} else if (sinceAccepts >= 0) {
-				sinceAccepts++;
+				visited = [];
+			} else {
+				if (sinceAccepts >= 0) {
+					sinceAccepts++;
+				}
+				visited.push(state);
+				if (dead[cursor] && dead[cursor].has(state)) {
+					// Already known that no accepting state is reachable from here
+					break;
+				}
 			}
+		}
 
-			cursor++;
-			multiLength++;
+		// None of the states visited since the latest accepting state lead to
+		// another accepting state; remember them so later attempts that reach
+		// the same state at the same position can stop early.
+		for (let k = 0, pos = cursor - visited.length + 1; k < visited.length; k++, pos++) {
+			(dead[pos] || (dead[pos] = new Set())).add(visited[k]);
 		}
 
 		if (sinceAccepts < 0) {
