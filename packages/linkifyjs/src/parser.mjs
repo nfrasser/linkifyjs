@@ -191,6 +191,15 @@ export function init({ groups }) {
 	tt(DomainDotTld, tk.SLASH, Url);
 	tt(DomainDotTldColonPort, tk.SLASH, Url);
 
+	// A query string or fragment may also follow the domain (or port) directly,
+	// without a path slash (e.g. `example.com?q=1`, `example.com#frag`). Mirror
+	// how the `Url` state treats these tokens: `?` is non-accepting (a trailing
+	// `?` is trimmed), `#` is accepting.
+	tt(DomainDotTld, tk.QUERY, UrlNonaccept);
+	tt(DomainDotTld, tk.POUND, Url);
+	tt(DomainDotTldColonPort, tk.QUERY, UrlNonaccept);
+	tt(DomainDotTldColonPort, tk.POUND, Url);
+
 	// Note that domains that begin with schemes are treated slighly differently
 	const SchemeColon = tt(Scheme, tk.COLON); // e.g., 'mailto:'
 	const SlashSchemeColon = tt(SlashScheme, tk.COLON); // e.g., 'http:'

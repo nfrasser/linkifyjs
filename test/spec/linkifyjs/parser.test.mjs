@@ -12,6 +12,13 @@ const tests = [
 	['google.com', [Url], ['google.com']],
 	['I like google.com the most', [Text, Url, Text], ['I like ', 'google.com', ' the most']],
 	['I like Google.com the most', [Text, Url, Text], ['I like ', 'Google.com', ' the most']],
+	// Query string / fragment directly after the domain (no path slash) (#516)
+	['example.com?foo=bar', [Url], ['example.com?foo=bar']],
+	['example.com?a=1&b=2', [Url], ['example.com?a=1&b=2']],
+	['example.com:8080?x=1', [Url], ['example.com:8080?x=1']],
+	['example.com#section', [Url], ['example.com#section']],
+	// A trailing `?` is sentence punctuation, not a query string, so it is trimmed
+	['have you seen example.com?', [Text, Url, Text], ['have you seen ', 'example.com', '?']],
 	[
 		'there are two tests, brennan.com and nick.ca -- do they work?',
 		[Text, Url, Text, Url, Text],
@@ -75,8 +82,8 @@ const tests = [
 			' ',
 			'goo.gl/0192n1',
 			' ',
-			'google.com',
-			'?q=asda test ',
+			'google.com?q=asda',
+			' test ',
 			'bit.ly/0912j',
 			' ',
 			'www.bob.com',
