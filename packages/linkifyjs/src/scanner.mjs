@@ -70,6 +70,8 @@ export function init(customSchemes = []) {
 	tt(Start, '」', tk.RIGHTCORNERBRACKET);
 	tt(Start, '『', tk.LEFTWHITECORNERBRACKET);
 	tt(Start, '』', tk.RIGHTWHITECORNERBRACKET);
+	tt(Start, '【', tk.LEFTLENTICULARBRACKET);
+	tt(Start, '】', tk.RIGHTLENTICULARBRACKET);
 	tt(Start, '＜', tk.FULLWIDTHLESSTHAN);
 	tt(Start, '＞', tk.FULLWIDTHGREATERTHAN);
 	tt(Start, '&', tk.AMPERSAND);
