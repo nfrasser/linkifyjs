@@ -380,6 +380,85 @@ describe('linkifyjs/parser#run()', () => {
 	// eslint-disable-next-line mocha/no-setup-in-describe
 	tests.map(makeTest, this);
 
+	describe('Japanese URL brackets', () => {
+		const pairs = ['「」', '『』', '（）', '【】'];
+		const suffixes = ['はこちら', 'test', ' はこちら', ''];
+		const urls = [
+			['https://testdomain.com', 'https://testdomain.com', ''],
+			['https://testdomain.com/path', 'https://testdomain.com/path', ''],
+			['https://testdomain.com/path?', 'https://testdomain.com/path', '?'],
+		];
+
+		// eslint-disable-next-line mocha/no-setup-in-describe
+		makeTest([
+			'続行する前に、このリンク「https://testdomain.com」を参照してください。',
+			[Text, Url, Text],
+			['続行する前に、このリンク「', 'https://testdomain.com', '」を参照してください。'],
+		]);
+
+		// eslint-disable-next-line mocha/no-setup-in-describe
+		makeTest([
+			'https://example.com/「x【y」',
+			[Url],
+			['https://example.com/「x【y」'],
+		]);
+
+		// eslint-disable-next-line mocha/no-setup-in-describe
+		pairs.forEach(([open, close]) => {
+			// Mismatched Japanese closes terminate each bracket-interior state.
+			pairs.filter(([, otherClose]) => otherClose !== close).forEach(([, otherClose]) => {
+				[
+					['', '', open],
+					['x', open + 'x', ''],
+					['?', '', open + '?'],
+				].forEach(([content, urlSuffix, textPrefix]) => {
+					makeTest([
+						`https://example.com/${open}${content}${otherClose}y`,
+						[Url, Text],
+						['https://example.com/' + urlSuffix, `${textPrefix}${otherClose}y`],
+					]);
+				});
+			});
+
+			// Unmatched closes end URLs before adjacent prose or end-of-string.
+			['y', ''].forEach((suffix) => {
+				makeTest([
+					`https://example.com/x${close}${suffix}`,
+					[Url, Text],
+					['https://example.com/x', close + suffix],
+				]);
+			});
+
+			suffixes.forEach((suffix) => {
+				urls.forEach(([url, expected, punctuation]) => {
+					makeTest([
+						`${open}${url}${close}${suffix}`,
+						[Text, Url, Text],
+						[open, expected, `${punctuation}${close}${suffix}`],
+					]);
+				});
+
+				[
+					['', ''],
+					['', 'x'],
+					['', 'x&y'],
+					['', '?'],
+					['', '??'],
+					['', 'x?'],
+					['', '.x'],
+					['.', 'x'],
+				].forEach(([prefix, content]) => {
+					const url = `https://example.com/${prefix}${open}${content}${close}`;
+					makeTest([
+						`${url}${suffix}`,
+						suffix.startsWith(' ') ? [Url, Text] : [Url],
+						suffix.startsWith(' ') ? [url, suffix] : [url + suffix],
+					]);
+				});
+			});
+		});
+	});
+
 	describe('Long runs of tokens that look like incomplete links', () => {
 		let go, transitions;
 

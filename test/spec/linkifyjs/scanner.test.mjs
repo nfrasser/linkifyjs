@@ -32,6 +32,7 @@ const tests = [
 	['=', [t.EQUALS], ['=']],
 	['-', [t.HYPHEN], ['-']],
 	['・', [t.FULLWIDTHMIDDLEDOT], ['・']],
+	['【x】', [t.LEFTLENTICULARBRACKET, t.WORD, t.RIGHTLENTICULARBRACKET], ['【', 'x', '】']],
 	['&?<>(', [t.AMPERSAND, t.QUERY, t.OPENANGLEBRACKET, t.CLOSEANGLEBRACKET, t.OPENPAREN], ['&', '?', '<', '>', '(']],
 	[
 		'([{}])',
