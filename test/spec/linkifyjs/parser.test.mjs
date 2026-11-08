@@ -251,6 +251,19 @@ const tests = [
 	],
 	['"https://surrounded.by.quotes/"', [Text, Url, Text], ['"', 'https://surrounded.by.quotes/', '"']],
 	[
+		'He said “https://example.com/docs” yesterday',
+		[Text, Url, Text],
+		['He said “', 'https://example.com/docs', '” yesterday'],
+	],
+	['Siehe „https://example.de“', [Text, Url, Text], ['Siehe „', 'https://example.de', '“']],
+	['le site «https://example.fr»', [Text, Url, Text], ['le site «', 'https://example.fr', '»']],
+	[
+		'He said ‘https://example.com/docs’ yesterday',
+		[Text, Url, Text],
+		['He said ‘', 'https://example.com/docs', '’ yesterday'],
+	],
+	['see https://example.com…', [Text, Url, Text], ['see ', 'https://example.com', '…']],
+	[
 		"More weird character in http://facebook.com/#aZ?/:@-._~!$&'()*+,;= that Url",
 		[Text, Url, Text],
 		['More weird character in ', "http://facebook.com/#aZ?/:@-._~!$&'()*+,;=", ' that Url'],
