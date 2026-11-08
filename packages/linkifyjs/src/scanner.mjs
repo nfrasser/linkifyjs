@@ -56,6 +56,12 @@ export function init(customSchemes = []) {
 
 	// States for special URL symbols that accept immediately after start
 	tt(Start, "'", tk.APOSTROPHE);
+	tt(Start, '‘', tk.APOSTROPHE);
+	tt(Start, '’', tk.APOSTROPHE);
+	tt(Start, '‚', tk.APOSTROPHE);
+	tt(Start, '‛', tk.APOSTROPHE);
+	tt(Start, '‹', tk.APOSTROPHE);
+	tt(Start, '›', tk.APOSTROPHE);
 	tt(Start, '{', tk.OPENBRACE);
 	tt(Start, '}', tk.CLOSEBRACE);
 	tt(Start, '[', tk.OPENBRACKET);
@@ -81,6 +87,7 @@ export function init(customSchemes = []) {
 	tt(Start, ',', tk.COMMA);
 	tt(Start, '$', tk.DOLLAR);
 	tt(Start, '.', tk.DOT);
+	tt(Start, '…', tk.ELLIPSIS);
 	tt(Start, '=', tk.EQUALS);
 	tt(Start, '!', tk.EXCLAMATION);
 	tt(Start, '-', tk.HYPHEN);
@@ -90,6 +97,12 @@ export function init(customSchemes = []) {
 	tt(Start, '#', tk.POUND);
 	tt(Start, '?', tk.QUERY);
 	tt(Start, '"', tk.QUOTE);
+	tt(Start, '“', tk.QUOTE);
+	tt(Start, '”', tk.QUOTE);
+	tt(Start, '„', tk.QUOTE);
+	tt(Start, '‟', tk.QUOTE);
+	tt(Start, '«', tk.QUOTE);
+	tt(Start, '»', tk.QUOTE);
 	tt(Start, '/', tk.SLASH);
 	tt(Start, ';', tk.SEMI);
 	tt(Start, '~', tk.TILDE);

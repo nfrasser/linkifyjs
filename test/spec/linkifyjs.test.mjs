@@ -127,6 +127,20 @@ describe('linkifyjs', () => {
 			]);
 		});
 
+		it('Excludes typographic quotes and ellipsis after URLs (#588)', () => {
+			const cases = [
+				['He said “https://example.com/docs” yesterday', 'https://example.com/docs'],
+				['Siehe „https://example.de“', 'https://example.de'],
+				['le site «https://example.fr»', 'https://example.fr'],
+				['He said ‘https://example.com/docs’ yesterday', 'https://example.com/docs'],
+				['see https://example.com…', 'https://example.com'],
+			];
+
+			expect(cases.map(([input]) => linkify.find(input).map(({ href }) => href))).to.deep.eql(
+				cases.map(([, expected]) => [expected]),
+			);
+		});
+
 		it('Finds with opts', () => {
 			expect(linkify.find('Does www.truncate.com work with truncate?', { truncate: 10 })).to.deep.eql([
 				{

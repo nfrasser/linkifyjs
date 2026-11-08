@@ -54,6 +54,7 @@ export function init({ groups }) {
 		tk.COLON,
 		tk.COMMA,
 		tk.DOT,
+		tk.ELLIPSIS,
 		tk.EXCLAMATION,
 		tk.PERCENT,
 		tk.QUERY,

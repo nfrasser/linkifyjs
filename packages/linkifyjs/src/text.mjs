@@ -69,6 +69,7 @@ export const COLON = 'COLON'; // :
 export const COMMA = 'COMMA'; // ,
 export const DOLLAR = 'DOLLAR'; // $
 export const DOT = 'DOT'; // .
+export const ELLIPSIS = 'ELLIPSIS'; // …
 export const EQUALS = 'EQUALS'; // =
 export const EXCLAMATION = 'EXCLAMATION'; // !
 export const HYPHEN = 'HYPHEN'; // -
