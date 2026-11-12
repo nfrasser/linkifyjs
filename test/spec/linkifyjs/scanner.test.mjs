@@ -32,6 +32,7 @@ const tests = [
 	['=', [t.EQUALS], ['=']],
 	['-', [t.HYPHEN], ['-']],
 	['・', [t.FULLWIDTHMIDDLEDOT], ['・']],
+	['，、。', [t.FULLWIDTHCOMMA, t.IDEOGRAPHICCOMMA, t.IDEOGRAPHICFULLSTOP], ['，', '、', '。']],
 	['&?<>(', [t.AMPERSAND, t.QUERY, t.OPENANGLEBRACKET, t.CLOSEANGLEBRACKET, t.OPENPAREN], ['&', '?', '<', '>', '(']],
 	[
 		'([{}])',

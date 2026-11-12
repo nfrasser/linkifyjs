@@ -96,6 +96,9 @@ export function init(customSchemes = []) {
 	tt(Start, '_', tk.UNDERSCORE);
 	tt(Start, '\\', tk.BACKSLASH);
 	tt(Start, '・', tk.FULLWIDTHMIDDLEDOT);
+	tt(Start, '，', tk.FULLWIDTHCOMMA);
+	tt(Start, '、', tk.IDEOGRAPHICCOMMA);
+	tt(Start, '。', tk.IDEOGRAPHICFULLSTOP);
 
 	const Num = tr(Start, re.DIGIT, tk.NUM, { [fsm.numeric]: true });
 	tr(Num, re.DIGIT, Num);

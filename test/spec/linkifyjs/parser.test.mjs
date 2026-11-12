@@ -18,6 +18,10 @@ const tests = [
 	['example.com?a=1&b=2', [Url], ['example.com?a=1&b=2']],
 	['example.com:8080?x=1', [Url], ['example.com:8080?x=1']],
 	['example.com#section', [Url], ['example.com#section']],
+	// Full-width CJK punctuation after a URL ends it
+	['请访问 https://example.com/docs，谢谢', [Text, Url, Text], ['请访问 ', 'https://example.com/docs', '，谢谢']],
+	['网址是https://github.com/foo/bar。', [Text, Url, Text], ['网址是', 'https://github.com/foo/bar', '。']],
+	['見て https://example.jp/page、よろしく', [Text, Url, Text], ['見て ', 'https://example.jp/page', '、よろしく']],
 	// A trailing `?` is sentence punctuation, not a query string, so it is trimmed
 	['have you seen example.com?', [Text, Url, Text], ['have you seen ', 'example.com', '?']],
 	[
