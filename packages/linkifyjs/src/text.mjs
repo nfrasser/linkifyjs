@@ -79,6 +79,9 @@ export const POUND = 'POUND'; // #
 export const QUERY = 'QUERY'; // ?
 export const QUOTE = 'QUOTE'; // "
 export const FULLWIDTHMIDDLEDOT = 'FULLWIDTHMIDDLEDOT'; // ・
+export const FULLWIDTHCOMMA = 'FULLWIDTHCOMMA'; // ，
+export const IDEOGRAPHICCOMMA = 'IDEOGRAPHICCOMMA'; // 、
+export const IDEOGRAPHICFULLSTOP = 'IDEOGRAPHICFULLSTOP'; // 。
 
 export const SEMI = 'SEMI'; // ;
 export const SLASH = 'SLASH'; // /
